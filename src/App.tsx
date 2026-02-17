@@ -45,22 +45,12 @@ const projects: Project[] = [
     image: '/screenshots/socionics-lab.jpg',
   },
   {
-    title: 'Zipchair Intel',
+    title: 'Drift',
     blurb:
-      'AI-powered competitive intelligence dashboard for a licensed sports furniture brand. Daily insights, severity-ranked alerts, competitor pricing radar, and actionable recommendations.',
-    tech: ['React', 'AI Agents', 'Analytics', 'Dashboard'],
-    accent: 'from-[#f59e0b]/20 to-transparent',
-    link: 'https://zipchair-deploy.vercel.app/intel/',
-    image: '/screenshots/zipchair-intel.jpg',
-  },
-  {
-    title: 'Zipchair AI Assistant',
-    blurb:
-      'Conversational shopping agent connected to a 12K+ product catalog across NFL, MLB, NHL, AEW, and NCAA licensed furniture. Natural language search with smart suggestion chips.',
-    tech: ['React', 'AI Chat', 'E-Commerce', 'NLP'],
-    accent: 'from-[#3b82f6]/20 to-transparent',
-    link: 'https://zipchair-deploy.vercel.app/',
-    image: '/screenshots/zipchair.jpg',
+      'Personal feed aggregator and bookmark manager with dark-mode masonry UI, FTS5 instant search, source filtering, and a ⌘K command palette for thought-speed retrieval.',
+    tech: ['React', 'SQLite FTS5', 'UI/UX'],
+    accent: 'from-[#5bb7ff]/20 to-transparent',
+    image: '/screenshots/drift.jpg',
   },
   {
     title: 'inner-system',
@@ -72,6 +62,24 @@ const projects: Project[] = [
     image: '/screenshots/inner-system.jpg',
   },
   {
+    title: 'Zipchair AI Assistant',
+    blurb:
+      'Conversational shopping agent connected to a 12K+ product catalog across NFL, MLB, NHL, AEW, and NCAA licensed furniture. Natural language search with smart suggestion chips.',
+    tech: ['React', 'AI Chat', 'E-Commerce', 'NLP'],
+    accent: 'from-[#3b82f6]/20 to-transparent',
+    link: 'https://zipchair-deploy.vercel.app/',
+    image: '/screenshots/zipchair.jpg',
+  },
+  {
+    title: 'Zipchair Intel',
+    blurb:
+      'AI-powered competitive intelligence dashboard for a licensed sports furniture brand. Daily insights, severity-ranked alerts, competitor pricing radar, and actionable recommendations.',
+    tech: ['React', 'AI Agents', 'Analytics', 'Dashboard'],
+    accent: 'from-[#f59e0b]/20 to-transparent',
+    link: 'https://zipchair-deploy.vercel.app/intel/',
+    image: '/screenshots/zipchair-intel.jpg',
+  },
+  {
     title: 'AEROEDEN',
     blurb:
       'Solarpunk media engine with automated X posting, reply scouting, and TikTok-ready creative pipelines. Brand systems + growth loops.',
@@ -79,14 +87,6 @@ const projects: Project[] = [
     accent: 'from-[#72f7b8]/20 to-transparent',
     link: 'https://x.com/enteraeroeden',
     image: '/screenshots/aeroeden.jpg',
-  },
-  {
-    title: 'Drift',
-    blurb:
-      'Personal feed aggregator and bookmark manager with dark-mode masonry UI, FTS5 instant search, source filtering, and a ⌘K command palette for thought-speed retrieval.',
-    tech: ['React', 'SQLite FTS5', 'UI/UX'],
-    accent: 'from-[#5bb7ff]/20 to-transparent',
-    image: '/screenshots/drift.jpg',
   },
   // — no screenshot, no link —
   {
