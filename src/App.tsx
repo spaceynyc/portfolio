@@ -38,6 +38,7 @@ const projects: Project[] = [
     tech: ['AI Agents', 'React', 'Socionics', 'Multi-Agent'],
     accent: 'from-[#ffa64d]/20 to-transparent',
     link: 'https://socionics-web.vercel.app/',
+    github: 'https://github.com/spaceynyc/socionics-panel',
   },
   {
     title: 'inner-system',
