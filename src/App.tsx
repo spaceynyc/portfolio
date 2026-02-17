@@ -19,6 +19,7 @@ type Project = {
   accent: string
   link?: string
   github?: string
+  image?: string
 }
 
 const projects: Project[] = [
@@ -30,6 +31,7 @@ const projects: Project[] = [
     accent: 'from-[#ff6b9d]/20 to-transparent',
     link: 'https://socionics-galaxy.vercel.app/',
     github: 'https://github.com/spaceynyc/socionics-galaxy',
+    image: '/screenshots/socionics-galaxy.jpg',
   },
   {
     title: 'Socionics Research Lab',
@@ -39,6 +41,7 @@ const projects: Project[] = [
     accent: 'from-[#ffa64d]/20 to-transparent',
     link: 'https://socionics-web.vercel.app/',
     github: 'https://github.com/spaceynyc/socionics-panel',
+    image: '/screenshots/socionics-lab.jpg',
   },
   {
     title: 'inner-system',
@@ -47,6 +50,7 @@ const projects: Project[] = [
     tech: ['R3F', 'Three.js', 'Web Audio'],
     accent: 'from-[#8b5dff]/20 to-transparent',
     link: 'https://inner-system-two.vercel.app/',
+    image: '/screenshots/inner-system.jpg',
   },
   {
     title: 'AEROEDEN',
@@ -55,6 +59,7 @@ const projects: Project[] = [
     tech: ['Brand Systems', 'Content Automation', 'Growth'],
     accent: 'from-[#72f7b8]/20 to-transparent',
     link: 'https://x.com/enteraeroeden',
+    image: '/screenshots/aeroeden.jpg',
   },
   {
     title: 'OpenClaw Ecosystem',
@@ -286,6 +291,16 @@ function App() {
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-70`} />
                   <div className="relative">
+                    {project.image && (
+                      <div className="mb-4 overflow-hidden rounded-xl border border-white/10">
+                        <img
+                          src={project.image}
+                          alt={`${project.title} screenshot`}
+                          className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
                     <div className="mb-4 flex items-start justify-between gap-3">
                       <h3 className="display-font text-2xl font-semibold text-[#f0f8ff]">{project.title}</h3>
                       <span className="mono-font text-xs text-[#99b2ca]">0{idx + 1}</span>
