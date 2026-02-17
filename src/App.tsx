@@ -62,6 +62,15 @@ const projects: Project[] = [
     image: '/screenshots/inner-system.jpg',
   },
   {
+    title: 'AEROEDEN',
+    blurb:
+      'Solarpunk media engine with automated X posting, reply scouting, and TikTok-ready creative pipelines. Brand systems + growth loops.',
+    tech: ['Brand Systems', 'Content Automation', 'Growth'],
+    accent: 'from-[#72f7b8]/20 to-transparent',
+    link: 'https://x.com/enteraeroeden',
+    image: '/screenshots/aeroeden.jpg',
+  },
+  {
     title: 'Zipchair AI Assistant',
     blurb:
       'Conversational shopping agent connected to a 12K+ product catalog across NFL, MLB, NHL, AEW, and NCAA licensed furniture. Natural language search with smart suggestion chips.',
@@ -78,15 +87,6 @@ const projects: Project[] = [
     accent: 'from-[#f59e0b]/20 to-transparent',
     link: 'https://zipchair-deploy.vercel.app/intel/',
     image: '/screenshots/zipchair-intel.jpg',
-  },
-  {
-    title: 'AEROEDEN',
-    blurb:
-      'Solarpunk media engine with automated X posting, reply scouting, and TikTok-ready creative pipelines. Brand systems + growth loops.',
-    tech: ['Brand Systems', 'Content Automation', 'Growth'],
-    accent: 'from-[#72f7b8]/20 to-transparent',
-    link: 'https://x.com/enteraeroeden',
-    image: '/screenshots/aeroeden.jpg',
   },
   // — no screenshot, no link —
   {
