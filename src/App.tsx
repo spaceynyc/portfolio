@@ -23,6 +23,7 @@ type Project = {
 }
 
 const projects: Project[] = [
+  // — screenshot + link —
   {
     title: 'Socionics Galaxy',
     blurb:
@@ -44,6 +45,24 @@ const projects: Project[] = [
     image: '/screenshots/socionics-lab.jpg',
   },
   {
+    title: 'Zipchair Intel',
+    blurb:
+      'AI-powered competitive intelligence dashboard for a licensed sports furniture brand. Daily insights, severity-ranked alerts, competitor pricing radar, and actionable recommendations.',
+    tech: ['React', 'AI Agents', 'Analytics', 'Dashboard'],
+    accent: 'from-[#f59e0b]/20 to-transparent',
+    link: 'https://zipchair-deploy.vercel.app/intel/',
+    image: '/screenshots/zipchair-intel.jpg',
+  },
+  {
+    title: 'Zipchair AI Assistant',
+    blurb:
+      'Conversational shopping agent connected to a 12K+ product catalog across NFL, MLB, NHL, AEW, and NCAA licensed furniture. Natural language search with smart suggestion chips.',
+    tech: ['React', 'AI Chat', 'E-Commerce', 'NLP'],
+    accent: 'from-[#3b82f6]/20 to-transparent',
+    link: 'https://zipchair-deploy.vercel.app/',
+    image: '/screenshots/zipchair.jpg',
+  },
+  {
     title: 'inner-system',
     blurb:
       'Audio-reactive 3D world built in R3F/Three.js. Experimental, atmospheric, and tuned for immersive visual rhythm.',
@@ -61,6 +80,15 @@ const projects: Project[] = [
     link: 'https://x.com/enteraeroeden',
     image: '/screenshots/aeroeden.jpg',
   },
+  {
+    title: 'Drift',
+    blurb:
+      'Personal feed aggregator and bookmark manager with dark-mode masonry UI, FTS5 instant search, source filtering, and a ⌘K command palette for thought-speed retrieval.',
+    tech: ['React', 'SQLite FTS5', 'UI/UX'],
+    accent: 'from-[#5bb7ff]/20 to-transparent',
+    image: '/screenshots/drift.jpg',
+  },
+  // — no screenshot, no link —
   {
     title: 'OpenClaw Ecosystem',
     blurb:
@@ -81,13 +109,6 @@ const projects: Project[] = [
       'RPC bridge that lets AI agents operate iPhone flows programmatically: inspect UI trees, tap elements, type, and automate end-to-end tasks.',
     tech: ['iOS', 'RPC', 'Xcode', 'Automation'],
     accent: 'from-[#8b5dff]/20 to-transparent',
-  },
-  {
-    title: 'Drift',
-    blurb:
-      'Bookmark manager with glassmorphism UI, FTS5 instant search, and a rapid ⌘K command palette for thought-speed retrieval.',
-    tech: ['React', 'SQLite FTS5', 'UI/UX'],
-    accent: 'from-[#5bb7ff]/20 to-transparent',
   },
   {
     title: 'Shader Gallery',
