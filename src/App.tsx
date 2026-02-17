@@ -334,12 +334,12 @@ function App() {
             </div>
           </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="columns-1 gap-4 sm:columns-2">
             {projects.map((project, idx) => (
               <Reveal key={project.title}>
                 <motion.article
                   whileHover={{ y: -4 }}
-                  className="glass group relative overflow-hidden rounded-2xl p-5"
+                  className="glass group relative mb-4 overflow-hidden break-inside-avoid rounded-2xl p-5"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-70`} />
                   <div className="relative">
