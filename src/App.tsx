@@ -4,13 +4,15 @@ import {
   Bot,
   Cpu,
   ExternalLink,
+  Expand,
   Github,
   Layers,
   Mail,
   Radio,
   Sparkles,
+  X,
 } from 'lucide-react'
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 type Project = {
   title: string
@@ -230,7 +232,36 @@ function Reveal({ children }: { children: React.ReactNode }) {
   )
 }
 
+function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <button
+        onClick={onClose}
+        className="absolute right-5 top-5 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
+      >
+        <X size={20} />
+      </button>
+      <motion.img
+        src={src}
+        alt={alt}
+        className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.2 }}
+        onClick={(e) => e.stopPropagation()}
+      />
+    </motion.div>
+  )
+}
+
 function App() {
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
   const year = useMemo(() => new Date().getFullYear(), [])
 
   return (
@@ -313,13 +344,22 @@ function App() {
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-70`} />
                   <div className="relative">
                     {project.image && (
-                      <div className="mb-4 overflow-hidden rounded-xl border border-white/10">
+                      <div className="relative mb-4 overflow-hidden rounded-xl border border-white/10">
                         <img
                           src={project.image}
                           alt={`${project.title} screenshot`}
                           className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                           loading="lazy"
                         />
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setLightbox({ src: project.image!, alt: project.title })
+                          }}
+                          className="absolute right-2 top-2 rounded-lg bg-black/50 p-1.5 text-white/70 opacity-0 backdrop-blur-sm transition-opacity hover:bg-black/70 hover:text-white group-hover:opacity-100"
+                        >
+                          <Expand size={14} />
+                        </button>
                       </div>
                     )}
                     <div className="mb-4 flex items-start justify-between gap-3">
@@ -447,6 +487,10 @@ function App() {
       >
         top <Cpu size={13} />
       </a>
+
+      {lightbox && (
+        <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />
+      )}
     </div>
   )
 }
