@@ -1,15 +1,11 @@
 import { motion, useInView } from 'framer-motion'
 import {
   ArrowUpRight,
-  Bot,
-  Cpu,
   ExternalLink,
   Expand,
   Github,
-  Layers,
   Mail,
   Radio,
-  Sparkles,
   X,
 } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -25,7 +21,6 @@ type Project = {
 }
 
 const projects: Project[] = [
-  // — screenshot + link —
   {
     title: 'Socionics Galaxy',
     blurb:
@@ -90,7 +85,6 @@ const projects: Project[] = [
     link: 'https://zipchair-deploy.vercel.app/intel/',
     image: '/screenshots/zipchair-intel.jpg',
   },
-  // — no screenshot, no link —
   {
     title: 'OpenClaw Ecosystem',
     blurb:
@@ -121,15 +115,9 @@ const projects: Project[] = [
   },
 ]
 
-const stack = [
-  'React',
-  'TypeScript',
-  'Python',
-  'Three.js / R3F',
-  'Tailwind CSS',
-  'Node',
-  'FastAPI',
-  'OpenAI APIs',
+const marqueeItems = [
+  'React', 'TypeScript', 'Python', 'Three.js', 'R3F', 'Tailwind', 'Node',
+  'FastAPI', 'OpenAI', 'Agents', 'GLSL', 'Framer Motion', 'Zustand', 'SQLite',
 ]
 
 function DotField() {
@@ -138,20 +126,19 @@ function DotField() {
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
     let raf = 0
-    let mouseX = 0
-    let mouseY = 0
+    let mouseX = 0.5
+    let mouseY = 0.5
 
-    const particles = Array.from({ length: 80 }).map(() => ({
+    const particles = Array.from({ length: 60 }).map(() => ({
       x: Math.random(),
       y: Math.random(),
-      vx: (Math.random() - 0.5) * 0.0007,
-      vy: (Math.random() - 0.5) * 0.0007,
-      r: Math.random() * 1.5 + 0.4,
+      vx: (Math.random() - 0.5) * 0.0005,
+      vy: (Math.random() - 0.5) * 0.0005,
+      r: Math.random() * 1.2 + 0.3,
     }))
 
     const resize = () => {
@@ -170,34 +157,20 @@ function DotField() {
 
     const draw = () => {
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
-
       particles.forEach((p) => {
-        p.x += p.vx + (mouseX - 0.5) * 0.0002
-        p.y += p.vy + (mouseY - 0.5) * 0.0002
-
+        p.x += p.vx + (mouseX - 0.5) * 0.00015
+        p.y += p.vy + (mouseY - 0.5) * 0.00015
         if (p.x < 0 || p.x > 1) p.vx *= -1
         if (p.y < 0 || p.y > 1) p.vy *= -1
-
         p.x = Math.max(0, Math.min(1, p.x))
         p.y = Math.max(0, Math.min(1, p.y))
-
         const px = p.x * window.innerWidth
         const py = p.y * window.innerHeight
-        const glow = ctx.createRadialGradient(px, py, 0, px, py, p.r * 12)
-        glow.addColorStop(0, 'rgba(114,247,184,0.35)')
-        glow.addColorStop(1, 'rgba(114,247,184,0)')
-
-        ctx.fillStyle = glow
-        ctx.beginPath()
-        ctx.arc(px, py, p.r * 12, 0, Math.PI * 2)
-        ctx.fill()
-
-        ctx.fillStyle = 'rgba(200, 230, 255, 0.8)'
+        ctx.fillStyle = 'rgba(200, 230, 255, 0.5)'
         ctx.beginPath()
         ctx.arc(px, py, p.r, 0, Math.PI * 2)
         ctx.fill()
       })
-
       raf = requestAnimationFrame(draw)
     }
 
@@ -205,7 +178,6 @@ function DotField() {
     draw()
     window.addEventListener('resize', resize)
     window.addEventListener('mousemove', onMove)
-
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('resize', resize)
@@ -213,19 +185,19 @@ function DotField() {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-0 opacity-80" />
+  return <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-0 opacity-60" />
 }
 
-function Reveal({ children }: { children: React.ReactNode }) {
+function Reveal({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement | null>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
+  const inView = useInView(ref, { once: true, margin: '-60px' })
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 36 }}
+      className={className}
+      initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : undefined}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       {children}
     </motion.div>
@@ -235,7 +207,7 @@ function Reveal({ children }: { children: React.ReactNode }) {
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -251,7 +223,7 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
         src={src}
         alt={alt}
         className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl"
-        initial={{ scale: 0.9, opacity: 0 }}
+        initial={{ scale: 0.92, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.2 }}
         onClick={(e) => e.stopPropagation()}
@@ -269,86 +241,110 @@ function App() {
       <DotField />
       <div className="aurora-bg fixed z-0" />
 
-      <main className="relative z-10 mx-auto max-w-6xl px-5 pb-20 pt-6 sm:px-8 lg:px-10">
+      <main className="relative z-10 mx-auto max-w-7xl px-5 pb-20 pt-6 sm:px-8 lg:px-12">
+        {/* — NAV — */}
         <motion.nav
-          className="glass mb-10 flex items-center justify-between rounded-2xl px-4 py-3 sm:px-6"
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="mb-16 flex items-center justify-between px-1 py-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
         >
-          <div className="display-font text-lg font-bold tracking-wide text-[#d9f1ff]">steven richardson <span className="text-[#72f7b8]">/ spaceynyc</span></div>
-          <div className="mono-font hidden gap-6 text-xs text-[#9ab4cf] sm:flex">
-            <a href="#projects" className="cursor-pointer hover:text-white">
-              projects
-            </a>
-            <a href="#about" className="cursor-pointer hover:text-white">
-              about
-            </a>
-            <a href="#contact" className="cursor-pointer hover:text-white">
-              contact
-            </a>
+          <div className="display-font text-base font-bold tracking-wide text-[#d9f1ff]">
+            steven richardson <span className="text-[#72f7b8]">/ spaceynyc</span>
+          </div>
+          <div className="mono-font hidden gap-8 text-xs tracking-wider text-[#7a95b0] sm:flex">
+            <a href="#work" className="transition-colors hover:text-white">work</a>
+            <a href="#about" className="transition-colors hover:text-white">about</a>
+            <a href="#contact" className="transition-colors hover:text-white">contact</a>
           </div>
         </motion.nav>
 
-        <section className="relative mb-24 min-h-[70vh] pt-8">
+        {/* — HERO — asymmetric, editorial */}
+        <section className="mb-32 grid min-h-[65vh] items-end gap-8 pt-4 lg:grid-cols-[1.6fr_1fr]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="max-w-4xl"
           >
-            <p className="mono-font mb-5 inline-flex items-center gap-2 rounded-full border border-[#72f7b8]/40 bg-[#72f7b8]/10 px-3 py-1 text-xs text-[#c9ffe6]">
-              <Sparkles size={14} />
-              creative technologist · ai-first builder · solarpunk lens
+            <p className="mono-font mb-6 text-xs tracking-[0.2em] text-[#72f7b8] uppercase">
+              Creative Technologist — NYC
             </p>
-            <h1 className="display-font text-5xl font-extrabold leading-[0.95] tracking-tight text-[#e8f5ff] sm:text-7xl lg:text-8xl">
-              I build agents,
+            <h1 className="display-font text-[clamp(2.8rem,7vw,6.5rem)] font-extrabold leading-[0.92] tracking-tight text-[#f0f8ff]">
+              I build
               <br />
-              tools, and weird
+              <span className="italic text-[#72f7b8]">agents</span>, tools
               <br />
-              beautiful systems.
+              & weird beautiful
+              <br />
+              systems.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#aec3db] sm:text-xl">
-              Steven Richardson — aka <span className="text-[#72f7b8]">Space</span>. I ship AI infrastructure with personality. Autonomous workflows, screen intelligence,
-              phone control, and solarpunk creative machinery. No fluff, just ambitious execution.
-            </p>
           </motion.div>
 
           <motion.div
-            className="glass mt-10 inline-flex items-center gap-4 rounded-2xl px-5 py-4"
+            className="self-end pb-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <Bot className="text-[#72f7b8]" size={20} />
-            <p className="mono-font text-xs text-[#c6d8eb] sm:text-sm">
-              currently: crafting autonomous ecosystems for fintech + creative brands
+            <p className="mb-6 text-base leading-relaxed text-[#a8c0d8] sm:text-lg">
+              Steven Richardson — aka <span className="font-semibold text-white">Space</span>. I ship AI infrastructure
+              with personality. Autonomous workflows, screen intelligence, phone control, and solarpunk creative
+              machinery.
             </p>
+            <div className="flex gap-3">
+              <a
+                href="#work"
+                className="mono-font rounded-lg bg-[#72f7b8] px-4 py-2.5 text-xs font-semibold text-[#050a0e] transition-transform hover:scale-[1.03]"
+              >
+                View work ↓
+              </a>
+              <a
+                href="#contact"
+                className="mono-font rounded-lg border border-white/15 px-4 py-2.5 text-xs text-[#c0d4e8] transition-colors hover:border-white/30 hover:text-white"
+              >
+                Get in touch
+              </a>
+            </div>
           </motion.div>
         </section>
 
-        <section id="projects" className="mb-24 scroll-mt-28">
+        {/* — MARQUEE — tech stack as editorial element */}
+        <div className="mb-24 overflow-hidden border-y border-white/[0.06] py-4">
+          <div className="marquee-track">
+            {[...marqueeItems, ...marqueeItems].map((item, i) => (
+              <span key={i} className="mono-font whitespace-nowrap text-sm tracking-wider text-[#4a6580]">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* — PROJECTS — */}
+        <section id="work" className="mb-28 scroll-mt-24">
           <Reveal>
-            <div className="mb-8 flex items-end justify-between">
-              <h2 className="display-font text-4xl font-bold sm:text-5xl">Selected Builds</h2>
-              <span className="mono-font text-xs text-[#8aa3bf]">{projects.length} live experiments</span>
+            <div className="mb-12 flex items-baseline justify-between">
+              <div>
+                <p className="mono-font mb-2 text-xs tracking-[0.2em] text-[#5a7a96] uppercase">Selected work</p>
+                <h2 className="display-font text-4xl font-bold sm:text-5xl">Builds</h2>
+              </div>
+              <span className="mono-font text-xs text-[#4a6580]">{projects.length} projects</span>
             </div>
           </Reveal>
 
-          <div className="columns-1 gap-4 sm:columns-2">
+          <div className="columns-1 gap-5 sm:columns-2">
             {projects.map((project, idx) => (
               <Reveal key={project.title}>
                 <motion.article
-                  whileHover={{ y: -4 }}
-                  className="glass group relative mb-4 overflow-hidden break-inside-avoid rounded-2xl p-5"
+                  whileHover={{ y: -3 }}
+                  className={`group relative mb-5 overflow-hidden break-inside-avoid rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5 transition-colors hover:border-white/[0.15] ${project.image ? 'accent-line pl-7' : ''}`}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-70`} />
                   <div className="relative">
                     {project.image && (
-                      <div className="relative mb-4 overflow-hidden rounded-xl border border-white/10">
+                      <div className="relative mb-4 overflow-hidden rounded-lg border border-white/[0.06]">
                         <img
                           src={project.image}
                           alt={`${project.title} screenshot`}
-                          className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                          className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                           loading="lazy"
                         />
                         <button
@@ -356,40 +352,46 @@ function App() {
                             e.stopPropagation()
                             setLightbox({ src: project.image!, alt: project.title })
                           }}
-                          className="absolute right-2 top-2 rounded-lg bg-black/50 p-1.5 text-white/70 opacity-0 backdrop-blur-sm transition-opacity hover:bg-black/70 hover:text-white group-hover:opacity-100"
+                          className="absolute right-2 top-2 rounded-md bg-black/50 p-1.5 text-white/60 opacity-0 backdrop-blur-sm transition-opacity hover:bg-black/70 hover:text-white group-hover:opacity-100"
                         >
-                          <Expand size={14} />
+                          <Expand size={13} />
                         </button>
                       </div>
                     )}
-                    <div className="mb-4 flex items-start justify-between gap-3">
-                      <h3 className="display-font text-2xl font-semibold text-[#f0f8ff]">{project.title}</h3>
-                      <span className="mono-font text-xs text-[#99b2ca]">0{idx + 1}</span>
+
+                    <div className="mb-3 flex items-start justify-between gap-3">
+                      <h3 className="display-font text-xl font-semibold text-[#f0f8ff]">{project.title}</h3>
+                      <span className="mono-font mt-1 shrink-0 text-[10px] text-[#4a6580]">
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
                     </div>
-                    <p className="mb-4 text-sm leading-relaxed text-[#bdd0e4]">{project.blurb}</p>
-                    <div className="mb-4 flex flex-wrap gap-2">
+
+                    <p className="mb-4 text-[15px] leading-relaxed text-[#9ab4cf]">{project.blurb}</p>
+
+                    <div className="mb-4 flex flex-wrap gap-1.5">
                       {project.tech.map((t) => (
                         <span
                           key={t}
-                          className="mono-font rounded-full border border-white/20 bg-white/5 px-2.5 py-1 text-[11px] text-[#d7e7f7]"
+                          className="mono-font rounded-md bg-white/[0.04] px-2 py-0.5 text-[10px] text-[#6b8ba8]"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
+
                     <div className="flex flex-wrap items-center gap-3">
                       {project.link ? (
                         <a
                           href={project.link}
                           target="_blank"
                           rel="noreferrer"
-                          className="mono-font inline-flex cursor-pointer items-center gap-2 text-xs text-[#72f7b8] hover:text-[#b8ffd9]"
+                          className="mono-font inline-flex items-center gap-1.5 text-xs text-[#72f7b8] transition-colors hover:text-[#b8ffd9]"
                         >
-                          launch live <ExternalLink size={14} />
+                          live <ExternalLink size={12} />
                         </a>
                       ) : (
-                        <span className="mono-font inline-flex items-center gap-2 text-xs text-[#90a8c2]">
-                          private build details available on request <ArrowUpRight size={14} />
+                        <span className="mono-font inline-flex items-center gap-1.5 text-xs text-[#4a6580]">
+                          details on request <ArrowUpRight size={12} />
                         </span>
                       )}
                       {project.github && (
@@ -397,9 +399,9 @@ function App() {
                           href={project.github}
                           target="_blank"
                           rel="noreferrer"
-                          className="mono-font inline-flex cursor-pointer items-center gap-2 text-xs text-[#9ab4cf] hover:text-white"
+                          className="mono-font inline-flex items-center gap-1.5 text-xs text-[#6b8ba8] transition-colors hover:text-white"
                         >
-                          source <Github size={14} />
+                          source <Github size={12} />
                         </a>
                       )}
                     </div>
@@ -410,41 +412,61 @@ function App() {
           </div>
         </section>
 
-        <section id="about" className="mb-24 scroll-mt-24">
+        <div className="section-divider" />
+
+        {/* — ABOUT — editorial two-column */}
+        <section id="about" className="mb-28 scroll-mt-24">
           <Reveal>
-            <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
-              <article className="glass rounded-3xl p-6 sm:p-8">
-                <h2 className="display-font mb-4 text-4xl font-bold">About</h2>
-                <p className="text-base leading-relaxed text-[#bdd0e4] sm:text-lg">
+            <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+              <div>
+                <p className="mono-font mb-2 text-xs tracking-[0.2em] text-[#5a7a96] uppercase">About</p>
+                <h2 className="display-font mb-6 text-4xl font-bold">
+                  Where agents, architecture
+                  <br className="hidden lg:block" />
+                  & design collide.
+                </h2>
+                <p className="mb-4 text-base leading-[1.8] text-[#9ab4cf] sm:text-lg">
                   ILE creative technologist. I move fast, prototype aggressively, and care about building systems
-                  that actually do things - not just demo theater. If it can be automated, I'll automate it. If it
+                  that actually do things — not just demo theater. If it can be automated, I'll automate it. If it
                   can be made beautiful, I'll push it way past "good enough."
                 </p>
-                <p className="mt-4 text-base leading-relaxed text-[#9db3ca] sm:text-lg">
-                  My zone is where AI agents, software architecture, and design collide. Think operator tools,
-                  autonomous workflows, and interfaces that feel alive.
+                <p className="text-base leading-[1.8] text-[#6b8ba8] sm:text-lg">
+                  My zone is operator tools, autonomous workflows, and interfaces that feel alive.
+                  I think the best software has personality — so that's what I build.
                 </p>
-              </article>
+              </div>
 
-              <article className="glass rounded-3xl p-6 sm:p-8">
-                <h3 className="display-font mb-4 text-3xl font-bold">Tech Stack</h3>
-                <ul className="space-y-2">
-                  {stack.map((item) => (
-                    <li key={item} className="mono-font flex items-center gap-2 text-sm text-[#d4e4f3]">
-                      <Layers size={14} className="text-[#5bb7ff]" /> {item}
+              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6">
+                <p className="mono-font mb-4 text-[10px] tracking-[0.2em] text-[#5a7a96] uppercase">Philosophy</p>
+                <ul className="space-y-4">
+                  {[
+                    ['Ship fast', 'Perfect is the enemy of done. Iterate in public.'],
+                    ['Automate taste', 'AI should amplify creativity, not replace judgment.'],
+                    ['Design is function', 'Beautiful systems work better. Ugly prototypes are unacceptable.'],
+                    ['Build the tool', "If it doesn't exist, make it. Then make it good."],
+                  ].map(([title, desc]) => (
+                    <li key={title}>
+                      <p className="text-sm font-medium text-[#e0edf8]">{title}</p>
+                      <p className="text-sm text-[#6b8ba8]">{desc}</p>
                     </li>
                   ))}
                 </ul>
-              </article>
+              </div>
             </div>
           </Reveal>
         </section>
 
-        <section id="contact" className="scroll-mt-24">
+        <div className="section-divider" />
+
+        {/* — CONTACT — */}
+        <section id="contact" className="mb-12 scroll-mt-24">
           <Reveal>
-            <div className="glass rounded-3xl p-6 sm:p-8">
-              <h2 className="display-font mb-3 text-4xl font-bold">Let's build something unreasonably good.</h2>
-              <p className="mb-6 max-w-2xl text-[#a9c0d8]">
+            <div className="max-w-3xl">
+              <p className="mono-font mb-2 text-xs tracking-[0.2em] text-[#5a7a96] uppercase">Contact</p>
+              <h2 className="display-font mb-4 text-4xl font-bold">
+                Let's build something<br />unreasonably good.
+              </h2>
+              <p className="mb-8 text-base text-[#7a95b0]">
                 Open for collaborations, weird experiments, and products that deserve ambition.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -452,41 +474,34 @@ function App() {
                   href="https://github.com/spaceynyc"
                   target="_blank"
                   rel="noreferrer"
-                  className="mono-font glass inline-flex cursor-pointer items-center gap-2 rounded-xl px-4 py-2 text-sm text-[#e6f5ff] hover:border-[#72f7b8]/60"
+                  className="mono-font inline-flex items-center gap-2 rounded-lg border border-white/[0.1] px-4 py-2.5 text-xs text-[#c0d4e8] transition-colors hover:border-white/[0.25] hover:text-white"
                 >
-                  <Github size={16} /> github.com/spaceynyc
+                  <Github size={14} /> GitHub
                 </a>
                 <a
                   href="https://x.com/spaceynyc"
                   target="_blank"
                   rel="noreferrer"
-                  className="mono-font glass inline-flex cursor-pointer items-center gap-2 rounded-xl px-4 py-2 text-sm text-[#e6f5ff] hover:border-[#5bb7ff]/60"
+                  className="mono-font inline-flex items-center gap-2 rounded-lg border border-white/[0.1] px-4 py-2.5 text-xs text-[#c0d4e8] transition-colors hover:border-white/[0.25] hover:text-white"
                 >
-                  <Radio size={16} /> @spaceynyc
+                  <Radio size={14} /> @spaceynyc
                 </a>
                 <a
                   href="mailto:srich7x@gmail.com"
-                  className="mono-font glass inline-flex cursor-pointer items-center gap-2 rounded-xl px-4 py-2 text-sm text-[#e6f5ff] hover:border-[#8b5dff]/60"
+                  className="mono-font inline-flex items-center gap-2 rounded-lg border border-white/[0.1] px-4 py-2.5 text-xs text-[#c0d4e8] transition-colors hover:border-white/[0.25] hover:text-white"
                 >
-                  <Mail size={16} /> srich7x@gmail.com
+                  <Mail size={14} /> Email
                 </a>
               </div>
             </div>
           </Reveal>
         </section>
 
-        <footer className="mono-font mt-10 flex items-center justify-between px-2 text-xs text-[#7e94ac]">
-          <span>© {year} steven richardson</span>
-          <span>crafted with intent · react + framer motion</span>
+        <footer className="mono-font flex items-center justify-between border-t border-white/[0.06] px-1 pt-6 text-[11px] text-[#4a6580]">
+          <span>© {year} Steven Richardson</span>
+          <span>spaceynyc.dev</span>
         </footer>
       </main>
-
-      <a
-        href="#"
-        className="glass mono-font fixed bottom-5 right-5 z-20 inline-flex cursor-pointer items-center gap-1 rounded-full px-3 py-2 text-xs text-[#d6e7f8]"
-      >
-        top <Cpu size={13} />
-      </a>
 
       {lightbox && (
         <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />
