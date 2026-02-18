@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion'
+import { LazyMotion, domAnimation, m, useInView } from 'framer-motion'
 import {
   ArrowUpRight,
   ExternalLink,
@@ -192,7 +192,7 @@ function Reveal({ children, className = '' }: { children: React.ReactNode; class
   const ref = useRef<HTMLDivElement | null>(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className={className}
       initial={{ opacity: 0, y: 28 }}
@@ -200,13 +200,13 @@ function Reveal({ children, className = '' }: { children: React.ReactNode; class
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   return (
-    <motion.div
+    <m.div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -219,7 +219,7 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
       >
         <X size={20} />
       </button>
-      <motion.img
+      <m.img
         src={src}
         alt={alt}
         className="max-h-[90vh] max-w-[90vw] rounded-xl shadow-2xl"
@@ -228,7 +228,7 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
         transition={{ duration: 0.2 }}
         onClick={(e) => e.stopPropagation()}
       />
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -237,13 +237,14 @@ function App() {
   const year = useMemo(() => new Date().getFullYear(), [])
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="grain relative">
       <DotField />
       <div className="aurora-bg fixed z-0" />
 
       <main className="relative z-10 mx-auto max-w-7xl px-5 pb-20 pt-6 sm:px-8 lg:px-12">
         {/* — NAV — */}
-        <motion.nav
+        <m.nav
           className="mb-16 flex items-center justify-between px-1 py-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -257,11 +258,11 @@ function App() {
             <a href="#about" className="transition-colors hover:text-white">about</a>
             <a href="#contact" className="transition-colors hover:text-white">contact</a>
           </div>
-        </motion.nav>
+        </m.nav>
 
         {/* — HERO — asymmetric, editorial */}
         <section className="mb-32 grid min-h-[65vh] items-end gap-8 pt-4 lg:grid-cols-[1.6fr_1fr]">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -278,9 +279,9 @@ function App() {
               <br />
               systems.
             </h1>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className="self-end pb-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -305,14 +306,14 @@ function App() {
                 Get in touch
               </a>
             </div>
-          </motion.div>
+          </m.div>
         </section>
 
         {/* — MARQUEE — tech stack as editorial element */}
         <div className="mb-24 overflow-hidden border-y border-white/[0.06] py-4">
           <div className="marquee-track">
             {[...marqueeItems, ...marqueeItems].map((item, i) => (
-              <span key={i} className="mono-font whitespace-nowrap text-sm tracking-wider text-[#4a6580]">
+              <span key={`${item}-${i}`} className="mono-font whitespace-nowrap text-sm tracking-wider text-[#4a6580]">
                 {item}
               </span>
             ))}
@@ -334,7 +335,7 @@ function App() {
           <div className="columns-1 gap-5 sm:columns-2">
             {projects.map((project, idx) => (
               <Reveal key={project.title}>
-                <motion.article
+                <m.article
                   whileHover={{ y: -3 }}
                   className={`group relative mb-5 overflow-hidden break-inside-avoid rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5 transition-colors hover:border-white/[0.15] ${project.image ? 'accent-line pl-7' : ''}`}
                 >
@@ -406,7 +407,7 @@ function App() {
                       )}
                     </div>
                   </div>
-                </motion.article>
+                </m.article>
               </Reveal>
             ))}
           </div>
@@ -507,6 +508,7 @@ function App() {
         <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />
       )}
     </div>
+    </LazyMotion>
   )
 }
 
