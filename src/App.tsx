@@ -237,7 +237,7 @@ function App() {
   const year = useMemo(() => new Date().getFullYear(), [])
 
   return (
-    <div className="grain relative overflow-hidden">
+    <div className="grain relative">
       <DotField />
       <div className="aurora-bg fixed z-0" />
 
