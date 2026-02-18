@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -9,6 +9,7 @@
   --green: #72f7b8;
   --blue: #5bb7ff;
   --purple: #8b5dff;
+  --warm: #f0c674;
 }
 
 * {
@@ -40,14 +41,13 @@ body {
   color: #f6fffc;
 }
 
-/* Subtle noise — not the standard dot grid */
 .grain::before {
   content: '';
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 999;
-  opacity: 0.035;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   background-size: 256px;
 }
@@ -56,21 +56,21 @@ body {
   font-family: 'Syne', sans-serif;
 }
 
+.serif-font {
+  font-family: 'Newsreader', Georgia, serif;
+}
+
 .mono-font {
   font-family: 'JetBrains Mono', monospace;
 }
 
 .glass {
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0.015)
-  );
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
   border: 1px solid rgba(173, 226, 255, 0.12);
   backdrop-filter: blur(14px);
 }
 
-/* Accent line used on featured cards */
+/* Accent line — varies color per card */
 .accent-line {
   position: relative;
 }
@@ -85,7 +85,20 @@ body {
   background: linear-gradient(to bottom, var(--green), var(--blue));
 }
 
-/* Horizontal scrolling marquee */
+/* Cursor glow — follows mouse via JS */
+.cursor-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(114, 247, 184, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition: left 0.15s ease-out, top 0.15s ease-out;
+}
+
+/* Marquee */
 .marquee-track {
   display: flex;
   gap: 3rem;
@@ -97,31 +110,34 @@ body {
   to { transform: translateX(-50%); }
 }
 
-/* Aurora — more subtle, less "every AI site" */
+/* Aurora — very subtle */
 .aurora-bg {
   position: absolute;
   inset: -30%;
   background:
-    radial-gradient(ellipse 600px 400px at 15% 20%, rgba(114, 247, 184, 0.12), transparent),
-    radial-gradient(ellipse 500px 350px at 80% 60%, rgba(91, 183, 255, 0.1), transparent),
-    radial-gradient(ellipse 400px 500px at 45% 80%, rgba(139, 93, 255, 0.08), transparent);
-  filter: blur(60px);
-  animation: drift 20s ease-in-out infinite alternate;
+    radial-gradient(ellipse 600px 400px at 15% 20%, rgba(114, 247, 184, 0.08), transparent),
+    radial-gradient(ellipse 500px 350px at 80% 60%, rgba(240, 198, 116, 0.06), transparent),
+    radial-gradient(ellipse 400px 500px at 45% 80%, rgba(139, 93, 255, 0.06), transparent);
+  filter: blur(80px);
+  animation: drift 25s ease-in-out infinite alternate;
 }
 
 @keyframes drift {
-  from {
-    transform: translate3d(-1%, -1%, 0) scale(1);
-  }
-  to {
-    transform: translate3d(1%, 2%, 0) scale(1.05);
-  }
+  from { transform: translate3d(-1%, -1%, 0) scale(1); }
+  to { transform: translate3d(1%, 2%, 0) scale(1.03); }
 }
 
-/* Divider */
+/* Featured card image tilt on hover */
+.featured-img {
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.featured-card:hover .featured-img {
+  transform: scale(1.02) rotate(-0.5deg);
+}
+
 .section-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(173, 226, 255, 0.15) 30%, rgba(173, 226, 255, 0.15) 70%, transparent);
+  background: linear-gradient(to right, transparent, rgba(173, 226, 255, 0.12) 30%, rgba(173, 226, 255, 0.12) 70%, transparent);
   margin: 4rem 0;
 }
 
