@@ -308,9 +308,8 @@ function NavBar() {
               <div className="flex flex-col gap-1 px-5 pb-4">
                 {navLinks.map(({ href, label }) => (
                   <a key={href} href={href} onClick={closeMobile}
-                    className={`mono-font rounded-lg px-4 py-3 text-sm tracking-wider transition-colors hover:bg-white/5 ${
-                      active === href ? 'text-[#72f7b8]' : 'text-[#8ea8c4]'
-                    }`}>
+                    className={`mono-font rounded-lg px-4 py-3 text-sm tracking-wider transition-colors hover:bg-white/5 ${active === href ? 'text-[#72f7b8]' : 'text-[#8ea8c4]'
+                      }`}>
                     {label}
                   </a>
                 ))}
@@ -325,6 +324,7 @@ function NavBar() {
 
 /* Pattern background for no-image cards */
 function CardPattern({ color }: { color: string }) {
+  const patternId = color.replace('#', '');
   return (
     <div className="card-pattern mb-4 rounded-lg border border-white/[0.06]"
       style={{
@@ -336,11 +336,11 @@ function CardPattern({ color }: { color: string }) {
       }}>
       <svg className="h-full w-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <pattern id={`grid-${color}`} width="24" height="24" patternUnits="userSpaceOnUse">
+          <pattern id={`grid-${patternId}`} width="24" height="24" patternUnits="userSpaceOnUse">
             <path d="M 24 0 L 0 0 0 24" fill="none" stroke={color} strokeWidth="0.5" />
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill={`url(#grid-${color})`} />
+        <rect width="100%" height="100%" fill={`url(#grid-${patternId})`} />
       </svg>
     </div>
   )
@@ -496,206 +496,206 @@ function App() {
 
   return (
     <LazyMotion features={domAnimation}>
-    <div className="grain relative">
-      <ScrollProgress />
-      <DotField />
-      <CursorGlow />
-      <div className="aurora-bg fixed z-0" />
-      <NavBar />
+      <div className="grain relative">
+        <ScrollProgress />
+        <DotField />
+        <CursorGlow />
+        <div className="aurora-bg fixed z-0" />
+        <NavBar />
 
-      <main className="relative z-10 mx-auto max-w-7xl px-5 pb-8 pt-20 sm:px-8 lg:px-12">
-        {/* HERO */}
-        <section id="hero" className="mb-32 grid min-h-[60vh] items-end gap-8 pt-4 lg:grid-cols-[1.6fr_1fr]">
-          <div>
-            <m.p className="mono-font mb-6 text-xs tracking-[0.2em] uppercase text-[#72f7b8]"
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-              <span className="hero-cursor">Creative Technologist — NYC</span>
-            </m.p>
-            <h1 className="display-font text-[clamp(2.8rem,7vw,6.5rem)] font-extrabold leading-[0.92] tracking-tight text-[#f0f8ff]">
-              {heroLines.map((line, i) => (
-                <m.span key={i} className={`inline-block ${line.className}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + i * 0.1, duration: 0.6, ease: 'easeOut' }}
-                  style={{ display: i > 0 ? 'block' : undefined }}>
-                  {line.text}
-                </m.span>
-              ))}
-            </h1>
-          </div>
-
-          <m.div className="self-end pb-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}>
-            <p className="serif-font mb-6 text-base leading-[1.8] text-[#a8c0d8] italic sm:text-lg">
-              Steven Richardson — aka <span className="font-semibold not-italic text-white">Space</span>. I ship AI
-              infrastructure with personality. Autonomous workflows, screen intelligence, phone control, and
-              solarpunk creative machinery.
-            </p>
-            <div className="flex gap-3">
-              <a href="#work"
-                className="mono-font cta-primary rounded-lg bg-[#72f7b8] px-4 py-2.5 text-xs font-semibold text-[#050a0e] transition-all hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(114,247,184,0.3)]">
-                View work ↓
-              </a>
-              <a href="#contact"
-                className="mono-font rounded-lg border border-white/15 px-4 py-2.5 text-xs text-[#c0d4e8] transition-all hover:border-white/30 hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]">
-                Get in touch
-              </a>
+        <main className="relative z-10 mx-auto max-w-7xl px-5 pb-8 pt-20 sm:px-8 lg:px-12">
+          {/* HERO */}
+          <section id="hero" className="mb-32 grid min-h-[60vh] items-end gap-8 pt-4 lg:grid-cols-[1.6fr_1fr]">
+            <div>
+              <m.p className="mono-font mb-6 text-xs tracking-[0.2em] uppercase text-[#72f7b8]"
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+                <span className="hero-cursor">Creative Technologist — NYC</span>
+              </m.p>
+              <h1 className="display-font text-[clamp(2.8rem,7vw,6.5rem)] font-extrabold leading-[0.92] tracking-tight text-[#f0f8ff]">
+                {heroLines.map((line, i) => (
+                  <m.span key={i} className={`inline-block ${line.className}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + i * 0.1, duration: 0.6, ease: 'easeOut' }}
+                    style={{ display: i > 0 ? 'block' : undefined }}>
+                    {line.text}
+                  </m.span>
+                ))}
+              </h1>
             </div>
-          </m.div>
-        </section>
 
-        {/* MARQUEE */}
-        <div className="mb-28 overflow-hidden border-y border-white/[0.06] py-4">
-          <div className="marquee-track">
-            {[...marqueeItems, ...marqueeItems].map((item, i) => (
-              <span key={`${item}-${i}`} className="mono-font whitespace-nowrap text-sm tracking-wider text-[#4a6a85]">
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* WORK */}
-        <section id="work" className="mb-28 scroll-mt-24">
-          <Reveal>
-            <div className="mb-12 flex items-baseline justify-between">
-              <div>
-                <p className="mono-font mb-2 text-xs tracking-[0.2em] uppercase text-[#6b8ba8]">Selected work</p>
-                <h2 className="display-font text-4xl font-bold sm:text-5xl">Builds</h2>
+            <m.div className="self-end pb-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}>
+              <p className="serif-font mb-6 text-base leading-[1.8] text-[#a8c0d8] italic sm:text-lg">
+                Steven Richardson — aka <span className="font-semibold not-italic text-white">Space</span>. I ship AI
+                infrastructure with personality. Autonomous workflows, screen intelligence, phone control, and
+                solarpunk creative machinery.
+              </p>
+              <div className="flex gap-3">
+                <a href="#work"
+                  className="mono-font cta-primary rounded-lg bg-[#72f7b8] px-4 py-2.5 text-xs font-semibold text-[#050a0e] transition-all hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(114,247,184,0.3)]">
+                  View work ↓
+                </a>
+                <a href="#contact"
+                  className="mono-font rounded-lg border border-white/15 px-4 py-2.5 text-xs text-[#c0d4e8] transition-all hover:border-white/30 hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                  Get in touch
+                </a>
               </div>
-              <span className="mono-font text-xs text-[#4a6a85]">{featured.length + projects.length} projects</span>
+            </m.div>
+          </section>
+
+          {/* MARQUEE */}
+          <div className="mb-28 overflow-hidden border-y border-white/[0.06] py-4">
+            <div className="marquee-track">
+              {[...marqueeItems, ...marqueeItems].map((item, i) => (
+                <span key={`${item}-${i}`} className="mono-font whitespace-nowrap text-sm tracking-wider text-[#4a6a85]">
+                  {item}
+                </span>
+              ))}
             </div>
-          </Reveal>
-
-          {/* Featured — full width, alternating */}
-          <div className="mb-10 space-y-6">
-            {featured.map((p, i) => (
-              <FeaturedCard key={p.title} project={p} index={i} onExpand={onExpand} />
-            ))}
           </div>
 
-          {/* Grid — masonry */}
-          <Reveal>
-            <p className="mono-font mb-6 text-[10px] tracking-[0.2em] uppercase text-[#4a6a85]">
-              More builds
-            </p>
-          </Reveal>
-          <div className="columns-1 gap-5 sm:columns-2">
-            {projects.map((p, i) => (
-              <ProjectCard key={p.title} project={p} index={i} onExpand={onExpand} />
-            ))}
-          </div>
-        </section>
+          {/* WORK */}
+          <section id="work" className="mb-28 scroll-mt-24">
+            <Reveal>
+              <div className="mb-12 flex items-baseline justify-between">
+                <div>
+                  <p className="mono-font mb-2 text-xs tracking-[0.2em] uppercase text-[#6b8ba8]">Selected work</p>
+                  <h2 className="display-font text-4xl font-bold sm:text-5xl">Builds</h2>
+                </div>
+                <span className="mono-font text-xs text-[#4a6a85]">{featured.length + projects.length} projects</span>
+              </div>
+            </Reveal>
 
-        <div className="section-divider" />
+            {/* Featured — full width, alternating */}
+            <div className="mb-10 space-y-6">
+              {featured.map((p, i) => (
+                <FeaturedCard key={p.title} project={p} index={i} onExpand={onExpand} />
+              ))}
+            </div>
 
-        {/* ABOUT */}
-        <section id="about" className="mb-28 scroll-mt-24">
-          <Reveal>
-            <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-              <div>
-                <p className="mono-font mb-2 text-xs tracking-[0.2em] uppercase text-[#6b8ba8]">About</p>
-                <h2 className="display-font mb-6 text-4xl font-bold">
-                  Where agents, architecture
-                  <br className="hidden lg:block" />
-                  & design collide.
+            {/* Grid — masonry */}
+            <Reveal>
+              <p className="mono-font mb-6 text-[10px] tracking-[0.2em] uppercase text-[#4a6a85]">
+                More builds
+              </p>
+            </Reveal>
+            <div className="columns-1 gap-5 sm:columns-2">
+              {projects.map((p, i) => (
+                <ProjectCard key={p.title} project={p} index={i} onExpand={onExpand} />
+              ))}
+            </div>
+          </section>
+
+          <div className="section-divider" />
+
+          {/* ABOUT */}
+          <section id="about" className="mb-28 scroll-mt-24">
+            <Reveal>
+              <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+                <div>
+                  <p className="mono-font mb-2 text-xs tracking-[0.2em] uppercase text-[#6b8ba8]">About</p>
+                  <h2 className="display-font mb-6 text-4xl font-bold">
+                    Where agents, architecture
+                    <br className="hidden lg:block" />
+                    & design collide.
+                  </h2>
+                  <p className="serif-font mb-4 text-base leading-[1.85] text-[#9ab4cf] italic sm:text-lg">
+                    ILE creative technologist. I move fast, prototype aggressively, and care about building systems
+                    that actually do things — not just demo theater. If it can be automated, I'll automate it. If it
+                    can be made beautiful, I'll push it way past "good enough."
+                  </p>
+                  <p className="text-base leading-[1.8] text-[#6b8ba8] sm:text-lg">
+                    My zone is operator tools, autonomous workflows, and interfaces that feel alive.
+                    The best software has personality — so that's what I build.
+                  </p>
+
+                  {/* Stats row */}
+                  <div className="mt-8 grid grid-cols-3 gap-4">
+                    {([
+                      ['11+', 'Projects shipped', '#72f7b8'],
+                      ['14+', 'Technologies', '#5bb7ff'],
+                      ['∞', 'Curiosity', '#f0c674'],
+                    ] as const).map(([val, label, color]) => (
+                      <Reveal key={label} delay={0.1}>
+                        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-center">
+                          <p className="display-font text-2xl font-bold" style={{ color }}>{val}</p>
+                          <p className="mono-font mt-1 text-[10px] tracking-wider text-[#6b8ba8]">{label}</p>
+                        </div>
+                      </Reveal>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6">
+                  <p className="mono-font mb-4 text-[10px] tracking-[0.2em] uppercase text-[#6b8ba8]">Philosophy</p>
+                  <ul className="space-y-5">
+                    {([
+                      ['Ship fast', 'Perfect is the enemy of done. Iterate in public.', '#72f7b8'],
+                      ['Automate taste', 'AI should amplify creativity, not replace judgment.', '#f0c674'],
+                      ['Design is function', 'Beautiful systems work better. Ugly prototypes are unacceptable.', '#5bb7ff'],
+                      ['Build the tool', "If it doesn't exist, make it. Then make it good.", '#8b5dff'],
+                    ] as const).map(([title, desc, color], i) => (
+                      <Reveal key={title} delay={i * 0.08}>
+                        <li className="flex gap-3">
+                          <div className="mt-1.5 h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: color }} />
+                          <div>
+                            <p className="text-sm font-medium text-[#e0edf8]">{title}</p>
+                            <p className="serif-font text-sm text-[#7a9ab8] italic">{desc}</p>
+                          </div>
+                        </li>
+                      </Reveal>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Reveal>
+          </section>
+
+          <div className="section-divider" />
+
+          {/* CONTACT */}
+          <section id="contact" className="mb-12 scroll-mt-24">
+            <Reveal>
+              <div className="max-w-3xl">
+                <p className="mono-font mb-2 text-xs tracking-[0.2em] uppercase text-[#6b8ba8]">Contact</p>
+                <h2 className="display-font mb-2 text-4xl font-bold">
+                  Let's build something
                 </h2>
-                <p className="serif-font mb-4 text-base leading-[1.85] text-[#9ab4cf] italic sm:text-lg">
-                  ILE creative technologist. I move fast, prototype aggressively, and care about building systems
-                  that actually do things — not just demo theater. If it can be automated, I'll automate it. If it
-                  can be made beautiful, I'll push it way past "good enough."
+                <h2 className="contact-glow-text serif-font mb-6 text-4xl italic text-[#f0c674]">
+                  unreasonably good.
+                </h2>
+                <p className="mb-8 text-base text-[#7a9ab8]">
+                  Open for collaborations, weird experiments, and products that deserve ambition.
                 </p>
-                <p className="text-base leading-[1.8] text-[#6b8ba8] sm:text-lg">
-                  My zone is operator tools, autonomous workflows, and interfaces that feel alive.
-                  The best software has personality — so that's what I build.
-                </p>
-
-                {/* Stats row */}
-                <div className="mt-8 grid grid-cols-3 gap-4">
-                  {([
-                    ['11+', 'Projects shipped', '#72f7b8'],
-                    ['14+', 'Technologies', '#5bb7ff'],
-                    ['∞', 'Curiosity', '#f0c674'],
-                  ] as const).map(([val, label, color]) => (
-                    <Reveal key={label} delay={0.1}>
-                      <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-center">
-                        <p className="display-font text-2xl font-bold" style={{ color }}>{val}</p>
-                        <p className="mono-font mt-1 text-[10px] tracking-wider text-[#6b8ba8]">{label}</p>
-                      </div>
-                    </Reveal>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { href: 'https://github.com/spaceynyc', icon: Github, label: 'GitHub', color: '#72f7b8' },
+                    { href: 'https://x.com/spaceynyc', icon: Radio, label: '@spaceynyc', color: '#5bb7ff' },
+                    { href: 'mailto:srich7x@gmail.com', icon: Mail, label: 'Email', color: '#f0c674' },
+                  ].map(({ href, icon: Icon, label, color }) => (
+                    <a key={label} href={href} target={href.startsWith('mailto') ? undefined : '_blank'}
+                      rel="noreferrer"
+                      className="contact-btn mono-font inline-flex items-center gap-2 rounded-lg border px-5 py-3 text-xs transition-all duration-300"
+                      style={{ '--btn-accent': color, borderColor: `${color}25`, color: `${color}cc` } as React.CSSProperties}>
+                      <Icon size={14} /> {label}
+                    </a>
                   ))}
                 </div>
               </div>
+            </Reveal>
+          </section>
 
-              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6">
-                <p className="mono-font mb-4 text-[10px] tracking-[0.2em] uppercase text-[#6b8ba8]">Philosophy</p>
-                <ul className="space-y-5">
-                  {([
-                    ['Ship fast', 'Perfect is the enemy of done. Iterate in public.', '#72f7b8'],
-                    ['Automate taste', 'AI should amplify creativity, not replace judgment.', '#f0c674'],
-                    ['Design is function', 'Beautiful systems work better. Ugly prototypes are unacceptable.', '#5bb7ff'],
-                    ['Build the tool', "If it doesn't exist, make it. Then make it good.", '#8b5dff'],
-                  ] as const).map(([title, desc, color], i) => (
-                    <Reveal key={title} delay={i * 0.08}>
-                      <li className="flex gap-3">
-                        <div className="mt-1.5 h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: color }} />
-                        <div>
-                          <p className="text-sm font-medium text-[#e0edf8]">{title}</p>
-                          <p className="serif-font text-sm text-[#7a9ab8] italic">{desc}</p>
-                        </div>
-                      </li>
-                    </Reveal>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </Reveal>
-        </section>
+          <footer className="mono-font flex items-center justify-between border-t border-white/[0.06] px-1 py-4 text-[11px] text-[#4a6a85]">
+            <span>© {year} Steven Richardson</span>
+            <span>spaceynyc.dev</span>
+          </footer>
+        </main>
 
-        <div className="section-divider" />
-
-        {/* CONTACT */}
-        <section id="contact" className="mb-12 scroll-mt-24">
-          <Reveal>
-            <div className="max-w-3xl">
-              <p className="mono-font mb-2 text-xs tracking-[0.2em] uppercase text-[#6b8ba8]">Contact</p>
-              <h2 className="display-font mb-2 text-4xl font-bold">
-                Let's build something
-              </h2>
-              <h2 className="contact-glow-text serif-font mb-6 text-4xl italic text-[#f0c674]">
-                unreasonably good.
-              </h2>
-              <p className="mb-8 text-base text-[#7a9ab8]">
-                Open for collaborations, weird experiments, and products that deserve ambition.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { href: 'https://github.com/spaceynyc', icon: Github, label: 'GitHub', color: '#72f7b8' },
-                  { href: 'https://x.com/spaceynyc', icon: Radio, label: '@spaceynyc', color: '#5bb7ff' },
-                  { href: 'mailto:srich7x@gmail.com', icon: Mail, label: 'Email', color: '#f0c674' },
-                ].map(({ href, icon: Icon, label, color }) => (
-                  <a key={label} href={href} target={href.startsWith('mailto') ? undefined : '_blank'}
-                    rel="noreferrer"
-                    className="contact-btn mono-font inline-flex items-center gap-2 rounded-lg border px-5 py-3 text-xs transition-all duration-300"
-                    style={{ '--btn-accent': color, borderColor: `${color}25`, color: `${color}cc` } as React.CSSProperties}>
-                    <Icon size={14} /> {label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </section>
-
-        <footer className="mono-font flex items-center justify-between border-t border-white/[0.06] px-1 py-4 text-[11px] text-[#4a6a85]">
-          <span>© {year} Steven Richardson</span>
-          <span>spaceynyc.dev</span>
-        </footer>
-      </main>
-
-      <AnimatePresence>
-        {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
-      </AnimatePresence>
-    </div>
+        <AnimatePresence>
+          {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
+        </AnimatePresence>
+      </div>
     </LazyMotion>
   )
 }
