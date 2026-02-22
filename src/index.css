@@ -36,11 +36,55 @@ body {
   overflow-x: hidden;
 }
 
+/* ---- Custom Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--green), var(--blue));
+  border-radius: 4px;
+  border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--green), var(--purple));
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--green) var(--bg);
+}
+
 ::selection {
   background: rgba(114, 247, 184, 0.25);
   color: #f6fffc;
 }
 
+/* ---- Scroll Progress Bar ---- */
+.scroll-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 100;
+  background: transparent;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--blue), var(--purple));
+  transform-origin: left;
+  transition: transform 0.1s linear;
+}
+
+/* ---- Grain Overlay ---- */
 .grain::before {
   content: '';
   pointer-events: none;
@@ -52,6 +96,7 @@ body {
   background-size: 256px;
 }
 
+/* ---- Typography ---- */
 .display-font {
   font-family: 'Syne', sans-serif;
 }
@@ -64,16 +109,139 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* ---- Glass Surface ---- */
 .glass {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
   border: 1px solid rgba(173, 226, 255, 0.12);
   backdrop-filter: blur(14px);
 }
 
-/* Accent line — varies color per card */
+/* ---- Sticky Glass Nav ---- */
+.nav-glass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-scrolled {
+  background: rgba(5, 6, 11, 0.75);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom-color: rgba(173, 226, 255, 0.08);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.nav-active {
+  color: var(--green) !important;
+}
+
+.nav-active::after {
+  transform: scaleX(1);
+}
+
+.mobile-menu {
+  overflow: hidden;
+  border-top: 1px solid rgba(173, 226, 255, 0.06);
+  background: rgba(5, 6, 11, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ---- Hero ---- */
+.hero-shimmer {
+  position: relative;
+  background: linear-gradient(90deg,
+      var(--green) 0%,
+      #a5ffd6 40%,
+      var(--green) 60%,
+      #4de8a0 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-cursor::after {
+  content: '█';
+  font-size: 0.8em;
+  margin-left: 2px;
+  animation: blink 1.2s step-end infinite;
+  color: var(--green);
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---- CTA Glow ---- */
+.cta-primary {
+  position: relative;
+}
+
+.cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--green), var(--blue));
+  opacity: 0;
+  z-index: -1;
+  filter: blur(12px);
+  transition: opacity 0.3s ease;
+}
+
+.cta-primary:hover::before {
+  opacity: 0.4;
+}
+
+/* ---- Accent line ---- */
 .accent-line {
   position: relative;
 }
+
 .accent-line::before {
   content: '';
   position: absolute;
@@ -85,7 +253,7 @@ body {
   background: linear-gradient(to bottom, var(--green), var(--blue));
 }
 
-/* Cursor glow — follows mouse via JS */
+/* ---- Cursor Glow ---- */
 .cursor-glow {
   position: fixed;
   width: 600px;
@@ -98,19 +266,25 @@ body {
   transition: left 0.15s ease-out, top 0.15s ease-out;
 }
 
-/* Marquee */
+/* ---- Marquee ---- */
 .marquee-track {
   display: flex;
   gap: 3rem;
   width: max-content;
   animation: marquee 30s linear infinite;
 }
+
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-/* Aurora — very subtle */
+/* ---- Aurora ---- */
 .aurora-bg {
   position: absolute;
   inset: -30%;
@@ -123,25 +297,100 @@ body {
 }
 
 @keyframes drift {
-  from { transform: translate3d(-1%, -1%, 0) scale(1); }
-  to { transform: translate3d(1%, 2%, 0) scale(1.03); }
+  from {
+    transform: translate3d(-1%, -1%, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(1%, 2%, 0) scale(1.03);
+  }
 }
 
-/* Featured card image tilt on hover */
+/* ---- Featured Card ---- */
 .featured-img {
   transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
 .featured-card:hover .featured-img {
   transform: scale(1.02) rotate(-0.5deg);
 }
 
+.featured-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-card:hover {
+  border-color: color-mix(in srgb, var(--card-accent, #72f7b8) 30%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--card-accent, #72f7b8) 10%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--card-accent, #72f7b8) 15%, transparent);
+}
+
+/* ---- Project Card Glow ---- */
+.project-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: color-mix(in srgb, var(--card-accent, #5bb7ff) 35%, transparent);
+  box-shadow: 0 0 25px color-mix(in srgb, var(--card-accent, #5bb7ff) 8%, transparent),
+    0 8px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 color-mix(in srgb, var(--card-accent, #5bb7ff) 12%, transparent);
+}
+
+/* ---- Card Pattern (no-image fallback) ---- */
+.card-pattern {
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-pattern svg {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Contact ---- */
+.contact-glow-text {
+  text-shadow:
+    0 0 30px rgba(240, 198, 116, 0.15),
+    0 0 60px rgba(240, 198, 116, 0.08);
+}
+
+.contact-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at center, var(--btn-accent, #72f7b8), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-btn:hover {
+  border-color: var(--btn-accent, #72f7b8) !important;
+  color: var(--btn-accent, #72f7b8) !important;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--btn-accent, #72f7b8) 15%, transparent);
+}
+
+.contact-btn:hover::before {
+  opacity: 0.06;
+}
+
+/* ---- Section Divider ---- */
 .section-divider {
   height: 1px;
   background: linear-gradient(to right, transparent, rgba(173, 226, 255, 0.12) 30%, rgba(173, 226, 255, 0.12) 70%, transparent);
   margin: 4rem 0;
 }
 
+/* ---- Reduced Motion ---- */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
