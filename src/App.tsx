@@ -130,6 +130,89 @@ const navLinks = [
   { href: '#contact', label: 'contact' },
 ]
 
+const supportEmail = 'srich7x@gmail.com'
+const smsNumber = '+1 888-527-6495'
+
+function ComplianceLayout({ title, eyebrow, children }: { title: string; eyebrow: string; children: React.ReactNode }) {
+  return (
+    <div className="grain min-h-screen bg-[#05060b] text-[#e6f4ff]">
+      <ScrollProgress />
+      <main className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+        <a href="/" className="mono-font text-xs text-[#72f7b8] transition-colors hover:text-white">← spaceynyc.dev</a>
+        <header className="mb-10 mt-10 border-b border-white/[0.08] pb-8">
+          <p className="mono-font mb-3 text-xs tracking-[0.2em] uppercase text-[#6b8ba8]">{eyebrow}</p>
+          <h1 className="display-font text-4xl font-bold sm:text-5xl">{title}</h1>
+          <p className="mt-4 leading-7 text-[#8ea2be]">
+            spaceynyc is the personal technology identity of Steven Richardson and operates the spaceynyc Hermes SMS service.
+          </p>
+        </header>
+        <article className="compliance-copy">{children}</article>
+        <footer className="mono-font mt-14 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/[0.08] pt-6 text-xs text-[#6b8ba8]">
+          <a href="/hermes-sms">Hermes SMS</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+          <a href={`mailto:${supportEmail}`}>Support</a>
+        </footer>
+      </main>
+    </div>
+  )
+}
+
+function HermesSmsPage() {
+  return (
+    <ComplianceLayout title="Hermes SMS Opt-In and Consent" eyebrow="spaceynyc Hermes SMS">
+      <h2>Service identity</h2>
+      <p>spaceynyc Hermes SMS is a private, single-user personal-automation service operated by Steven Richardson. It allows the sole account owner to send questions and commands to a personal Hermes agent and receive automated replies, reminders, and home-status or account notifications.</p>
+      <h2>How to opt in</h2>
+      <p>The sole account owner opts in by texting <strong>START</strong> to <strong>{smsNumber}</strong>.</p>
+      <p>By texting START, the account owner expressly consents to receive automated SMS replies, reminders, and home-status or account notifications from spaceynyc Hermes SMS at the mobile number used to send the keyword.</p>
+      <p>Consent is not a condition of purchasing goods or services. This program sends no marketing or promotional messages and is not offered to third-party users.</p>
+      <h2>Messaging disclosures</h2>
+      <ul>
+        <li>Message frequency varies, generally fewer than 100 messages per month.</li>
+        <li>Message and data rates may apply.</li>
+        <li>Reply <strong>STOP</strong> at any time to opt out.</li>
+        <li>Reply <strong>HELP</strong> for assistance or email <a href={`mailto:${supportEmail}`}>{supportEmail}</a>.</li>
+        <li>After an opt-out request, no further messages will be sent unless the account owner opts in again.</li>
+        <li>The service is intended only for the authorized account owner.</li>
+      </ul>
+      <h2>Sample messages</h2>
+      <blockquote>spaceynyc Hermes: Reminder set for 3:00 PM. Reply STOP to opt out or HELP for assistance. Msg &amp; data rates may apply.</blockquote>
+      <blockquote>spaceynyc Hermes: Attic AC is on; target temperature is 74°F. Reply STOP to opt out.</blockquote>
+      <blockquote>spaceynyc Hermes: Today’s weather in Kings Park is 78°F with a chance of rain. Reply STOP to opt out.</blockquote>
+      <h2>Policies</h2>
+      <p>Review the <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms and Conditions</a>.</p>
+    </ComplianceLayout>
+  )
+}
+
+function PrivacyPage() {
+  return (
+    <ComplianceLayout title="Privacy Policy" eyebrow="spaceynyc">
+      <h2>SMS and mobile information</h2>
+      <p>Mobile information, phone numbers, SMS opt-in data, and consent records will not be sold, rented, or shared with third parties or affiliates for marketing or promotional purposes.</p>
+      <p>Information may be used only as necessary to operate, secure, and support the requested spaceynyc Hermes SMS service, or when disclosure is required by law. SMS opt-in data and consent are not shared with third parties for their own marketing purposes.</p>
+      <h2>Information used by the service</h2>
+      <p>The service may process the account owner’s phone number, message content, commands, reminders, and delivery or consent records to provide requested automated replies and notifications.</p>
+      <h2>Choices and contact</h2>
+      <p>Reply STOP to opt out of SMS messages. Reply HELP for assistance or email <a href={`mailto:${supportEmail}`}>{supportEmail}</a>.</p>
+    </ComplianceLayout>
+  )
+}
+
+function TermsPage() {
+  return (
+    <ComplianceLayout title="Terms and Conditions" eyebrow="spaceynyc Hermes SMS">
+      <h2>Program description</h2>
+      <p>spaceynyc Hermes SMS is operated by Steven Richardson as a private, single-user personal-automation service. It sends automated replies, reminders, and home-status or account notifications to its authorized account owner.</p>
+      <h2>Enrollment and messaging</h2>
+      <p>After reviewing the consent information at <a href="/hermes-sms">spaceynyc.dev/hermes-sms</a>, the sole account owner may enroll by texting <strong>START</strong> to <strong>{smsNumber}</strong>.</p>
+      <p>Message frequency varies and is generally fewer than 100 messages per month. Message and data rates may apply. Reply STOP at any time to cancel. Reply HELP for assistance or contact <a href={`mailto:${supportEmail}`}>{supportEmail}</a>. Carriers are not liable for delayed or undelivered messages.</p>
+      <p>The program does not send marketing messages and is not available for enrollment by third-party users.</p>
+      <h2>Privacy</h2>
+      <p>Use of the SMS service is also governed by the <a href="/privacy">Privacy Policy</a>.</p>
+    </ComplianceLayout>
+  )
+}
+
 /* ---- Hooks ---- */
 
 function useScrollProgress() {
@@ -481,7 +564,7 @@ function ProjectCard({
 
 /* ---- App ---- */
 
-function App() {
+function HomePage() {
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
   const year = useMemo(() => new Date().getFullYear(), [])
   const onExpand = (src: string, alt: string) => setLightbox({ src, alt })
@@ -668,6 +751,10 @@ function App() {
               <p className="mb-8 text-base text-[#7a9ab8]">
                 Open for collaborations, weird experiments, and products that deserve ambition.
               </p>
+              <p className="mb-8 max-w-2xl text-sm leading-7 text-[#6b8ba8]">
+                spaceynyc is the personal technology identity of Steven Richardson and operates the private,
+                single-user <a href="/hermes-sms" className="text-[#72f7b8] hover:text-white">spaceynyc Hermes SMS service</a>.
+              </p>
               <div className="flex flex-wrap gap-3">
                 {[
                   { href: 'https://github.com/spaceynyc', icon: Github, label: 'GitHub', color: '#72f7b8' },
@@ -686,9 +773,9 @@ function App() {
           </Reveal>
         </section>
 
-        <footer className="mono-font flex items-center justify-between border-t border-white/[0.06] px-1 py-4 text-[11px] text-[#4a6a85]">
+        <footer className="mono-font flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.06] px-1 py-4 text-[11px] text-[#4a6a85]">
           <span>© {year} Steven Richardson</span>
-          <span>spaceynyc.dev</span>
+          <span className="flex flex-wrap gap-4"><a href="/hermes-sms">Hermes SMS</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><span>spaceynyc.dev</span></span>
         </footer>
       </main>
 
@@ -698,6 +785,14 @@ function App() {
     </div>
     </LazyMotion>
   )
+}
+
+function App() {
+  const path = window.location.pathname.replace(/\/$/, '') || '/'
+  if (path === '/hermes-sms') return <HermesSmsPage />
+  if (path === '/privacy') return <PrivacyPage />
+  if (path === '/terms') return <TermsPage />
+  return <HomePage />
 }
 
 export default App
