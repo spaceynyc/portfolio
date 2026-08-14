@@ -36,6 +36,33 @@ body {
   overflow-x: hidden;
 }
 
+.compliance-copy {
+  color: #a8c0d8;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.compliance-copy h2 {
+  margin: 2.25rem 0 0.75rem;
+  color: #e6f4ff;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.compliance-copy p { margin: 0 0 1rem; }
+.compliance-copy ul { margin: 0.75rem 0 1rem; padding-left: 1.35rem; list-style: disc; }
+.compliance-copy li { margin: 0.45rem 0; }
+.compliance-copy a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.compliance-copy strong { color: #f6fffc; }
+.compliance-copy blockquote {
+  margin: 0.8rem 0;
+  border-left: 2px solid var(--green);
+  background: rgba(114, 247, 184, 0.04);
+  padding: 0.85rem 1rem;
+  color: #c0d4e8;
+}
+
 /* ---- Custom Scrollbar ---- */
 ::-webkit-scrollbar {
   width: 8px;
