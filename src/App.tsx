@@ -161,6 +161,21 @@ function HermesSmsPage() {
     <ComplianceLayout title="Hermes SMS Opt-In and Consent" eyebrow="spaceynyc Hermes SMS">
       <h2>Service identity</h2>
       <p>spaceynyc Hermes SMS is a private, single-user personal-automation service operated by Steven Richardson. It allows the sole account owner to send questions and commands to a personal Hermes agent and receive automated replies, reminders, and home-status or account notifications.</p>
+
+      <section aria-labelledby="sms-opt-in-heading" className="my-10 rounded-2xl border-2 border-[#72f7b8]/60 bg-[#72f7b8]/[0.07] p-6 shadow-[0_0_36px_rgba(114,247,184,0.10)] sm:p-8">
+        <p className="mono-font mb-2 text-xs font-semibold tracking-[0.18em] uppercase text-[#72f7b8]">SMS opt-in</p>
+        <h2 id="sms-opt-in-heading" className="!mt-0 !text-2xl sm:!text-3xl">Join spaceynyc Hermes SMS</h2>
+        <p className="text-lg leading-8 text-[#d7e9f8]">
+          Text <strong>START</strong> to <strong>{smsNumber}</strong> to receive automated personal-assistant replies, reminders, and home-status or account notifications from spaceynyc Hermes SMS.
+        </p>
+        <p>
+          Message frequency varies, generally fewer than 100 messages per month. Message and data rates may apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for assistance.
+        </p>
+        <p className="!mb-0">
+          By texting START, you consent to receive these automated SMS messages at the number used to send the keyword. Consent is not a condition of purchase. Review the <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms and Conditions</a>.
+        </p>
+      </section>
+
       <h2>How to opt in</h2>
       <p>The sole account owner opts in by texting <strong>START</strong> to <strong>{smsNumber}</strong>.</p>
       <p>By texting START, the account owner expressly consents to receive automated SMS replies, reminders, and home-status or account notifications from spaceynyc Hermes SMS at the mobile number used to send the keyword.</p>
