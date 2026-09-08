@@ -1,0 +1,62 @@
+/* Native scrolling, dressed in the same dark chrome as the orbital artwork. */
+:root {
+  --scroll-track: #090b12;
+  --scroll-thumb: #9388b5;
+}
+html { scrollbar-gutter: stable; }
+:where(html, #detail-dialog, .project-track) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+#detail-dialog { scrollbar-gutter: stable; overscroll-behavior: contain; }
+
+/* Keep gradients in browsers with native scrollbar pseudo-elements. */
+@supports selector(::-webkit-scrollbar) {
+  :where(html, #detail-dialog, .project-track) {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+  :where(html, #detail-dialog, .project-track)::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+  }
+  :where(html, #detail-dialog, .project-track)::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+    border-radius: 100px;
+    box-shadow: inset 0 0 0 1px #b5a5eb12;
+  }
+  :where(html, #detail-dialog, .project-track)::-webkit-scrollbar-thumb {
+    min-height: 64px;
+    min-width: 80px;
+    border: 3px solid transparent;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #514a6b, #c7c2df 40%, #9488ba 68%, #625778) padding-box;
+    box-shadow: inset 0 0 0 1px #e0dbff26;
+  }
+  :where(html, #detail-dialog, .project-track)::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #8073af, #e6e9ff 40%, #b6a5ed 68%, #8470af) padding-box;
+    box-shadow: inset 0 0 0 1px #d7d0ff60;
+  }
+  :where(html, #detail-dialog, .project-track)::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(90deg, #a692d6, #ecf6ff 45%, #aea0eb) padding-box;
+  }
+  :where(html, #detail-dialog, .project-track)::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  :where(html, #detail-dialog, .project-track)::-webkit-scrollbar-corner { background: transparent; }
+  #detail-dialog::-webkit-scrollbar-track { margin-block: 18px; }
+  .project-track::-webkit-scrollbar-thumb {
+    border-width: 2px;
+    background: linear-gradient(180deg, #d5cfea, #aa9bcf 45%, #6b5d8a) padding-box;
+  }
+  .project-track::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #eff3ff, #c8b6fc 45%, #9580bd) padding-box;
+  }
+  @media (forced-colors: active) {
+    :where(html, #detail-dialog, .project-track) { scrollbar-color: auto; }
+    :where(html, #detail-dialog, .project-track)::-webkit-scrollbar-track { background: Canvas; box-shadow: none; }
+    :where(html, #detail-dialog, .project-track)::-webkit-scrollbar-thumb { background: ButtonText; box-shadow: none; }
+  }
+}

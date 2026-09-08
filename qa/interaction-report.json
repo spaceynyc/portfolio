@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "Local fonts loaded",
+    "All 4 Blender icons rotate only on hover and freeze immediately after exit",
+    "Cube hover lifts and glows, returns to rest, and ring glow remains visible",
+    "No horizontal overflow at 9 widths from 320 to 1920",
+    "Orbital project opens, 3D renders, drag works, Escape restores focus",
+    "Chroma project opens, 3D renders, drag works, Escape restores focus",
+    "Nexus project opens, 3D renders, drag works, Escape restores focus",
+    "View all opens all 3 projects",
+    "About dialog works",
+    "All 4 service dialogs carry selected service into project brief",
+    "Project brief validates and downloads correct content",
+    "Mobile menu opens, navigates and closes",
+    "Reduced motion respected"
+  ],
+  "pageErrors": [],
+  "failedRequests": []
+}

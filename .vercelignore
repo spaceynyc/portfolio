@@ -1,0 +1,10 @@
+node_modules/
+blender/
+qa/
+scripts/
+*.blend1
+*.log
+logo.png
+b69deb1a-eb8d-4114-9566-4c9de3312a73.png
+pixel*.png
+twitter*.png

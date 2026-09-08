@@ -2,12 +2,229 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="spaceynyc — AI-first creative technologist building autonomous systems, solarpunk tools, and immersive interfaces." />
-    <title>spaceynyc — Creative Technologist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050607" />
+    <meta
+      name="description"
+      content="Steven Richardson — aka Space. Intelligent tools, immersive worlds, and digital experiences that feel a little ahead of their time. Ideas in orbit."
+    />
+    <title>Spaceynyc — Steven Richardson · Ideas in Orbit</title>
+    <meta property="og:title" content="Spaceynyc — Ideas in Orbit" />
+    <meta property="og:description" content="Steven Richardson. Bold ideas made into intelligent tools, immersive worlds, and expressive digital experiences." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <link
+      rel="preload"
+      href="/assets/Neuropol.otf"
+      as="font"
+      type="font/otf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/src/portfolio.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <div class="hero-art" aria-hidden="true"></div>
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="Spaceynyc home"
+          ><img src="/assets/logo.png" alt="Spaceynyc"
+        /></a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#work">Work</a><a href="#about">About</a
+          ><a href="#services">Services</a
+          ><a href="#contact">Contact</a>
+        </nav>
+        <a class="pill create-button" href="#contact">
+          Let's Create <span class="sparkle" aria-hidden="true">✦</span>
+        </a>
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation"
+          aria-expanded="false"
+        >
+          <span></span><span></span>
+        </button>
+      </header>
+
+      <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              CREATIVE TECHNOLOGIST <span>×</span> NYC
+            </p>
+            <h1 id="hero-title" aria-label="Ideas in orbit">
+              <svg viewBox="0 0 650 126" role="img" aria-label="Ideas in orbit">
+                <defs>
+                  <linearGradient id="chrome" x1="0" y1="0" x2="0.1" y2="1">
+                    <stop offset="0" stop-color="#ffffff" />
+                    <stop offset=".25" stop-color="#e3e3f1" />
+                    <stop offset=".48" stop-color="#9394a5" />
+                    <stop offset=".55" stop-color="#d9dae7" />
+                    <stop offset=".76" stop-color="#f9f9ff" />
+                    <stop offset="1" stop-color="#9d9aaf" />
+                  </linearGradient>
+                </defs>
+                <g
+                  fill="url(#chrome)"
+                  stroke="#dfdfed"
+                  stroke-width=".6"
+                  font-family="Neuropol"
+                  font-size="65"
+                >
+                  <text
+                    x="0"
+                    y="52"
+                    textLength="450"
+                    lengthAdjust="spacingAndGlyphs"
+                  >
+                    IDEAS
+                  </text>
+                  <text
+                    x="0"
+                    y="116"
+                    textLength="638"
+                    lengthAdjust="spacingAndGlyphs"
+                  >
+                    IN ORBIT
+                  </text>
+                </g>
+              </svg>
+            </h1>
+            <p class="intro">Steven Richardson — aka <strong>Space</strong>. I turn bold ideas<br class="desktop-break" /> into intelligent tools, immersive worlds, and digital<br class="desktop-break" /> experiences that feel a little ahead of their time.</p>
+            <a class="pill work-button" href="#work"
+              >VIEW MY WORK
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h15m-6-6 6 6-6 6" /></svg
+            ></a>
+          </div>
+          <p class="hero-motto">
+            A<br />BRIGHTER<br />TOMORROW.<br />TOGETHER.<span></span>
+          </p>
+        </section>
+
+        <section id="work" class="work-section" aria-labelledby="work-title">
+          <div class="section-heading">
+            <h2 id="work-title">featured work</h2>
+            <button class="view-all" data-modal="work">
+              VIEW ALL
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h15m-6-6 6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+          <div class="portfolio-carousel" role="region" aria-roledescription="carousel" aria-label="Featured projects">
+            <div id="project-track" class="project-track" tabindex="0" aria-label="Project slides. Use left and right arrow keys to browse."></div>
+            <div class="carousel-toolbar">
+              <p class="carousel-note">EXPERIMENTS WITH PURPOSE. SYSTEMS WITH PERSONALITY.</p>
+              <div class="carousel-dots" aria-label="Choose a group of projects"></div>
+              <div class="carousel-controls">
+                <span id="carousel-status" aria-live="polite" aria-atomic="true">01–03 / 11</span>
+                <button data-carousel="previous" aria-label="Previous projects" aria-controls="project-track" disabled><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6" /></svg></button>
+                <button data-carousel="next" aria-label="Next projects" aria-controls="project-track"><svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="services"
+          class="services-section"
+          aria-labelledby="services-title"
+        >
+          <h2 id="services-title">what we do</h2>
+          <div class="services-grid">
+            <button class="service" data-service="brand">
+              <span class="service-art service-brand" aria-hidden="true"></span
+              ><span class="service-copy"
+                ><span class="service-title">AI AGENTS</span
+                ><span
+                  >Intelligence<br />Put to Work</span
+                ></span
+              >
+            </button>
+            <button class="service" data-service="digital">
+              <span
+                class="service-art service-digital"
+                aria-hidden="true"
+              ></span
+              ><span class="service-copy"
+                ><span class="service-title">INTERFACES</span
+                ><span>Clarity, Character<br />&amp; Connection</span></span
+              >
+            </button>
+            <button class="service" data-service="content">
+              <span
+                class="service-art service-content"
+                aria-hidden="true"
+              ></span
+              ><span class="service-copy"
+                ><span class="service-title">AUTOMATION</span
+                ><span>Less Repetition<br />More Possibility</span></span
+              >
+            </button>
+            <button class="service" data-service="experience">
+              <span
+                class="service-art service-experience"
+                aria-hidden="true"
+              ></span
+              ><span class="service-copy"
+                ><span class="service-title">EXPERIENCES</span
+                ><span>Sound, Motion<br />&amp; New Worlds</span></span
+              >
+            </button>
+          </div>
+        </section>
+        <section id="about" class="about-section" aria-labelledby="about-title">
+          <div class="about-copy">
+            <p class="section-kicker">A LITTLE ABOUT MY ORBIT</p>
+            <h2 id="about-title">Big ideas.<br />Real systems.<br /><span>Human feeling.</span></h2>
+            <p class="about-lead">Steven Richardson <span>／</span> Space</p>
+            <p>I’m a creative technologist in New York, working where intelligent systems and expressive design meet. I build tools that take work off your hands and digital worlds that invite you to stay a little longer.</p>
+            <p>My practice moves between AI agents, automation, and immersive interfaces. I like ambitious questions, quick prototypes, and the moment an experiment becomes something useful.</p>
+            <p>From a screen-reading agent to a galaxy of personalities, every project starts with the same question: what could this become?</p>
+            <div class="about-stats"><div><strong>11+</strong><span>PROJECTS IN ORBIT</span></div><div><strong>14+</strong><span>TECHNOLOGIES</span></div><div><strong>∞</strong><span>ROOM TO EXPLORE</span></div></div>
+          </div>
+          <div class="philosophy">
+            <p class="section-kicker">THE THINKING BEHIND THE MAKING</p>
+            <ol>
+              <li><span class="philosophy-number">01</span><div><h3>Prototype the possibility.</h3><p>Put an idea in motion early. Learn from what it does.</p></div><span class="philosophy-star" aria-hidden="true">✦</span></li>
+              <li><span class="philosophy-number">02</span><div><h3>Give intelligence direction.</h3><p>Use AI to extend what people can do, guided by human taste and intent.</p></div><span class="philosophy-star" aria-hidden="true">✦</span></li>
+              <li><span class="philosophy-number">03</span><div><h3>Make every detail matter.</h3><p>Clarity, motion, and character are part of how a product works.</p></div><span class="philosophy-star" aria-hidden="true">✦</span></li>
+              <li><span class="philosophy-number">04</span><div><h3>Keep moving forward.</h3><p>Build, learn, refine. A brighter tomorrow takes more than a good idea.</p></div><span class="philosophy-star" aria-hidden="true">✦</span></li>
+            </ol>
+            <div class="toolbox"><p class="section-kicker">TOOLS OF THE TRADE</p><div class="technology-list"></div></div>
+          </div>
+        </section>
+        <section id="contact" class="contact-section" aria-labelledby="contact-title">
+          <div class="contact-copy"><p class="section-kicker">YOUR NEXT IDEA STARTS HERE</p><h2 id="contact-title">Something on<br /><span>your horizon?</span></h2><p>Bring the big question, the early sketch, or the idea you can’t leave alone. Let’s make something worth putting into the world.</p></div>
+          <div class="contact-destinations"><a class="pill email-button" href="mailto:srich7x@gmail.com">START A CONVERSATION <span aria-hidden="true">↗</span></a><a class="contact-email" href="mailto:srich7x@gmail.com">srich7x@gmail.com</a><div class="contact-socials"><a href="https://github.com/spaceynyc" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1-4-2-6-2m12 5v-4c0-1 .1-2-.5-2.7 3.2-.4 6.5-1.6 6.5-7.1a5.5 5.5 0 0 0-1.5-3.8 5.2 5.2 0 0 0-.2-3.7S18.1.3 15 2.1a13.3 13.3 0 0 0-7 0C4.9.3 3.7.7 3.7.7a5.2 5.2 0 0 0-.2 3.7A5.5 5.5 0 0 0 2 8.2c0 5.5 3.3 6.7 6.5 7.1C8 16 8 17 8 18v4" /></svg></a><a href="https://x.com/spaceynyc" target="_blank" rel="noopener noreferrer" aria-label="X" title="X"><svg viewBox="0 0 24 24"><path d="m4 3 13 18h3L7 3H4Zm16 0L4 21" /></svg></a></div></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <a class="footer-brand" href="#" aria-label="Spaceynyc home"
+          ><img src="/assets/logo.png" alt="Spaceynyc"
+        /></a>
+        <p class="footer-motto">A BRIGHTER TOMORROW. TOGETHER.</p>
+        <nav aria-label="Footer navigation">
+          <a href="#work">Work</a><a href="#about">About</a
+          ><a href="#services">Services</a
+          ><a href="#contact">Contact</a>
+        </nav>
+        <div class="socials">
+          <a href="https://github.com/spaceynyc" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1-4-2-6-2m12 5v-4c0-1 .1-2-.5-2.7 3.2-.4 6.5-1.6 6.5-7.1a5.5 5.5 0 0 0-1.5-3.8 5.2 5.2 0 0 0-.2-3.7S18.1.3 15 2.1a13.3 13.3 0 0 0-7 0C4.9.3 3.7.7 3.7.7a5.2 5.2 0 0 0-.2 3.7A5.5 5.5 0 0 0 2 8.2c0 5.5 3.3 6.7 6.5 7.1C8 16 8 17 8 18v4" /></svg></a>
+          <a href="https://x.com/spaceynyc" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24"><path d="m4 3 13 18h3L7 3H4Zm16 0L4 21" /></svg></a>
+          <a href="mailto:srich7x@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 5 10 8L22 5" /></svg></a>
+        </div>
+        <p class="copyright">© <span data-year>2026</span> Steven Richardson<br />All rights reserved.</p>
+      </footer>
+      <div class="legal-footer"><p>spaceynyc is the personal technology identity of Steven Richardson and operates the private, single-user <a href="/hermes-sms/">spaceynyc Hermes SMS service</a>.</p><nav aria-label="Policies"><a href="/hermes-sms/">Hermes SMS</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav></div>
+    </div>
+    <dialog id="detail-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" aria-label="Close dialog">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
