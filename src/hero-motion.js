@@ -96,12 +96,9 @@ export function mountHeroMotion() {
     const rect = shell.getBoundingClientRect();
     if (innerWidth <= 900) {
       const art = heroArt.getBoundingClientRect();
-      setActive(
-        event.clientX > Math.max(art.left + 80, rect.left) &&
-          event.clientX < art.right - 100 &&
-          event.clientY > art.top + 40 &&
-          event.clientY < art.bottom - 50,
-      );
+      const x = ((event.clientX - art.left) / art.width) * 932 + 740;
+      const y = ((event.clientY - art.top) / art.height) * 467;
+      setActive(polygons.some((points) => inside(x, y, points)));
     } else {
       const scale = rect.width / 1672;
       const x = (event.clientX - rect.left) / scale,
@@ -110,6 +107,7 @@ export function mountHeroMotion() {
     }
   });
   shell.addEventListener("pointerleave", () => setActive(false));
+  window.addEventListener("resize", () => setActive(false));
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) setActive(false);
   });

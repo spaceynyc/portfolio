@@ -1,6 +1,26 @@
 @import './style.css';
 
 /* Portfolio content extends the original design without replacing its logo or display lettering. */
+.hero-visual { display: contents; }
+@media (min-width: 901px) {
+  .hero-art { top: -5.375rem; }
+}
+@media (max-width: 900px) {
+  .hero { height: auto; display: flex; flex-direction: column; }
+  .hero-copy { padding: 44px 32px 0; width: 100%; }
+  .hero-visual { display: block; position: relative; width: 100%; max-width: 760px; aspect-ratio: 932 / 467; margin: 28px auto 0; flex: none; }
+  .hero-visual .hero-art { top: 0; right: 0; width: 100%; height: 100%; background-image: var(--art); background-size: 179.399142% 201.498929%; background-position: right top; background-repeat: no-repeat; mask-image: url('/assets/hero-mobile-mask.svg'); mask-size: 100% 100%; opacity: 1; clip-path: inset(0 0 1px); }
+  .hero-visual .hero-ring-glow { mask-image: url('/assets/orbit-glow-mask.svg'); filter: url('/assets/hover-filters.svg#ring-glow'); opacity: .7; }
+  .hero-visual .hero-cube-glow { mask-image: url('/assets/cube-glow-mask.svg'); filter: url('/assets/hover-filters.svg#cube-glow'); opacity: var(--cube-light, 0); }
+  .hero .hero-motto { position: static; align-self: flex-end; margin: 8px 28px 24px; font-size: 8px; letter-spacing: 1.5px; line-height: 1.6; background: none; box-shadow: none; }
+  .hero .hero-motto br { display: none; }
+  .hero .hero-motto span { display: none; }
+}
+@media (max-width: 600px) {
+  .hero-copy { padding: 36px 23px 0; }
+  .hero-visual { margin-top: 24px; }
+  .hero .hero-motto { margin-right: 23px; font-size: 7px; letter-spacing: 1.1px; }
+}
 .intro strong { color: #eeeef8; font-weight: 500; }
 .work-section { height: auto; padding-bottom: 1.1rem; }
 .work-section .section-heading { margin-bottom: 1.1rem; }
