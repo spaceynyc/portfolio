@@ -1,0 +1,71 @@
+---
+import { principles, technologies } from '../data/tech';
+import { site } from '../data/site';
+---
+<section id="about" class="section about" aria-labelledby="about-title">
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="kicker reveal">A little about my orbit</p>
+      <h2 id="about-title" class="display reveal"><span class="chrome-text">Big ideas.</span><br /><span class="chrome-text">Real systems.</span><br /><span class="accent">Human feeling.</span></h2>
+      <p class="about-lead reveal">{site.person} <span class="spark">／</span> {site.alias}</p>
+      <div class="about-body reveal">
+        <p>I’m a creative technologist in New York, working where intelligent systems and expressive design meet. I build tools that take work off your hands and digital worlds that invite you to stay a little longer.</p>
+        <p>My practice moves between AI agents, automation, and immersive interfaces. I like ambitious questions, quick prototypes, and the moment an experiment becomes something useful.</p>
+        <p>From a screen-reading agent to a galaxy of personalities, every project starts with the same question: what could this become?</p>
+      </div>
+      <dl class="stats reveal">
+        <div><dt>Projects in orbit</dt><dd class="display">11+</dd></div>
+        <div><dt>Technologies</dt><dd class="display">14+</dd></div>
+        <div><dt>Room to explore</dt><dd class="display">∞</dd></div>
+      </dl>
+    </div>
+    <div class="philosophy">
+      <p class="kicker reveal">The thinking behind the making</p>
+      <ol class="principles">
+        {principles.map((p) => (
+          <li class="reveal">
+            <span class="p-number mono">{p.n}</span>
+            <div><h3>{p.title}</h3><p>{p.body}</p></div>
+            <span class="spark" aria-hidden="true">✦</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+  <div class="marquee reveal" aria-label="Tools of the trade">
+    <p class="kicker container">Tools of the trade</p>
+    <div class="marquee-track">
+      {[0, 1].map((k) => (
+        <ul aria-hidden={k === 1}>{technologies.map((t) => <li>{t}<span class="spark">✦</span></li>)}</ul>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(40px, 7vw, 120px); align-items: start; }
+  .about-copy { display: grid; gap: 28px; }
+  .about-copy h2 { font-size: clamp(1.8rem, 1rem + 2.4vw, 3.2rem); }
+  .accent { color: var(--lavender); text-shadow: 0 0 30px #c6c0ff44; }
+  .about-lead { font-size: var(--t-sm); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+  .about-body { display: grid; gap: 18px; color: var(--ink-2); font-size: var(--t-lg); line-height: 1.65; max-width: 52ch; }
+  .stats { display: grid; grid-template-columns: repeat(3, auto); gap: 32px; justify-content: start; margin: 8px 0 0; padding-top: 28px; border-top: 1px solid var(--line); }
+  .stats div { display: grid; gap: 6px; }
+  .stats dt { font-size: var(--t-xs); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); order: 2; }
+  .stats dd { margin: 0; font-size: clamp(1.6rem, 1rem + 2vw, 2.6rem); color: var(--ink); }
+  .philosophy { display: grid; gap: 20px; position: sticky; top: calc(var(--header-h) + 24px); }
+  .principles { border-top: 1px solid var(--line); }
+  .principles li { display: grid; grid-template-columns: 40px 1fr auto; gap: 20px; align-items: start; padding: 26px 0; border-bottom: 1px solid var(--line); }
+  .p-number { font-size: var(--t-xs); color: var(--muted); padding-top: 6px; }
+  .principles h3 { font-size: var(--t-xl); font-weight: 500; letter-spacing: -.01em; margin-bottom: 8px; }
+  .principles p { color: var(--muted); max-width: 40ch; }
+  .marquee { margin-top: clamp(64px, 8vw, 120px); display: grid; gap: 20px; overflow: hidden; }
+  .marquee-track { display: flex; gap: 0; width: max-content; animation: marquee 48s linear infinite; }
+  .marquee ul { display: flex; gap: 0; flex: none; }
+  .marquee li { display: inline-flex; align-items: center; gap: 28px; padding: 0 28px; font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.1rem, .8rem + 1.6vw, 2.2rem); color: var(--ink-2); white-space: nowrap; }
+  .marquee li .spark { font-size: .6em; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; flex-wrap: wrap; width: auto; } .marquee ul:last-child { display: none; } .marquee ul { flex-wrap: wrap; } }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } .philosophy { position: static; } .stats { gap: 20px; } }
+</style>

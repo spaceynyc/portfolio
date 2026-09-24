@@ -1,0 +1,45 @@
+---
+// Wraps the SMS-compliance pages. Copy inside these pages is preserved verbatim.
+import Base from './Base.astro';
+interface Props { title: string; heading: string }
+const { title, heading } = Astro.props;
+---
+<Base title={`${title} — Spaceynyc`} description={`${heading} for the spaceynyc Hermes SMS service operated by Steven Richardson.`} noChrome>
+  <div class="policy-page">
+    <header class="policy-header">
+      <a class="brand" href="/" aria-label="Spaceynyc home"><img src="/assets/logo.png" alt="Spaceynyc" width="1774" height="887" /></a>
+      <a href="/">← Back to portfolio</a>
+    </header>
+    <div id="policy-content" class="policy-main">
+      <p class="policy-eyebrow">SPACEYNYC / HERMES SMS</p>
+      <h1>{heading}</h1>
+      <p class="policy-intro">spaceynyc is the personal technology identity of Steven Richardson and operates the spaceynyc Hermes SMS service.</p>
+      <article class="policy-copy"><slot /></article>
+      <footer class="policy-footer"><a href="/hermes-sms/">Hermes SMS</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="mailto:srich7x@gmail.com">Support</a></footer>
+    </div>
+  </div>
+</Base>
+
+<style is:global>
+  .policy-page { font-size: 16px; background: #06070b; min-height: 100vh; }
+  .policy-header { border-bottom: 1px solid #44414f; padding: 0 max(24px, calc((100% - 1200px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 84px; }
+  .policy-header .brand img { width: 168px; height: auto; transform: scaleY(.78); transform-origin: left center; }
+  .policy-header > a:last-child { font-size: 12px; color: #bbb3d2; letter-spacing: .08em; }
+  .policy-main { max-width: 840px; padding: 64px 28px; margin: auto; }
+  .policy-eyebrow { color: #afa5ce; font-size: 10px; letter-spacing: 3px; }
+  .policy-page h1 { font-family: var(--font-display); font-size: 36px; line-height: 1.35; margin: 24px 0; letter-spacing: -.5px; text-transform: uppercase; }
+  .policy-intro { color: #b2adbf; line-height: 1.85; margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid #383442; }
+  .policy-copy h2 { font-family: inherit; font-size: 23px; line-height: 1.4; margin: 32px 0 14px; color: #e7e3f1; font-weight: 500; }
+  .policy-copy p, .policy-copy li, .policy-copy blockquote { line-height: 1.85; font-size: 15px; color: #beb9cb; margin: 12px 0; }
+  .policy-copy ul { list-style: disc; padding-left: 22px; }
+  .policy-copy a, .policy-footer a { color: #c3b4ed; text-decoration: underline; text-underline-offset: 4px; }
+  .policy-copy strong { color: #eee8fc; }
+  .policy-copy section { padding: 12px 24px 24px; margin: 32px 0; border: 1px solid #7e709e; border-radius: 12px; background: #b19bd008; }
+  .policy-copy section.opt-in { border: 2px solid #72f7b899; background: #72f7b812; box-shadow: 0 0 36px rgba(114, 247, 184, .10); }
+  .policy-copy section.opt-in .opt-in-kicker { font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #72f7b8; margin: 8px 0; }
+  .policy-copy section.opt-in h2 { margin-top: 0; font-size: 26px; }
+  .policy-copy section.opt-in .lead { font-size: 18px; line-height: 2; color: #d7e9f8; }
+  .policy-copy blockquote { border-left: 2px solid #75668c; padding: 8px 20px; margin-left: 0; }
+  .policy-footer { display: flex; flex-wrap: wrap; gap: 24px; padding-top: 28px; margin-top: 44px; border-top: 1px solid #383442; font-size: 12px; }
+  @media (max-width: 600px) { .policy-main { padding: 40px 24px; } .policy-page h1 { font-size: 28px; } .policy-copy h2 { font-size: 20px; } .policy-header .brand img { width: 140px; } .policy-header > a:last-child { font-size: 10px; } }
+</style>

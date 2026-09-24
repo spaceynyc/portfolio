@@ -1,0 +1,18 @@
+---
+// The original traced lettering, refilled with a shared chrome gradient defined once in Base.astro.
+import hero from '../lettering/hero-title.svg?raw';
+import featured from '../lettering/featured-work.svg?raw';
+import services from '../lettering/what-we-do.svg?raw';
+
+interface Props { name: 'hero' | 'featured' | 'services'; class?: string }
+const { name, class: className } = Astro.props;
+const source = { hero, featured, services }[name];
+const svg = source
+  .replace(/<defs>[\s\S]*?<\/defs>/, '')
+  .replace(/fill="url\(#metal-[^"]+\)"/g, 'fill="url(#chrome-grad)"')
+  .replace('aria-hidden="true"', 'aria-hidden="true" focusable="false"');
+---
+<span class:list={['lettering', className]} aria-hidden="true" set:html={svg} />
+<style>
+  .lettering { display: block; min-width: 0; max-width: 100%; }
+</style>

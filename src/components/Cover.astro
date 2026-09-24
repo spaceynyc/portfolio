@@ -1,0 +1,20 @@
+---
+// Project thumbnail, or a generated pattern cover for projects without a screenshot.
+import type { CollectionEntry } from 'astro:content';
+interface Props { project: CollectionEntry<'work'>; eager?: boolean; class?: string }
+const { project, eager = false, class: className } = Astro.props;
+const { image, title, color, number } = project.data;
+---
+{image ? (
+  <img class={className} src={image} alt={`${title} screenshot`} width="1440" height="900" loading={eager ? 'eager' : 'lazy'} decoding="async" draggable="false" />
+) : (
+  <span class:list={['cover', className]} style={`--project-color:${color}`} aria-hidden="true">
+    <b>{number}</b>
+    <svg viewBox="0 0 160 110"><ellipse cx="80" cy="55" rx="58" ry="22" transform="rotate(-28 80 55)"/><ellipse cx="80" cy="55" rx="58" ry="22" transform="rotate(28 80 55)"/><path d="M80 32 88 48 106 55 88 62 80 78 72 62 54 55 72 48Z"/></svg>
+  </span>
+)}
+<style>
+  .cover { display: grid; place-items: center; position: relative; width: 100%; height: 100%; min-height: 160px; background: linear-gradient(135deg, color-mix(in srgb, var(--project-color) 14%, transparent), transparent 60%), repeating-linear-gradient(0deg, #9ea0bd0b 0 1px, transparent 1px 24px), repeating-linear-gradient(90deg, #9ea0bd0b 0 1px, transparent 1px 24px), #090d13; }
+  .cover b { position: absolute; right: 6%; top: 2%; font-family: var(--font-display); font-weight: 400; font-size: clamp(4rem, 10vw, 7rem); color: #bab9d00c; }
+  .cover svg { width: 46%; height: auto; fill: none; stroke: var(--project-color); stroke-width: .7; opacity: .7; filter: drop-shadow(0 0 8px var(--project-color)); }
+</style>

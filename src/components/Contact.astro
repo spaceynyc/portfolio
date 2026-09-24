@@ -1,0 +1,38 @@
+---
+import Icons from './Icons.astro';
+import { site } from '../data/site';
+---
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <p class="kicker reveal">Your next idea starts here</p>
+      <h2 id="contact-title" class="display reveal"><span class="chrome-text">Something on</span><br /><span class="accent">your horizon?</span></h2>
+      <p class="reveal">Bring the big question, the early sketch, or the idea you can’t leave alone. Let’s make something worth putting into the world.</p>
+    </div>
+    <div class="contact-actions reveal">
+      <a class="pill" href={`mailto:${site.email}`}>Start a conversation <Icons name="arrow-up-right" /></a>
+      <a class="contact-email" href={`mailto:${site.email}`}>{site.email}</a>
+      <div class="contact-socials">
+        <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><Icons name="github" /></a>
+        <a href={site.x} target="_blank" rel="noopener noreferrer" aria-label="X" title="X"><Icons name="x" /></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact { border-top: 1px solid var(--line); }
+  .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
+  .contact-copy { display: grid; gap: 24px; }
+  .contact-copy h2 { font-size: clamp(2rem, 1rem + 2.8vw, 4rem); }
+  .accent { color: var(--lavender); text-shadow: 0 0 30px #c6c0ff44; }
+  .contact-copy p:last-child { color: var(--ink-2); font-size: var(--t-lg); max-width: 46ch; line-height: 1.6; }
+  .contact-actions { display: grid; gap: 20px; justify-items: start; }
+  .contact-email { font-size: var(--t-base); color: var(--ink-2); text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--line-2); transition: text-decoration-color .25s; }
+  .contact-email:hover { text-decoration-color: var(--lavender); }
+  .contact-socials { display: flex; gap: 12px; }
+  .contact-socials a { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-items: center; transition: border-color .25s, box-shadow .25s; }
+  .contact-socials a:hover { border-color: var(--lavender); box-shadow: var(--glow); }
+  .contact-socials svg { width: 20px; height: 20px; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; align-items: start; } }
+</style>

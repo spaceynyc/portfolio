@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  bodyClass?: string;
+  noChrome?: boolean;
+}
+const { title = site.title, description = site.description, image = '/assets/og.jpg', bodyClass, noChrome = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050607" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@spaceynyc" />
+    <link rel="preload" href="/assets/Neuropol.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/assets/Inter.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+      <defs>
+        <linearGradient id="chrome-grad" x1="0" y1="0" x2="0.1" y2="1">
+          <stop offset="0" stop-color="#ffffff" />
+          <stop offset=".24" stop-color="#e3e3f1" />
+          <stop offset=".48" stop-color="#9394a5" />
+          <stop offset=".55" stop-color="#d9dae7" />
+          <stop offset=".76" stop-color="#f9f9ff" />
+          <stop offset="1" stop-color="#9d9aaf" />
+        </linearGradient>
+      </defs>
+    </svg>
+    {!noChrome && <Header />}
+    <main id="main"><slot /></main>
+    {!noChrome && <Footer />}
+  </body>
+</html>

@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Lost in orbit — Spaceynyc" description="That page drifted out of range.">
+  <section class="container section lost">
+    <p class="kicker">404 / OUT OF RANGE</p>
+    <h1 class="display chrome-text">Lost in<br />orbit.</h1>
+    <p class="lead">That page drifted out of range. Head back to the system.</p>
+    <a class="pill" href="/">Return home</a>
+  </section>
+</Base>
+<style>
+  .lost { min-height: 60vh; display: grid; align-content: center; gap: 24px; justify-items: start; }
+  .lost h1 { font-size: var(--t-3xl); }
+  .lead { color: var(--muted); max-width: 40ch; font-size: var(--t-lg); }
+</style>

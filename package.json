@@ -1,17 +1,31 @@
 {
-  "name": "spaceynyc-studio",
-  "version": "1.0.0",
+  "name": "spaceynyc-portfolio",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
-    "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
-  },
-  "devDependencies": {
-    "vite": "^7.1.0"
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check",
+    "glb:compress": "gltf-transform optimize public/assets/chroma-src.glb public/assets/chroma.glb --compress draco --texture-compress webp --texture-size 1024"
   },
   "dependencies": {
-    "three": "^0.180.0"
+    "@astrojs/react": "^7.0.0",
+    "@astrojs/sitemap": "^3.7.4",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.8.0",
+    "astro": "^7.3.4",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@gltf-transform/cli": "^4.5.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "typescript": "^6.0.3"
   }
 }

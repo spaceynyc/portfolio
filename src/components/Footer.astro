@@ -1,0 +1,47 @@
+---
+import { nav, site } from '../data/site';
+import Icons from './Icons.astro';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <a class="footer-brand" href="/" aria-label="Spaceynyc home"><img src="/assets/logo.png" alt="Spaceynyc" width="1774" height="887" loading="lazy" /></a>
+    <p class="footer-motto">{site.motto}</p>
+    <nav class="footer-nav" aria-label="Footer navigation">{nav.map((i) => <a href={i.href}>{i.label}</a>)}</nav>
+    <div class="socials">
+      <a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Icons name="github" /></a>
+      <a href={site.x} target="_blank" rel="noopener noreferrer" aria-label="X"><Icons name="x" /></a>
+      <a href={`mailto:${site.email}`} aria-label="Email"><Icons name="mail" /></a>
+    </div>
+    <p class="copyright">© {year} {site.person}<br />All rights reserved.</p>
+  </div>
+  <div class="legal">
+    <div class="container legal-row">
+      <p>spaceynyc is the personal technology identity of Steven Richardson and operates the private, single-user <a href="/hermes-sms/">spaceynyc Hermes SMS service</a>.</p>
+      <nav aria-label="Policies"><a href="/hermes-sms/">Hermes SMS</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--line); margin-top: clamp(40px, 8vw, 120px); }
+  .footer-grid {
+    display: grid; grid-template-columns: 1fr auto; grid-template-areas: 'brand motto' 'nav nav' 'socials copy';
+    align-items: center; gap: 28px 24px; padding-block: 48px;
+  }
+  .footer-brand { grid-area: brand; } .footer-brand img { width: 150px; height: auto; transform: scaleY(.78); transform-origin: left center; }
+  .footer-motto { grid-area: motto; font-size: var(--t-xs); letter-spacing: .28em; text-transform: uppercase; color: var(--muted); text-align: right; }
+  .footer-nav { grid-area: nav; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: var(--t-sm); letter-spacing: .1em; text-transform: uppercase; }
+  .footer-nav a:hover { color: var(--lavender); }
+  .socials { grid-area: socials; display: flex; gap: 12px; }
+  .socials a { width: 44px; height: 44px; border: 1px solid var(--line-2); border-radius: 50%; display: grid; place-items: center; transition: border-color .25s, box-shadow .25s; }
+  .socials a:hover { border-color: var(--lavender); box-shadow: var(--glow); }
+  .socials svg { width: 18px; height: 18px; }
+  .copyright { grid-area: copy; text-align: right; font-size: var(--t-xs); letter-spacing: .1em; color: var(--muted); line-height: 1.7; }
+  .legal { border-top: 1px solid var(--line); font-size: var(--t-xs); color: var(--muted); }
+  .legal-row { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-block: 20px; line-height: 1.7; }
+  .legal a { text-decoration: underline; text-underline-offset: 3px; }
+  .legal nav { display: flex; gap: 20px; }
+  .legal nav a { text-decoration: none; }
+  .legal nav a:hover { color: var(--lavender); }
+</style>

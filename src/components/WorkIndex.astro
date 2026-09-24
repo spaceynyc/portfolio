@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import Lettering from './Lettering.astro';
+import Icons from './Icons.astro';
+import Cover from './Cover.astro';
+import { kinds } from '../data/site';
+
+const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const featured = all.filter((p) => p.data.featured).slice(0, 3);
+const rest = all.filter((p) => !featured.includes(p));
+---
+<section id="work" class="section work" aria-labelledby="work-title">
+  <div class="container">
+    <div class="work-head reveal">
+      <h2 id="work-title"><span class="sr-only">Featured work</span><Lettering name="featured" class="work-lettering" /></h2>
+      <p class="kicker">Experiments with purpose. Systems with personality.</p>
+    </div>
+
+    <div class="featured-grid">
+      {featured.map((p, i) => (
+        <a class:list={['tile', 'reveal', { 'tile-wide': i === 0 }]} href={`/work/${p.id}/`} style={`--project-color:${p.data.color}`}>
+          <span class="tile-media"><Cover project={p} eager={i === 0} /></span>
+          <span class="tile-body">
+            <span class="tile-meta mono">{p.data.number} <i>/</i> {kinds[p.data.kind]} <i>/</i> {p.data.year}</span>
+            <span class="tile-title display">{p.data.title}</span>
+            <span class="tile-tech">{p.data.tech.join(' · ')}</span>
+          </span>
+          <span class="round-arrow" aria-hidden="true"><Icons name="arrow-up-right" /></span>
+        </a>
+      ))}
+    </div>
+
+    <div class="orbit-head reveal">
+      <p class="kicker">The full orbit <span class="mono">/ {String(all.length).padStart(2, '0')} projects</span></p>
+    </div>
+    <ol class="orbit-list" data-orbit>
+      {rest.map((p) => (
+        <li class="row-wrap reveal">
+          <a class="row" href={`/work/${p.id}/`} data-row data-image={p.data.image ?? ''} data-color={p.data.color} data-number={p.data.number} style={`--project-color:${p.data.color}`}>
+            <span class="row-thumb"><Cover project={p} /></span>
+            <span class="row-number mono">{p.data.number}</span>
+            <span class="row-title display">{p.data.title}</span>
+            <span class="row-kind">{kinds[p.data.kind]}</span>
+            <span class="row-tech">{p.data.tech.slice(0, 3).join(' · ')}</span>
+            <span class="row-year mono">{p.data.year}</span>
+            <span class="round-arrow" aria-hidden="true"><Icons name="arrow-up-right" /></span>
+          </a>
+        </li>
+      ))}
+      <div class="preview" aria-hidden="true" data-preview>
+        <img alt="" width="640" height="400" decoding="async" />
+        <span class="preview-pattern"><b></b></span>
+      </div>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .work-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(28px, 4vw, 48px); }
+  .work-head h2 { width: min(100%, 520px); }
+  .work-head :global(.work-lettering svg) { filter: drop-shadow(0 4px 14px #00000088); }
+
+  .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .tile { position: relative; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: linear-gradient(140deg, #0f1018, #06070a 70%); transition: border-color .3s, transform .5s var(--ease-out), box-shadow .3s; isolation: isolate; }
+  .tile-wide { grid-column: span 2; grid-template-columns: 1.4fr 1fr; grid-template-rows: none; }
+  .tile:hover { border-color: color-mix(in srgb, var(--project-color) 55%, var(--line-2)); box-shadow: 0 0 0 1px #ffffff08, 0 30px 80px -30px color-mix(in srgb, var(--project-color) 45%, transparent); transform: translateY(-3px); }
+  .tile-media { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: #090c12; border-bottom: 1px solid var(--line); }
+  .tile-wide .tile-media { aspect-ratio: auto; border-bottom: 0; border-right: 1px solid var(--line); min-height: 380px; }
+  .tile-media :global(img), .tile-media :global(.cover) { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .9s var(--ease-out); }
+  .tile:hover .tile-media :global(img) { transform: scale(1.04); }
+  .tile-body { display: grid; align-content: end; gap: 12px; padding: clamp(20px, 2.4vw, 32px); padding-right: 84px; }
+  .tile-meta { font-size: var(--t-xs); text-transform: uppercase; color: var(--muted); } .tile-meta i { font-style: normal; color: var(--line-2); margin: 0 4px; }
+  .tile-title { font-size: clamp(1.4rem, 1rem + 1.6vw, 2.4rem); color: var(--ink); }
+  .tile-wide .tile-title { font-size: clamp(1.8rem, 1rem + 2.6vw, 3.4rem); }
+  .tile-tech { font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .tile .round-arrow { position: absolute; right: 24px; bottom: 24px; }
+  .tile:hover .round-arrow { border-color: var(--lavender); background: #8b5dff22; transform: rotate(45deg); }
+  .tile:hover .round-arrow svg { transform: rotate(-45deg); }
+  .tile .round-arrow svg { transition: transform .35s var(--ease-out); }
+
+  .orbit-head { margin: clamp(56px, 8vw, 110px) 0 12px; }
+  .orbit-list { position: relative; border-top: 1px solid var(--line); }
+  .row-wrap { border-bottom: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 56px minmax(0, 1.6fr) .8fr 1.1fr 64px 44px; align-items: center; gap: 20px; padding: 26px 0; transition: padding .35s var(--ease-out), color .25s; position: relative; }
+  .row::before { content: ''; position: absolute; inset: 0 -16px; border-radius: 12px; background: linear-gradient(90deg, color-mix(in srgb, var(--project-color) 10%, transparent), transparent 60%); opacity: 0; transition: opacity .3s; z-index: -1; }
+  .row:hover { padding-left: 12px; }
+  .row:hover::before { opacity: 1; }
+  .row-thumb { display: none; }
+  .row-number { font-size: var(--t-xs); color: var(--muted); }
+  .row-title { font-size: clamp(1.1rem, .9rem + 1.2vw, 1.9rem); color: var(--ink); overflow-wrap: anywhere; }
+  .row-kind, .row-tech, .row-year { font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .row-year { text-align: right; }
+  .row:hover .round-arrow { border-color: var(--lavender); background: #8b5dff22; transform: rotate(45deg); }
+  .row .round-arrow svg { transition: transform .35s var(--ease-out); }
+  .row:hover .round-arrow svg { transform: rotate(-45deg); }
+
+  .preview { position: absolute; top: 0; left: 0; width: 320px; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; border: 1px solid var(--line-2); pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.9) rotate(-2deg); transition: opacity .25s, transform .4s var(--ease-out); z-index: 5; box-shadow: 0 30px 60px -20px #000; background: #090c12; will-change: transform; }
+  .preview[data-show] { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0); }
+  .preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .preview[data-pattern] img { display: none; }
+  .preview-pattern { display: none; position: absolute; inset: 0; background: linear-gradient(135deg, color-mix(in srgb, var(--project-color) 22%, transparent), transparent 60%), repeating-linear-gradient(0deg, #9ea0bd0b 0 1px, transparent 1px 24px), repeating-linear-gradient(90deg, #9ea0bd0b 0 1px, transparent 1px 24px), #090d13; }
+  .preview[data-pattern] .preview-pattern { display: block; }
+  .preview-pattern b { position: absolute; right: 16px; bottom: 4px; font-family: var(--font-display); font-size: 5rem; color: #bab9d014; font-weight: 400; }
+
+  @media (max-width: 900px) {
+    .featured-grid { grid-template-columns: 1fr; }
+    .tile-wide { grid-column: auto; grid-template-columns: none; grid-template-rows: auto 1fr; }
+    .tile-wide .tile-media { aspect-ratio: 16 / 9; min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+    .row { grid-template-columns: 1fr 44px; grid-template-areas: 'thumb thumb' 'number arrow' 'title title' 'kind kind' 'tech tech'; gap: 8px 16px; padding: 20px 0; }
+    .row:hover { padding-left: 0; }
+    .row-thumb { display: block; grid-area: thumb; aspect-ratio: 16 / 8; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); margin-bottom: 8px; }
+    .row-thumb :global(img), .row-thumb :global(.cover) { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .row-number { grid-area: number; } .row-title { grid-area: title; } .row-kind { grid-area: kind; } .row-tech { grid-area: tech; } .row-year { display: none; }
+    .row .round-arrow { grid-area: arrow; justify-self: end; }
+    .preview { display: none; }
+  }
+</style>
+
+<script>
+  // Cursor-following preview for the orbit list (pointer devices only).
+  const list = document.querySelector<HTMLElement>('[data-orbit]');
+  const preview = list?.querySelector<HTMLElement>('[data-preview]');
+  const img = preview?.querySelector('img');
+  const num = preview?.querySelector('b');
+  if (list && preview && img && num && matchMedia('(hover: hover) and (min-width: 901px)').matches) {
+    let x = 0, y = 0, tx = 0, ty = 0, raf = 0;
+    const tick = () => {
+      x += (tx - x) * 0.18; y += (ty - y) * 0.18;
+      preview.style.transform = '';
+      preview.style.left = `${x}px`; preview.style.top = `${y}px`;
+      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(tick) : 0;
+    };
+    list.addEventListener('pointermove', (e) => {
+      const r = list.getBoundingClientRect();
+      tx = e.clientX - r.left + 40; ty = e.clientY - r.top;
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+    list.querySelectorAll<HTMLElement>('[data-row]').forEach((row) => {
+      row.addEventListener('pointerenter', () => {
+        const src = row.dataset.image;
+        preview.style.setProperty('--project-color', row.dataset.color ?? '');
+        num.textContent = row.dataset.number ?? '';
+        if (src) { img.src = src; preview.removeAttribute('data-pattern'); } else preview.setAttribute('data-pattern', '');
+        preview.setAttribute('data-show', '');
+      });
+      row.addEventListener('pointerleave', () => preview.removeAttribute('data-show'));
+    });
+  }
+</script>

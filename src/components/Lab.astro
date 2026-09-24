@@ -1,0 +1,53 @@
+---
+import LabShader from '../islands/LabShader';
+import Icons from './Icons.astro';
+const experiments = [
+  { title: 'Shader Gallery', line: 'GLSL sketches written in light', href: '/work/shader-gallery/', tag: 'WebGL' },
+  { title: 'inner-system', line: 'An audio-reactive world that listens', href: '/work/inner-system/', tag: 'R3F · Web Audio' },
+  { title: 'Socionics Galaxy', line: 'Sixteen personalities as a universe', href: '/work/socionics-galaxy/', tag: 'R3F · Three.js' },
+  { title: 'Chrome sculptures', line: 'Blender studies behind this site', href: '/#services', tag: 'Blender' },
+];
+---
+<section id="lab" class="lab" aria-labelledby="lab-title">
+  <LabShader client:visible />
+  <div class="container lab-inner">
+    <div class="lab-head reveal">
+      <p class="kicker">The lab</p>
+      <h2 id="lab-title" class="display chrome-text">Experiments<br />in motion.</h2>
+      <p class="lab-lead">Where the interface is felt as much as used. Live shaders, audio-reactive worlds, and studies that became the work above. This backdrop is one of them.</p>
+    </div>
+    <ul class="lab-list">
+      {experiments.map((e) => (
+        <li class="reveal">
+          <a class="lab-item" href={e.href}>
+            <span class="lab-tag mono">{e.tag}</span>
+            <span class="lab-title display">{e.title}</span>
+            <span class="lab-line">{e.line}</span>
+            <span class="lab-arrow"><Icons name="arrow-up-right" /></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .lab { position: relative; overflow: clip; padding-block: clamp(80px, 12vw, 160px); border-block: 1px solid var(--line); background: var(--bg-2); }
+  .lab :global(.lab-shader) { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .6; }
+  .lab::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, var(--bg) 0%, transparent 25%, transparent 75%, var(--bg) 100%); pointer-events: none; }
+  .lab-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
+  .lab-head { display: grid; gap: 20px; }
+  .lab-head h2 { font-size: var(--t-2xl); }
+  .lab-lead { color: var(--ink-2); max-width: 44ch; font-size: var(--t-lg); line-height: 1.6; }
+  .lab-list { display: grid; border-top: 1px solid #ffffff22; }
+  .lab-item { display: grid; grid-template-columns: 1fr auto; grid-template-areas: 'tag arrow' 'title arrow' 'line arrow'; align-items: center; column-gap: 20px; padding: 20px 0; border-bottom: 1px solid #ffffff22; backdrop-filter: blur(2px); transition: padding .3s var(--ease-out); }
+  .lab-item:hover { padding-left: 10px; }
+  .lab-tag { grid-area: tag; font-size: var(--t-xs); text-transform: uppercase; color: var(--lavender); }
+  .lab-title { grid-area: title; font-size: clamp(1.2rem, 1rem + 1vw, 1.8rem); color: #fff; margin: 6px 0 2px; }
+  .lab-line { grid-area: line; color: var(--ink-2); font-size: var(--t-sm); }
+  .lab-arrow { grid-area: arrow; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #ffffff44; display: grid; place-items: center; transition: background .25s, transform .35s var(--ease-out); }
+  .lab-arrow svg { width: 18px; height: 18px; }
+  .lab-item:hover .lab-arrow { background: #ffffff22; transform: rotate(45deg); }
+  .lab-item:hover .lab-arrow svg { transform: rotate(-45deg); }
+  @media (max-width: 900px) { .lab-inner { grid-template-columns: 1fr; } }
+</style>

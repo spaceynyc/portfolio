@@ -1,0 +1,30 @@
+---
+import ServiceIcons from '../islands/ServiceIcons';
+import Lettering from './Lettering.astro';
+import { services } from '../data/tech';
+---
+<section id="services" class="section services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="services-head reveal">
+      <h2 id="services-title"><span class="sr-only">What we do</span><Lettering name="services" class="services-lettering" /></h2>
+      <p class="kicker">Four ways ideas leave the ground</p>
+    </div>
+    <ServiceIcons client:visible services={services} />
+  </div>
+</section>
+
+<style is:global>
+  .services-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(24px, 4vw, 48px); }
+  .services-head h2 { width: min(100%, 420px); }
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .service { display: grid; gap: 12px; padding: 32px 24px 36px; border-right: 1px solid var(--line); position: relative; transition: background .3s; }
+  .service:last-of-type { border-right: 0; }
+  .service:hover { background: linear-gradient(180deg, #8b5dff10, transparent); }
+  .service-art { display: block; width: 100%; aspect-ratio: 1; max-width: 220px; background-size: contain; background-repeat: no-repeat; background-position: center; filter: drop-shadow(0 12px 24px #00000088); }
+  .service[data-hovered="true"] .service-art { filter: drop-shadow(0 12px 28px #8b5dff55); }
+  .service-copy { display: grid; gap: 6px; }
+  .service-title { font-family: var(--font-display); text-transform: uppercase; font-size: var(--t-sm); letter-spacing: .14em; color: var(--ink); }
+  .service-line { font-size: var(--t-sm); color: var(--muted); line-height: 1.5; }
+  .services-grid canvas { display: block; }
+  @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } .service:nth-of-type(2) { border-right: 0; } .service:nth-of-type(-n+2) { border-bottom: 1px solid var(--line); } .service-art { max-width: 160px; } }
+</style>

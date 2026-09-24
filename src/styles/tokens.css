@@ -1,0 +1,47 @@
+@font-face {
+  font-family: Neuropol;
+  src: url('/assets/Neuropol.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: Inter;
+  src: url('/assets/Inter.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #050607;
+  --bg-2: #0b0c12;
+  --bg-3: #12131b;
+  --ink: #e9e9f0;
+  --ink-2: #c9c9d6;
+  --muted: #9a9cab;
+  --line: #22232b;
+  --line-2: #3a3b45;
+  --lavender: #c6c0ff;
+  --violet: #8b5dff;
+  --mint: #72f7b8;
+  --chrome-hi: #ffffff;
+  --chrome-lo: #8e8fa1;
+  --glow: 0 0 24px #8b5dff33;
+
+  --font-display: Neuropol, 'Arial Black', sans-serif;
+  --font-body: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --gutter: clamp(20px, 5vw, 88px);
+  --max: 1440px;
+  --header-h: 84px;
+
+  --t-xs: 0.6875rem;
+  --t-sm: 0.8125rem;
+  --t-base: 1rem;
+  --t-lg: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --t-xl: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem);
+  --t-2xl: clamp(2.25rem, 1.4rem + 3.4vw, 5rem);
+  --t-3xl: clamp(2.75rem, 1.2rem + 6.5vw, 8.5rem);
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
