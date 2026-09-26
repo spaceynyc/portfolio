@@ -18,6 +18,8 @@ export default defineConfig({
     configurePreviewServer(server) { server.middlewares.use(policyRedirect); },
   }],
   build: {
+    // three.js lives in a lazily imported chunk that loads only near the services section.
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       input: Object.fromEntries(['index.html', 'hermes-sms/index.html', 'privacy/index.html', 'terms/index.html'].map(file => [file, fileURLToPath(new URL(file, import.meta.url))])),
     },
