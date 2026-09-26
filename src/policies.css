@@ -1,17 +1,120 @@
-@import './style.css';
+@import './base.css';
 
-.policy-page { font-size: 16px; background: #06070b; }
-.policy-header { border-bottom: 1px solid #44414f; padding: 0 max(24px, calc((100% - 1200px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.policy-header > a:last-child { font-size: 12px; color: #bbb3d2; }
-.policy-page main { max-width: 840px; padding: 64px 28px; margin: auto; }
-.policy-eyebrow { color: #afa5ce; font-size: 10px; letter-spacing: 3px; }
-.policy-page h1 { font-family: Neuropol, sans-serif; width: auto; height: auto; max-width: none; aspect-ratio: auto; font-size: 36px; line-height: 1.35; margin: 24px 0; filter: none; letter-spacing: -.5px; }
-.policy-intro { color: #b2adbf; line-height: 1.85; margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid #383442; }
-.policy-copy h2 { font-family: inherit; font-size: 23px; line-height: 1.4; white-space: normal; letter-spacing: 0; margin: 32px 0 14px; text-shadow: none; color: #e7e3f1; }
-.policy-copy p, .policy-copy li, .policy-copy blockquote { line-height: 1.85; font-size: 15px; color: #beb9cb; margin: 12px 0; }
-.policy-copy a, .policy-footer a { color: #c3b4ed; text-decoration: underline; text-underline-offset: 4px; }
-.policy-copy strong { color: #eee8fc; }
-.policy-copy section { padding: 12px 24px 24px; margin: 32px 0; border: 1px solid #7e709e; border-radius: 12px; background: #b19bd008; }
-.policy-copy blockquote { border-left: 2px solid #75668c; padding: 8px 20px; margin-left: 0; }
-.policy-footer { display: flex; flex-wrap: wrap; gap: 24px; padding-top: 28px; margin-top: 44px; border-top: 1px solid #383442; font-size: 12px; }
-@media (max-width: 600px) { .policy-page main { padding: 40px 24px; } .policy-page h1 { font-size: 28px; } .policy-copy h2 { font-size: 20px; } .policy-header .brand { width: 145px; } .policy-header > a:last-child { font-size: 10px; } }
+.policy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--header-h);
+  padding: 0 max(var(--gutter), calc((100% - 75rem) / 2));
+  border-bottom: 1px solid var(--line);
+}
+.policy-header > a:last-child {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.policy-header > a:last-child:hover {
+  color: var(--ink);
+}
+.policy-page main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4rem) var(--gutter) 4rem;
+}
+.policy-eyebrow {
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+}
+.policy-page h1 {
+  margin: 0.75rem 0 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.policy-intro {
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.policy-copy h2 {
+  margin: 2.25rem 0 0.75rem;
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.policy-copy p,
+.policy-copy li,
+.policy-copy blockquote {
+  margin: 0.75rem 0;
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+.policy-copy strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.policy-copy a,
+.policy-footer a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.policy-copy blockquote {
+  margin-left: 0;
+  padding: 0.75rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+/* SMS opt-in callout, keyed to the Hermes mint green. */
+.opt-in {
+  margin: 2.5rem 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid rgb(114 247 184 / 0.55);
+  border-radius: 16px;
+  background: rgb(114 247 184 / 0.06);
+}
+.opt-in .opt-in-label {
+  margin: 0 0 0.5rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #72f7b8;
+}
+.policy-copy .opt-in-title {
+  margin-top: 0;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
+}
+.opt-in .opt-in-lead {
+  font-size: var(--text-lg);
+  color: #d7e9f8;
+}
+.opt-in p:last-child {
+  margin-bottom: 0;
+}
+
+.policy-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-size: var(--text-sm);
+}
+.policy-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}

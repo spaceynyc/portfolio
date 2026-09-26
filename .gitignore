@@ -8,3 +8,6 @@ __pycache__/
 .env
 .env.*
 !.env.example
+.impeccable/hook.cache.json
+.impeccable/config.local.json
+.impeccable/live/

@@ -1,0 +1,229 @@
+/* Shared foundation for the portfolio and policy pages: tokens, fonts, reset, and the few shared controls. */
+@import './scrollbars.css';
+
+@font-face {
+  font-family: Neuropol;
+  src: url("/assets/Neuropol.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: Sora;
+  src: url("/assets/Sora-latin.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Surfaces: a near-black stage with slightly lifted panels. */
+  --bg: #050607;
+  --bg-raised: #090a0f;
+  --surface: #0c0d14;
+  --surface-hover: #14131f;
+  --line: #25252f;
+  --line-strong: #3d3c4a;
+  --control: #8d8b9e;
+
+  /* Ink: three steps, all at least 7:1 on --bg. */
+  --ink: #ecebf5;
+  --ink-2: #c4c3d1;
+  --ink-3: #9e9cb0;
+
+  /* Accent: the lavender of the orbit ring. */
+  --accent: #b3adff;
+  --accent-glow: #8b84ff;
+  --accent-deep: #5c50b3;
+  --accent-soft: rgb(139 132 255 / 0.14);
+
+  /* The chrome of the logo and hero lettering. */
+  --chrome: linear-gradient(180deg, #fff 0%, #e3e3f1 25%, #9394a5 48%, #d9dae7 55%, #f9f9ff 76%, #9d9aaf 100%);
+
+  --font-display: Neuropol, "Arial Narrow", sans-serif;
+  --font-body: Sora, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem);
+  --text-h2: clamp(1.75rem, 1.15rem + 2.2vw, 3rem);
+
+  --gutter: clamp(1.25rem, 5vw, 5.5rem);
+  --section-y: clamp(3rem, 5.5vw, 5rem);
+  --header-h: 5.25rem;
+  --radius: 12px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --scroll-track: var(--bg-raised);
+  --scroll-thumb: #9388b5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1rem;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol {
+  margin: 0;
+}
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+img {
+  height: auto;
+}
+[hidden] {
+  display: none !important;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+button,
+a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+::selection {
+  color: #fff;
+  background: var(--accent-deep);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 30;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--bg);
+  transform: translateY(-160%);
+}
+.skip-link:focus {
+  transform: none;
+}
+
+.brand {
+  display: block;
+  flex-shrink: 0;
+  width: clamp(9.5rem, 7rem + 6vw, 13.5rem);
+  padding: 0.25rem 0;
+}
+.brand img {
+  width: 100%;
+  height: auto;
+}
+
+/* Chrome-rimmed capsule shared by every primary action. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0 1.25rem 0 1.4rem;
+  border: 1px solid #d9d8ea;
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  white-space: nowrap;
+  background: linear-gradient(110deg, rgb(17 19 27 / 0.7), rgb(5 6 7 / 0.2) 60%);
+  box-shadow:
+    inset 1px 1px 2px rgb(236 235 255 / 0.35),
+    0 6px 18px -8px rgb(139 132 255 / 0.55);
+  transition:
+    background 0.25s,
+    box-shadow 0.25s,
+    transform 0.35s var(--ease-out);
+}
+.pill:hover {
+  background: #171529;
+  box-shadow:
+    inset 0 0 14px rgb(119 113 203 / 0.25),
+    0 12px 26px -10px rgb(139 132 255 / 0.75);
+  transform: translateY(-2px);
+}
+.pill:active {
+  transform: translateY(0);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-star {
+  width: 1rem;
+  height: 1rem;
+  fill: #e6e8ff;
+  stroke: none;
+  filter: drop-shadow(0 1px 4px rgb(173 172 255 / 0.8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .pill,
+  .pill:hover {
+    transform: none;
+  }
+}
