@@ -72,7 +72,7 @@
   color: var(--ink-2);
 }
 .intro strong {
-  font-weight: 400;
+  font-weight: 600;
   color: var(--ink);
 }
 .hero-cta {
@@ -477,7 +477,7 @@
 }
 .principles h4 {
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--ink);
 }
 .principles p {
@@ -678,7 +678,7 @@ dialog {
   background: var(--bg-raised);
   border: 1px solid var(--line-strong);
   border-radius: 18px;
-  box-shadow: 0 18px 24px -16px rgb(0 0 0 / 0.9);
+  box-shadow: 0 16px 16px -12px rgb(0 0 0 / 0.9);
 }
 dialog::backdrop {
   background: rgb(2 3 7 / 0.82);

@@ -66,5 +66,5 @@ This uses Python Playwright with the installed Chrome browser. Results and scree
 
 - The user supplied the logo and mockup.
 - Neuropol is distributed under CC0 by [Typodermic Fonts](https://typodermicfonts.com/public-domain/); the license note is in `public/assets/FONT-LICENSE.txt`.
-- Inter is self-hosted as a Latin-subset WOFF2 under the SIL Open Font License from the [Inter project](https://github.com/rsms/inter). Neuropol is served as WOFF2.
+- Sora (body text) is self-hosted as a Latin variable WOFF2 (weights 100–800) under the SIL Open Font License from the [Sora project](https://github.com/sora-xor/sora-font); the license is in `public/assets/SORA-LICENSE.txt`. Neuropol is served as WOFF2.
 - No analytics, external font requests, or paid-provider dependencies are used.
