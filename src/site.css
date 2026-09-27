@@ -4,7 +4,8 @@
 .site-shell {
   position: relative;
   overflow: clip;
-  background: var(--bg);
+  /* A faint lift behind the hero so the cube artwork's own backdrop blends into the page. */
+  background: radial-gradient(ellipse at 50% 30%, #0c0e10 0%, var(--bg) 55%);
 }
 .site-header {
   position: relative;
@@ -14,6 +15,7 @@
   gap: 1.5rem;
   height: var(--header-h);
   padding: 0 var(--gutter);
+  border-bottom: 1px solid var(--line);
 }
 .main-nav {
   display: flex;
@@ -41,17 +43,16 @@
 
 /* ---------- Hero: the galaxy is the planet, the page is its orbit ---------- */
 .hero {
+  --art-w: clamp(40rem, 60vw, 68rem);
   position: relative;
   isolation: isolate;
-  display: grid;
-  align-items: center;
-  min-height: clamp(34rem, calc(100svh - var(--header-h) - 4rem), 52rem);
-  padding: clamp(1.5rem, 3vw, 3rem) var(--gutter) clamp(3rem, 6vw, 5rem);
+  min-height: calc(var(--art-w) * 377 / 932);
+  padding: clamp(2.25rem, 4vw, 3.5rem) var(--gutter);
 }
 .hero-copy {
   position: relative;
   z-index: 2;
-  max-width: 35rem;
+  max-width: min(36rem, calc(100vw - var(--art-w) - var(--gutter) + var(--art-w) * 0.1));
 }
 .hero h1 {
   width: min(100%, 36rem);
@@ -96,45 +97,45 @@
 .hero-cta {
   margin-top: 2rem;
 }
+/* The artwork rises into the header: its own horizon band sits on the header rule. */
 .hero-visual {
   position: absolute;
   z-index: 0;
-  top: 50%;
-  right: -3vw;
-  width: min(64vw, 70rem);
-  aspect-ratio: 16 / 10;
-  transform: translateY(-50%);
-}
-.hero-galaxy {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* The screenshot's own black space melts into the page; its UI chrome fades out at the edges. */
-  mix-blend-mode: lighten;
-  mask-image: radial-gradient(ellipse 52% 50% at 52% 56%, #000 58%, transparent 100%);
-}
-.hero-orbit {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
+  right: 0;
+  top: calc(var(--art-w) * -90 / 932);
+  width: var(--art-w);
+  aspect-ratio: 932 / 467;
   pointer-events: none;
 }
-.hero-orbit path {
-  fill: none;
-  stroke: url(#ring);
-  stroke-linecap: round;
+.hero-art {
+  position: absolute;
+  inset: 0;
+  background: url("/assets/hero-cubes.webp") 0 0 / 100% 100% no-repeat;
+  /* Melt the image's own backdrop into the page on the left and bottom edges. */
+  mask-image:
+    linear-gradient(90deg, transparent, #000 24%),
+    linear-gradient(#000 72%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+  mask-size: 100% 100%;
+  transform: translate3d(0, var(--cube-lift, 0px), 0) rotate(var(--cube-tilt, 0deg));
+  transform-origin: 50% 55%;
 }
-.orbit-back {
-  stroke-width: 2;
-  opacity: 0.4;
+/* Hover glow layers reuse the same image, isolated to the ring and the cubes. */
+.hero-ring-glow,
+.hero-cube-glow {
+  mix-blend-mode: screen;
+  mask-size: 100% 100%;
 }
-.orbit-front {
-  stroke-width: 3.5;
+.hero-ring-glow {
+  mask-image: url("/assets/orbit-glow-mask.svg");
+  filter: url("/assets/hover-filters.svg#ring-glow");
+  opacity: 0.7;
 }
-.orbit-star {
-  fill: #efeeff;
+.hero-cube-glow {
+  mask-image: url("/assets/cube-glow-mask.svg");
+  filter: url("/assets/hover-filters.svg#cube-glow");
+  opacity: var(--cube-light, 0);
 }
 
 /* ---------- Section headings ---------- */
@@ -883,7 +884,7 @@ body.no-scroll {
 @media (max-width: 1100px) {
   .hero {
     min-height: 0;
-    padding-bottom: clamp(2rem, 5vw, 3rem);
+    padding-bottom: 0;
   }
   .hero-copy {
     max-width: 40rem;
@@ -892,14 +893,23 @@ body.no-scroll {
     position: relative;
     top: auto;
     right: auto;
-    width: calc(100% + var(--gutter) * 2);
-    max-width: 56rem;
-    margin: 0.5rem calc(var(--gutter) * -1) 0;
-    justify-self: end;
+    width: min(100% + var(--gutter), 48rem);
+    margin: 1rem calc(var(--gutter) * -1) 0 auto;
     transform: none;
   }
-  .hero-galaxy {
-    mask-image: radial-gradient(ellipse 56% 54% at 52% 56%, #000 55%, transparent 100%);
+  .hero-art,
+  .hero-ring-glow,
+  .hero-cube-glow {
+    mask-image:
+      linear-gradient(90deg, transparent, #000 12%, #000 90%, transparent),
+      linear-gradient(transparent 17%, #000 40%, #000 84%, transparent);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+    mask-size: 100% 100%;
+  }
+  .hero-ring-glow,
+  .hero-cube-glow {
+    display: none;
   }
   .about,
   .contact {

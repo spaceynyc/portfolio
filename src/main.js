@@ -1,9 +1,11 @@
+import { mountHeroMotion } from './hero-motion.js';
 import { projects } from './portfolio-data.js';
 import { cover } from './covers.js';
 import { escape, meta, primaryAction, sourceAction } from './render-work.js';
 
 const byId = (id) => projects.find(p => p.id === id);
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
+mountHeroMotion();
 
 // ---------- Project dialog ----------
 // Belt links are ordinary #hash links, so opening a project adds a history entry and Back closes it.

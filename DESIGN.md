@@ -141,7 +141,7 @@ components:
 
 **Creative North Star: "Ideas in Orbit"**
 
-The work is the planet and the page is its orbit. Everything sits on near-black space, and the brightest things on screen are the projects themselves: real screenshots used as windows onto each world, bleeding off the right edge, with the page's own chrome kept thin around them. A single lavender orbit ring is the house color. Each project brings its own color as a small lit body, a sphere with a white highlight, that marks it wherever it appears: on the hero ring, beside its metadata, on the sticky rail, in the belt, and on the lit rim of its stage.
+The work is the planet and the page is its orbit. Everything sits on near-black space, and the brightest things on screen are the projects themselves: real screenshots used as windows onto each world, bleeding off the right edge, with the page's own chrome kept thin around them. A single lavender orbit ring is the house color. Each project brings its own color as a small lit body, a sphere with a white highlight, that marks it wherever it appears: beside its metadata, on the sticky rail, in the belt, and on the lit rim of its stage.
 
 The system is dark, quiet, and specific. Chrome lettering in Neuropol is reserved for a few ceremonial moments (the hero line and the three featured stage titles). Everything else is Sora in a three-step ink ramp on the void. Controls are chrome-rimmed capsules. Depth comes from overlap and darkness rather than floating cards: stages slide over one another and recede, windows cast a short, heavy shadow, and sections are separated by hairlines rather than boxes.
 
@@ -213,7 +213,7 @@ Each project carries its own color in the data (`--project-color`, set inline): 
 A full-bleed single column with a fluid side gutter (gutter token) and fluid section padding (section-y token). Content does not sit in a centered max-width container; it runs from the left gutter, with prose measures capped per element (33 to 44rem) and media allowed to run off the right edge.
 
 - **Header:** 5.25rem tall (4.5rem on phones), logo left, three text links offset from it, the primary capsule pushed right. Below 720px the links collapse into a raised sheet under the header with 3.25rem rows.
-- **Hero:** copy at left (max 35rem); the galaxy screenshot sits absolutely at right, min(64vw, 70rem) wide at 16:10, bleeding 3vw off the edge, blended with `lighten` and a radial mask so its black melts into the void. Below 1100px it stacks under the copy.
+- **Hero:** copy at left (max 36rem); the chrome-cube artwork (`public/assets/hero-cubes.webp`, the supplied mockup's sculpture with its lavender orbit ring and stars) sits absolutely at right, clamp(40rem, 60vw, 68rem) wide, raised so its horizon band lands on the header rule and the top cube rises into the header. Its left and bottom edges are masked into the void; hovering a cube lifts the sculpture and lights it (`src/hero-motion.js`). Below 1100px it stacks under the copy without the glow layers.
 - **Launch sequence:** one stage per featured project. From 900px the stage is a two-column grid (minmax(20rem, 0.8fr) copy, 1.5fr media, media second). From 1024px wide and 700px tall with motion allowed, each stage is sticky at a full 100svh, the screenshot runs off the right edge (height min(70svh, 46rem)), and a sticky orbit rail (5rem, fading from transparent into the void) sits at the bottom.
 - **Belt:** two equal columns (one below 900px); each row is a 7.5rem thumbnail, text, and an arrow (5.5rem thumbnail, no arrow, on phones).
 - **About / Contact:** asymmetric two-column grids (1.1fr / 1fr and 1.4fr / 1fr), stacking below 1100px.
@@ -261,7 +261,7 @@ The system has no card grid. Containers are windows and rows.
 - **Orbit rail:** the featured three as bodies on a thin orbit line that fades out after the last one. Labels are Ink 3, becoming Ink when hovered or current; the current body scales to 1.7.
 
 ### Project Body
-The signature mark: a small sphere drawn with a radial gradient from a white highlight through the project color to its shadowed edge. It precedes every project's metadata line (stage, belt, dialog) and stands for the project on the rail and the hero ring.
+The signature mark: a small sphere drawn with a radial gradient from a white highlight through the project color to its shadowed edge. It precedes every project's metadata line (stage, belt, dialog) and stands for the project on the rail.
 
 ### Detail Dialog
 Raised void, 1px strong hairline, 18px corners, dialog drop shadow, over a backdrop of `rgb(2 3 7 / 0.82)` with a 10px blur. A sticky top bar fades from the raised void to transparent and holds the round close button. Title in solid-ink Neuropol, then the project body with its metadata, the summary as a lede, actions, media in a 10px frame, and body text.

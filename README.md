@@ -20,7 +20,7 @@ Production preview: `http://127.0.0.1:4173`. The static output is in `dist/`. Th
 
 ## Content and interactions
 
-- The hero pairs the chrome **Ideas in Orbit** lettering (live SVG text in Neuropol) with a real project: the Socionics Galaxy screenshot melts into the page, and a chrome orbit ring with three project-colored bodies passes around it. The intro names Steven and the two kinds of work he builds, and says he is open to freelance projects and full-time roles.
+- The hero pairs the chrome **Ideas in Orbit** lettering (live SVG text in Neuropol) with the chrome-cube artwork from the original mockup (`public/assets/hero-cubes.webp`). Hovering a cube lifts the sculpture and lights it (`src/hero-motion.js`); reduced motion keeps the glow and drops the lift. The intro names Steven and the two kinds of work he builds, and says he is open to freelance projects and full-time roles.
 - **Launch sequence:** Socionics Galaxy, Socionics Research Lab, and Zipchair AI Assistant each get a full screen. The screen shows a large screenshot, what the project is, its honest status (live, code on GitHub, pitch for Zipchair), a plain-language story, and links. On large screens the stages pin, and each new one rises over the last like a planet's limb while the previous one recedes (CSS scroll-driven animation). An orbit rail marks the current stage. On phones, short windows, and reduced motion, the stages stack normally.
 - **The belt:** the other eight projects are listed in two groups, "Agents that see and act" and "Worlds and tools". Each has a thumbnail or drawn cover, a one-line summary, and a status. They are plain `#hash` links that open a project dialog. Opening one adds a history entry, so the browser's Back button closes the dialog. Old share links (`#projects`, `#agents`, …) scroll to the matching section.
 - The stages, the rail, and the belt are rendered into `index.html` at build time from `src/portfolio-data.js` (the `render-work` plugin in `vite.config.js`), so the work reads without JavaScript. The about section's project counts come from the same data.
@@ -48,7 +48,7 @@ The source content came from `spaceynyc/portfolio`, commit `261f0cb83ce3d8008343
 | `blender/spaceynyc-sculptures.blend` | Chrome cubes, orbital rings, star, and flowing filaments |
 | `blender/spaceynyc-service-icons.blend` | Four service models (no longer on the page) |
 
-The chrome-cube hero and the four 3D service icons were retired in the launch-sequence redesign; their exported files remain in git history. The models were created with the installed [Blender MCP server](https://github.com/ahujasid/blender-mcp) and Blender 4.5 add-on. `scripts/mcp_client.py` provides the MCP Python client; asset construction scripts are retained alongside it. The sculpture models live only in the `.blend` source.
+The hero image (`public/assets/hero-cubes.webp`) is the chrome-cube artwork from the original mockup, cut out with its header band masked away. The four 3D service icons were retired in the launch-sequence redesign; their exported files remain in git history. The models were created with the installed [Blender MCP server](https://github.com/ahujasid/blender-mcp) and Blender 4.5 add-on. `scripts/mcp_client.py` provides the MCP Python client; asset construction scripts are retained alongside it. The sculpture models live only in the `.blend` source.
 
 ## Verification
 

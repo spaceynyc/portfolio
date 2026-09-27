@@ -23,6 +23,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" href="/assets/Neuropol.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/Sora-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/hero-cubes.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="stylesheet" href="/src/site.css" />
   </head>
   <body>
@@ -79,39 +80,7 @@
             <p class="availability">Open to freelance projects and the right full-time role.</p>
             <a class="pill hero-cta" href="#work">See the work <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
           </div>
-          <div class="hero-visual">
-            <img
-              class="hero-galaxy"
-              src="/thumbs/socionics-galaxy-full.webp"
-              alt="Socionics Galaxy, one of my projects: sixteen personality types as glowing spheres in dark 3D space"
-              width="1600"
-              height="1000"
-              fetchpriority="high"
-            />
-            <svg class="hero-orbit" viewBox="0 0 1600 1000" aria-hidden="true">
-              <defs>
-                <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#8b84ff" stop-opacity="0" />
-                  <stop offset=".18" stop-color="#b3adff" />
-                  <stop offset=".5" stop-color="#f4f3ff" />
-                  <stop offset=".78" stop-color="#b3adff" />
-                  <stop offset="1" stop-color="#8b84ff" stop-opacity="0" />
-                </linearGradient>
-                <radialGradient id="body-galaxy" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#ffd6e5" /><stop offset=".45" stop-color="#ff6b9d" /><stop offset="1" stop-color="#5c1a33" /></radialGradient>
-                <radialGradient id="body-lab" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#ffe6cc" /><stop offset=".45" stop-color="#ffa64d" /><stop offset="1" stop-color="#5e3510" /></radialGradient>
-                <radialGradient id="body-zipchair" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#d4e4ff" /><stop offset=".45" stop-color="#3b82f6" /><stop offset="1" stop-color="#0f2653" /></radialGradient>
-              </defs>
-              <g transform="rotate(-9 800 540)">
-                <path class="orbit-back" d="M60 540A740 150 0 0 1 1540 540" />
-                <use class="orbit-star" href="#i-star" x="176" y="428" width="50" height="50" />
-                <path class="orbit-front" d="M60 540A740 150 0 0 0 1540 540" />
-                <circle cx="1136" cy="674" r="17" fill="url(#body-galaxy)" />
-                <circle cx="329" cy="656" r="12" fill="url(#body-lab)" />
-                <circle cx="1488" cy="595" r="8" fill="url(#body-zipchair)" />
-                <use class="orbit-star" href="#i-star" x="1300" y="612" width="30" height="30" />
-              </g>
-            </svg>
-          </div>
+          <div class="hero-visual" aria-hidden="true"><div class="hero-art"></div></div>
         </section>
 
         <section id="work" class="work" aria-labelledby="work-title">
