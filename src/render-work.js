@@ -36,7 +36,7 @@ export function stagesMarkup() {
     <article class="stage stage-${i + 1}" aria-labelledby="stage-title-${p.id}" style="--project-color:${p.color}">
       <div class="stage-inner">
         <figure class="stage-media" style="${p.frame ?? ''}">
-          <img src="${p.frame ? p.original : p.detail}" alt="${escape(p.alt)}" width="1600" height="1000" loading="${i ? 'lazy' : 'eager'}" decoding="async" />
+          <img src="${p.stage ?? p.detail}" alt="${escape(p.alt)}" width="1600" height="1000" loading="${i ? 'lazy' : 'eager'}" decoding="async" />
         </figure>
         <div class="stage-copy">
           <h3 class="stage-title" id="stage-title-${p.id}">${escape(p.title).replace(' AI', '\u00a0AI')}</h3>
