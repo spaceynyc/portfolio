@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T12:00:00Z",
+  "title": "Design System: spaceynyc.dev",
+  "extensions": {
+    "colorMeta": {
+      "orbit-lavender": { "role": "primary", "displayName": "Orbit Lavender", "canonical": "#b3adff", "tonalRamp": ["oklch(22% 0.07 285)", "oklch(32% 0.1 285)", "oklch(42% 0.13 285)", "oklch(52% 0.15 285)", "oklch(64% 0.15 285)", "oklch(77% 0.12 285)", "oklch(86% 0.07 285)", "oklch(95% 0.025 285)"] },
+      "orbit-glow": { "role": "primary", "displayName": "Orbit Glow", "canonical": "#8b84ff", "tonalRamp": ["oklch(20% 0.08 283)", "oklch(30% 0.12 283)", "oklch(40% 0.16 283)", "oklch(52% 0.18 283)", "oklch(65% 0.18 283)", "oklch(75% 0.13 283)", "oklch(85% 0.08 283)", "oklch(95% 0.03 283)"] },
+      "orbit-deep": { "role": "primary", "displayName": "Orbit Deep", "canonical": "#5c50b3", "tonalRamp": ["oklch(18% 0.06 283)", "oklch(27% 0.09 283)", "oklch(37% 0.12 283)", "oklch(49% 0.15 283)", "oklch(60% 0.14 283)", "oklch(72% 0.1 283)", "oklch(84% 0.06 283)", "oklch(94% 0.02 283)"] },
+      "orbit-haze": { "role": "primary", "displayName": "Orbit Haze", "canonical": "rgb(139 132 255 / 0.14)" },
+      "void": { "role": "neutral", "displayName": "Void", "canonical": "#050607", "tonalRamp": ["#050607", "#090a0f", "#0c0d14", "#14131f", "#25252f", "#3d3c4a", "#8d8b9e", "#ecebf5"] },
+      "void-raised": { "role": "neutral", "displayName": "Raised Void", "canonical": "#090a0f" },
+      "panel": { "role": "neutral", "displayName": "Panel", "canonical": "#0c0d14" },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "#25252f" },
+      "hairline-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "#3d3c4a" },
+      "control-rim": { "role": "neutral", "displayName": "Control Rim", "canonical": "#8d8b9e" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#ecebf5", "tonalRamp": ["#9e9cb0", "#c4c3d1", "#ecebf5"] },
+      "ink-2": { "role": "neutral", "displayName": "Ink 2", "canonical": "#c4c3d1" },
+      "ink-3": { "role": "neutral", "displayName": "Ink 3", "canonical": "#9e9cb0" },
+      "pill-rim": { "role": "neutral", "displayName": "Pill Rim", "canonical": "#d9d8ea" },
+      "pill-hover-fill": { "role": "neutral", "displayName": "Pill Hover Fill", "canonical": "#171529" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (chrome)", "purpose": "The IDEAS IN ORBIT hero line only, an SVG filled with the chrome gradient." },
+      "headline-chrome": { "displayName": "Stage Title (chrome)", "purpose": "The three featured stage titles, uppercase, chrome gradient clipped to text." },
+      "headline": { "displayName": "Section Heading", "purpose": "Section headings in main, uppercase solid Ink Neuropol, one step below stage titles." },
+      "title-dialog": { "displayName": "Dialog Title", "purpose": "Project title in the detail dialog, solid Ink Neuropol in the project's own casing." },
+      "title": { "displayName": "Title", "purpose": "Belt group headings and the about side heading, Sora 500." },
+      "lede": { "displayName": "Lede", "purpose": "Hero intro, stage and dialog summaries, contact copy." },
+      "body": { "displayName": "Body", "purpose": "Reading copy; 1.7 to 1.75 line height for long passages." },
+      "label": { "displayName": "Label", "purpose": "Navigation, metadata, text links, stack lines." },
+      "label-control": { "displayName": "Control Label", "purpose": "Text inside capsule buttons." },
+      "caption": { "displayName": "Caption", "purpose": "Belt metadata, legal line, media badge." }
+    },
+    "chrome": {
+      "value": "linear-gradient(180deg, #fff 0%, #e3e3f1 25%, #9394a5 48%, #d9dae7 55%, #f9f9ff 76%, #9d9aaf 100%)",
+      "purpose": "The chrome fill for the hero line and stage titles only (--chrome)."
+    },
+    "projectBody": {
+      "value": "radial-gradient(circle at 35% 30%, #fff 0, var(--project-color) 45%, color-mix(in srgb, var(--project-color) 35%, #000) 100%)",
+      "purpose": "The lit sphere that marks each project; --project-color comes from the project data."
+    },
+    "shadows": [
+      { "name": "window-drop", "value": "0 22px 14px -16px rgb(0 0 0 / 0.9)", "purpose": "Stage screenshots." },
+      { "name": "dialog-drop", "value": "0 20px 14px -14px rgb(0 0 0 / 0.95)", "purpose": "The detail dialog." },
+      { "name": "sheet-drop", "value": "0 20px 30px -10px rgb(0 0 0 / 0.85)", "purpose": "The phone menu sheet." },
+      { "name": "limb-light", "value": "0 -28px 40px -30px color-mix(in srgb, var(--project-color) 45%, transparent)", "purpose": "The lit rim above each stage." },
+      { "name": "chrome-rim", "value": "inset 1px 1px 2px rgb(236 235 255 / 0.35)", "purpose": "Primary capsule at rest." },
+      { "name": "chrome-rim-hover", "value": "inset 1px 1px 3px rgb(255 255 255 / 0.55)", "purpose": "Primary capsule on hover." },
+      { "name": "backdrop", "value": "background: rgb(2 3 7 / 0.82); backdrop-filter: blur(10px)", "purpose": "Dialog backdrop." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Lifts, nudges, rail body scaling, thumbnail zoom." },
+      { "name": "color-fade", "value": "0.2s", "purpose": "Link and label color changes." },
+      { "name": "pill-lift", "value": "transform 0.35s var(--ease-out); translateY(-2px)", "purpose": "Primary capsule hover." },
+      { "name": "stage-recede", "value": "to { opacity: 0.18; transform: translateY(-4%) scale(0.88) } on a view timeline over the next stage's entry", "purpose": "Outgoing stage recedes as the next slides over it; only at 1024px+ wide, 700px+ tall, motion allowed." },
+      { "name": "rail-current", "value": "scale(1.7) over 0.45s var(--ease-out)", "purpose": "Current body on the orbit rail." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "Stages become a plain stack; pill lift, arrow nudge, and thumbnail zoom are removed; smooth scrolling off." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "max-width: 720px" },
+      { "name": "belt-single", "value": "max-width: 900px" },
+      { "name": "stage-split", "value": "min-width: 900px" },
+      { "name": "stack-hero", "value": "max-width: 1100px" },
+      { "name": "pinned-stages", "value": "min-width: 1024px and min-height: 700px and prefers-reduced-motion: no-preference" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Pill",
+      "kind": "button",
+      "refersTo": "pill",
+      "description": "Chrome-rimmed capsule for every primary action, with a trailing icon.",
+      "html": "<a class=\"ds-pill\" href=\"#\">See the work <svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; min-height: 2.75rem; padding: 0 1.25rem 0 1.4rem; border: 1px solid #d9d8ea; border-radius: 999px; font-family: Sora, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.03em; color: #ecebf5; text-decoration: none; white-space: nowrap; background: linear-gradient(110deg, rgb(17 19 27 / 0.7), rgb(5 6 7 / 0.2) 60%); box-shadow: inset 1px 1px 2px rgb(236 235 255 / 0.35); transition: background 0.25s, box-shadow 0.25s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); } .ds-pill:hover { background: #171529; border-color: #fff; box-shadow: inset 1px 1px 3px rgb(255 255 255 / 0.55); transform: translateY(-2px); } .ds-pill:active { transform: translateY(0); } .ds-pill:focus-visible { outline: 2px solid #b3adff; outline-offset: 3px; } .ds-icon { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }"
+    },
+    {
+      "name": "Ghost Capsule",
+      "kind": "button",
+      "refersTo": "capsule-ghost",
+      "description": "Secondary capsule, such as Copy address.",
+      "html": "<button class=\"ds-ghost\" type=\"button\">Copy address</button>",
+      "css": ".ds-ghost { min-height: 2.75rem; padding: 0 1rem; border: 1px solid #8d8b9e; border-radius: 999px; background: none; font-family: Sora, system-ui, sans-serif; font-size: 0.875rem; color: #c4c3d1; cursor: pointer; transition: background 0.2s, color 0.2s; } .ds-ghost:hover { background: rgb(139 132 255 / 0.14); color: #ecebf5; } .ds-ghost:focus-visible { outline: 2px solid #b3adff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Round Button",
+      "kind": "button",
+      "refersTo": "round-button",
+      "description": "Circular icon control, used to close the dialog.",
+      "html": "<button class=\"ds-round\" type=\"button\" aria-label=\"Close\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\"/></svg></button>",
+      "css": ".ds-round { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 1px solid #8d8b9e; border-radius: 50%; background: none; color: #ecebf5; cursor: pointer; transition: background 0.2s, border-color 0.2s; } .ds-round svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; } .ds-round:hover { background: rgb(139 132 255 / 0.14); border-color: #b3adff; } .ds-round:focus-visible { outline: 2px solid #b3adff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Quiet secondary action beside a pill, with a leading icon.",
+      "html": "<a class=\"ds-text-link\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7M9 7h8v8\"/></svg>Code on GitHub</a>",
+      "css": ".ds-text-link { display: inline-flex; align-items: center; gap: 0.55rem; min-height: 2.75rem; font-family: Sora, system-ui, sans-serif; font-size: 0.875rem; color: #c4c3d1; text-decoration: none; transition: color 0.2s; } .ds-text-link svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; } .ds-text-link:hover { color: #ecebf5; } .ds-text-link:focus-visible { outline: 2px solid #b3adff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "text-link",
+      "description": "Plain Ink 2 links with no indicator, and the primary capsule at the right.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Work</a><a href=\"#\">About</a><a href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 2.5rem; padding: 0 1.5rem; background: #050607; } .ds-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; font-family: Sora, system-ui, sans-serif; font-size: 0.875rem; color: #c4c3d1; text-decoration: none; transition: color 0.2s; } .ds-nav a:hover { color: #ecebf5; } .ds-nav a:focus-visible { outline: 2px solid #b3adff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Project Metadata with Body",
+      "kind": "chip",
+      "refersTo": "project-body",
+      "description": "The lit project body followed by kind and honest status.",
+      "html": "<p class=\"ds-meta\" style=\"--project-color:#ff6b9d\">3D web world<span aria-hidden=\"true\"> · </span>Live<span aria-hidden=\"true\"> · </span>Code public</p>",
+      "css": ".ds-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0 0.4rem; margin: 0; font-family: Sora, system-ui, sans-serif; font-size: 0.875rem; color: #9e9cb0; } .ds-meta::before { content: \"\"; width: 0.7rem; height: 0.7rem; margin-right: 0.35rem; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0, var(--project-color) 45%, color-mix(in srgb, var(--project-color) 35%, #000) 100%); }"
+    },
+    {
+      "name": "Belt Row",
+      "kind": "card",
+      "refersTo": "belt-thumb",
+      "description": "Hairline-ruled list row for non-featured projects: thumbnail, name with body, summary, metadata, arrow.",
+      "html": "<a class=\"ds-belt\" href=\"#\" style=\"--project-color:#5bb7ff\"><span class=\"ds-belt-thumb\"></span><span class=\"ds-belt-text\"><span class=\"ds-belt-name\">SUE</span><span class=\"ds-belt-summary\">A local service that turns what is on screen into information an agent can act on.</span><span class=\"ds-belt-meta\">Screen-reading engine · Not public</span></span><svg class=\"ds-belt-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-belt { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; align-items: center; gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid #25252f; color: #ecebf5; text-decoration: none; font-family: Sora, system-ui, sans-serif; } .ds-belt-thumb { display: block; aspect-ratio: 16 / 9; border: 1px solid #25252f; border-radius: 8px; background: radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--project-color) 16%, transparent), transparent 60%), #090a0f; } .ds-belt-text { display: grid; gap: 0.2rem; } .ds-belt-name { display: flex; align-items: center; font-size: 1.0625rem; font-weight: 500; transition: color 0.2s; } .ds-belt-name::before { content: \"\"; width: 0.55rem; height: 0.55rem; margin-right: 0.55rem; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff 0, var(--project-color) 45%, color-mix(in srgb, var(--project-color) 35%, #000) 100%); } .ds-belt-summary { font-size: 0.875rem; line-height: 1.5; color: #c4c3d1; } .ds-belt-meta { font-size: 0.75rem; color: #9e9cb0; } .ds-belt-arrow { width: 1.25rem; height: 1.25rem; fill: none; stroke: #9e9cb0; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.2s; } .ds-belt:hover .ds-belt-name { color: #b3adff; } .ds-belt:hover .ds-belt-arrow { stroke: #ecebf5; transform: translateX(3px); } .ds-belt:focus-visible { outline: 2px solid #b3adff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Stage Window",
+      "kind": "custom",
+      "refersTo": "stage-window",
+      "description": "A featured stage: elliptical limb lit in the project color, chrome Neuropol title, screenshot window with a short black drop.",
+      "html": "<article class=\"ds-stage\" style=\"--project-color:#ff6b9d\"><h3 class=\"ds-stage-title\">Socionics Galaxy</h3><div class=\"ds-stage-window\"></div></article>",
+      "css": ".ds-stage { padding: 2.5rem 1.5rem 3rem; background: #050607; border-top: 1px solid color-mix(in srgb, var(--project-color) 55%, transparent); border-radius: 50% 50% 0 0 / 2rem 2rem 0 0; box-shadow: 0 -28px 40px -30px color-mix(in srgb, var(--project-color) 45%, transparent); } .ds-stage-title { margin: 0 0 1.5rem; font-family: Neuropol, 'Arial Narrow', sans-serif; font-weight: 400; font-size: 2.5rem; line-height: 1.04; letter-spacing: 0.01em; text-transform: uppercase; background: linear-gradient(180deg, #fff 0%, #e3e3f1 25%, #9394a5 48%, #d9dae7 55%, #f9f9ff 76%, #9d9aaf 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; } .ds-stage-window { aspect-ratio: 16 / 10; border: 1px solid #3d3c4a; border-radius: 14px; background: #090a0f; box-shadow: 0 22px 14px -16px rgb(0 0 0 / 0.9); }"
+    },
+    {
+      "name": "Detail Dialog",
+      "kind": "card",
+      "refersTo": "dialog",
+      "description": "Raised-void dialog with a solid-ink Neuropol title and a round close button.",
+      "html": "<div class=\"ds-dialog\"><div class=\"ds-dialog-bar\"><span class=\"ds-dialog-close\" aria-hidden=\"true\"></span></div><h2 class=\"ds-dialog-title\">SUE</h2><p class=\"ds-dialog-summary\">A local service that turns what is on screen into information an agent can act on.</p></div>",
+      "css": ".ds-dialog { max-width: 36rem; padding: 0 2rem 2rem; color: #ecebf5; background: #090a0f; border: 1px solid #3d3c4a; border-radius: 18px; box-shadow: 0 20px 14px -14px rgb(0 0 0 / 0.95); } .ds-dialog-bar { display: flex; justify-content: flex-end; padding: 0.75rem 0; } .ds-dialog-close { width: 2.75rem; height: 2.75rem; border: 1px solid #8d8b9e; border-radius: 50%; } .ds-dialog-title { margin: 0; font-family: Neuropol, 'Arial Narrow', sans-serif; font-weight: 400; font-size: 2rem; line-height: 1.2; } .ds-dialog-summary { margin: 0.75rem 0 0; font-family: Sora, system-ui, sans-serif; font-size: 1.125rem; line-height: 1.6; color: #c4c3d1; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Ideas in Orbit",
+    "overview": "The work is the planet and the page is its orbit. Everything sits on near-black space, and the brightest things on screen are the projects themselves: real screenshots used as windows onto each world, bleeding off the right edge, with the page's own chrome kept thin around them. A single lavender orbit ring is the house color. Each project brings its own color as a small lit body, a sphere with a white highlight, that marks it wherever it appears: beside its metadata, on the sticky rail, in the belt, and on the lit rim of its stage.\n\nThe system is dark, quiet, and specific. Chrome lettering in Neuropol is reserved for a few ceremonial moments (the hero line and the three featured stage titles). Everything else is Sora in a three-step ink ramp on the void. Controls are chrome-rimmed capsules. Depth comes from overlap and darkness rather than floating cards: stages slide over one another and recede, windows cast a short, heavy shadow, and sections are separated by hairlines rather than boxes.\n\nDensity is generous for the featured three (one full viewport each on desktop) and compact for the rest: the remaining eight sit in a two-column list with small thumbnails, grouped into agents and worlds.",
+    "keyCharacteristics": [
+      "Near-black void (#050607) with slightly lifted panels, no gradients behind content.",
+      "One accent, the orbit lavender; project colors appear only as small lit bodies and rim light.",
+      "Neuropol for display and headings, chrome only on the hero line and stage titles; Sora for everything else.",
+      "Chrome-rimmed capsule controls with an inset highlight, never a glow halo.",
+      "Real screenshots as windows, bleeding off the right edge on wide screens.",
+      "Hairline-divided sections; lists instead of card grids."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Lavender is the only interface accent. Project colors never color text, buttons, or backgrounds; they live in bodies, rims, and covers.", "section": "colors" },
+      { "name": "The Ink Ramp Rule", "body": "Text uses Ink, Ink 2, or Ink 3 on the void and nothing dimmer. Hierarchy is carried by step, not by opacity.", "section": "colors" },
+      { "name": "The Chrome Ceremony Rule", "body": "Chrome-filled Neuropol appears only on the hero line and the three featured stage titles. Every other Neuropol heading is solid Ink.", "section": "typography" },
+      { "name": "The Step-Below Rule", "body": "Section headings and dialog titles sit one size step below the chrome stage titles (2.35rem and 2.25rem maximum against 3rem).", "section": "typography" },
+      { "name": "The Sora Everywhere Else Rule", "body": "All body, interface, metadata, and control text is Sora. Neuropol never sets a sentence.", "section": "typography" },
+      { "name": "The Black Shadow Rule", "body": "Drop shadows are pure black, short, and pulled in by a negative spread. Colored light belongs to the orbit world itself (a project's rim and body, the stars, the faint lavender haze on the chrome hero line), never under a control or a surface.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every page on the void (#050607) and lift only to the raised void or panel for windows, sheets, and the dialog.",
+      "Do mark every project with its own lit body before its metadata, and keep its color out of text and controls.",
+      "Do use the chrome capsule for every primary action and the ghost capsule or round button for secondary controls, all at least 2.75rem tall.",
+      "Do show real screenshots as bordered windows and let them run off the right edge on wide screens.",
+      "Do set section and dialog headings in solid-ink Neuropol, one step below the chrome stage titles.",
+      "Do focus with a 2px lavender outline at a 3px offset.",
+      "Do separate sections with 1px hairlines instead of boxes."
+    ],
+    "donts": [
+      "Don't put chrome fill on any heading other than the hero line and the featured stage titles.",
+      "Don't put a glow halo around a capsule; its light is the inset rim (a glowing star icon inside it is part of the orbit world, not a halo).",
+      "Don't introduce a second accent color, or color interface text with a project color.",
+      "Don't lay work out as a paged card carousel or a grid of equal cards; featured work gets stages, the rest gets a list.",
+      "Don't set sentences, metadata, or controls in Neuropol.",
+      "Don't use colored or diffuse ambient shadows under surfaces."
+    ]
+  }
+}

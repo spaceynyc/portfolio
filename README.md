@@ -20,21 +20,19 @@ Production preview: `http://127.0.0.1:4173`. The static output is in `dist/`. Th
 
 ## Content and interactions
 
-- The logo and the chrome **Ideas in Orbit** hero lettering (live SVG text in Neuropol) lead the page. Section headings are live text set in Neuropol with the same chrome gradient. The copy is written in Steven's own voice.
-- All 11 projects appear in a carousel: three cards on desktop, two on tablet, one on phones. The cards form a single Tab stop; arrow keys, Home and End move between them. Arrows, page dots (desktop), a live counter, and native touch swiping are supported. There is no autoplay.
-- Project screenshots are served as art-directed 16:9 crops (`public/thumbs/*.webp`) on cards and 16:10 images in dialogs, linking to the original full-resolution captures in `public/screenshots/`. The four projects without screenshots get drawn covers (`src/covers.js`).
-- Dialogs open for a project, the full project list, or a service. Each has a shareable URL hash (`#drift`, `#projects`, `#agents`), puts the live/source links under the title, and offers **All projects** to step back to the list it came from.
-- Hovering a hero cube lifts the sculpture and lights it; the four Blender service models rotate while hovered. three.js loads only when the services section approaches the viewport. Reduced-motion preferences keep the glow but drop the lift, sway, rotation, and smooth scrolling.
+- The hero pairs the chrome **Ideas in Orbit** lettering (live SVG text in Neuropol) with the chrome-cube artwork from the original mockup (`public/assets/hero-cubes.webp`). Hovering a cube lifts the sculpture and lights it (`src/hero-motion.js`); reduced motion keeps the glow and drops the lift. The intro names Steven and the two kinds of work he builds, and says he is open to freelance projects and full-time roles.
+- **Launch sequence:** Socionics Galaxy, Socionics Research Lab, and Zipchair AI Assistant each get a full screen. The screen shows a large screenshot, what the project is, its honest status (live, code on GitHub, pitch for Zipchair), a plain-language story, and links. On large screens the stages pin, and each new one rises over the last like a planet's limb while the previous one recedes (CSS scroll-driven animation). An orbit rail marks the current stage. On phones, short windows, and reduced motion, the stages stack normally.
+- **The belt:** the other eight projects are listed in two groups, "Agents that see and act" and "Worlds and tools". Each has a thumbnail or drawn cover, a one-line summary, and a status. They are plain `#hash` links that open a project dialog. Opening one adds a history entry, so the browser's Back button closes the dialog. Old share links (`#projects`, `#agents`, …) scroll to the matching section.
+- The stages, the rail, and the belt are rendered into `index.html` at build time from `src/portfolio-data.js` (the `render-work` plugin in `vite.config.js`), so the work reads without JavaScript. The about section's project counts come from the same data.
 - Contact uses `mailto:srich7x@gmail.com`, with a copy-address button for visitors without a mail app. GitHub and X links carry visible labels in the contact section.
 - `/hermes-sms/`, `/privacy/`, and `/terms/` preserve the original policy copy. Their extensionless URLs redirect to the corresponding pages in development and preview. `vercel.json` enables trailing-slash routes on Vercel.
 
 ## Editing
 
-- `index.html`: page structure, hero, services, about, contact, footer, and the shared SVG icon sprite.
-- `src/portfolio-data.js`: project content, one-line summaries, links, images, and the technology list.
-- `src/main.js`: project/service dialogs, deep links, copy-email, and mobile navigation.
-- `src/carousel.js`: carousel navigation, roving focus, and responsive pagination.
-- `src/hero-motion.js`: cube hover hit-testing and lift.
+- `index.html`: hero, section shells, about, contact, footer, and the shared SVG icon sprite.
+- `src/portfolio-data.js`: project content, including `kind`, `status`, `featured`, `group`, and the featured `story` and `alt` text.
+- `src/render-work.js`: markup for the launch stages, rail, and belt, shared by the build plugin and the dialog script.
+- `src/main.js`: project dialogs and history, the launch rail, copy-email, and mobile navigation.
 - `src/covers.js`: drawn covers for projects without screenshots.
 - `src/base.css`: design tokens (color, type scale, spacing), fonts, reset, and shared controls; imported by `src/site.css` (portfolio) and `src/policies.css` (policy pages).
 - `hermes-sms/`, `privacy/`, `terms/`: static policy pages.
@@ -48,9 +46,9 @@ The source content came from `spaceynyc/portfolio`, commit `261f0cb83ce3d8008343
 | File | Contents |
 | --- | --- |
 | `blender/spaceynyc-sculptures.blend` | Chrome cubes, orbital rings, star, and flowing filaments |
-| `blender/spaceynyc-service-icons.blend` | Four service models used in the portfolio |
+| `blender/spaceynyc-service-icons.blend` | Four service models (no longer on the page) |
 
-The four service models ship as `public/assets/*-icon.glb` with `.webp` posters. The hero image (`public/assets/hero-cubes.webp`) is the chrome-cube artwork from the original mockup, cut out with its header band masked away. They were created with the installed [Blender MCP server](https://github.com/ahujasid/blender-mcp) and Blender 4.5 add-on. `scripts/mcp_client.py` provides the MCP Python client; asset construction scripts are retained alongside it. The sculpture models live only in the `.blend` source.
+The hero image (`public/assets/hero-cubes.webp`) is the chrome-cube artwork from the original mockup, cut out with its header band masked away. The four 3D service icons were retired in the launch-sequence redesign; their exported files remain in git history. The models were created with the installed [Blender MCP server](https://github.com/ahujasid/blender-mcp) and Blender 4.5 add-on. `scripts/mcp_client.py` provides the MCP Python client; asset construction scripts are retained alongside it. The sculpture models live only in the `.blend` source.
 
 ## Verification
 

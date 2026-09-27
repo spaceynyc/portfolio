@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
+import { railMarkup, stagesMarkup, beltMarkup, countsSentence, beltCount } from './src/render-work.js';
 
 function policyRedirect(req, res, next) {
   const url = new URL(req.url, 'http://localhost');
@@ -11,15 +12,27 @@ function policyRedirect(req, res, next) {
   next();
 }
 
+// Renders the work sections from src/portfolio-data.js into index.html, so they exist before any script runs.
+const renderWork = {
+  name: 'render-work',
+  transformIndexHtml(html) {
+    return html
+      .replace('<!--@rail-->', railMarkup())
+      .replace('<!--@stages-->', stagesMarkup())
+      .replace('<!--@belt-->', beltMarkup())
+      .replace('<!--@belt-count-->', beltCount)
+      .replace('<!--@belt-count-lower-->', beltCount.toLowerCase())
+      .replace('<!--@counts-->', countsSentence());
+  },
+};
+
 export default defineConfig({
-  plugins: [{
+  plugins: [renderWork, {
     name: 'preserve-policy-routes',
     configureServer(server) { server.middlewares.use(policyRedirect); },
     configurePreviewServer(server) { server.middlewares.use(policyRedirect); },
   }],
   build: {
-    // three.js lives in a lazily imported chunk that loads only near the services section.
-    chunkSizeWarningLimit: 600,
     rollupOptions: {
       input: Object.fromEntries(['index.html', 'hermes-sms/index.html', 'privacy/index.html', 'terms/index.html'].map(file => [file, fileURLToPath(new URL(file, import.meta.url))])),
     },
