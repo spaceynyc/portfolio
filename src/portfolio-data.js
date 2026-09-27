@@ -1,6 +1,6 @@
 // Projects and assets migrated from spaceynyc/portfolio at 261f0cb83ce3d80083436d30afbca40664836d31.
 // Descriptions rewritten for the Ideas in Orbit portfolio; original project facts and links retained.
-// kind: what it is · status: honest public state · featured: gets a full launch stage · group: agents or worlds in the belt · story/alt: featured copy · frame: how the stage crops the screenshot.
+// kind: what it is · status: honest public state · featured: gets a full launch stage · group: agents or worlds in the belt · story/alt: featured copy · frame: how the stage crops the screenshot (framed stages load the full-resolution original).
 // image: 16:9 card crop · detail: 16:10 dialog image · original: full-resolution screenshot.
 export const projects = [
   {
