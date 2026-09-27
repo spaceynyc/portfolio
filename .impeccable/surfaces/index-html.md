@@ -17,7 +17,7 @@ Build path: code-led (no image generation in this environment).
 
 THESIS: The work is the planet and the page is its orbit. Refuses the category page of a decorative hero, a paged card carousel, four service tiles and a principles list.
 
-OWN-WORLD: Near-black space (#050607). Chrome Neuropol lettering is kept only for the hero line and the three stage titles. Lavender from the orbit ring is the single accent. Each project carries its own color as a small body on the orbit. Real screenshots are windows onto each world. Sora for everything else. Chrome-rimmed pills are the controls, without glow halos.
+OWN-WORLD: Near-black space (#050607). Chrome Neuropol lettering is kept only for the hero line and the three stage titles. Section headings and dialog titles use Neuropol in solid ink, one size step below the stage titles, never chrome. This amendment was made after the finish review, because Neuropol is a PRODUCT.md brand commitment. Lavender from the orbit ring is the single accent. Each project carries its own color as a small body on the orbit. Real screenshots are windows onto each world. Sora for all body and interface text. Chrome-rimmed pills are the controls, without glow halos.
 
 STORY: The visitor meets Steven and his line, sees his actual galaxy on screen, launches through three full-screen projects with plain what-it-does copy and honest status, scans eight more, learns what he takes on, and emails him.
 

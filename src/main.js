@@ -18,7 +18,7 @@ function showProject(p) {
   content.style.setProperty('--project-color', p.color);
   const image = p.image
     ? `<a class="dialog-media dialog-media-link" href="${p.original}" target="_blank" rel="noopener"><img src="${p.detail}" alt="${escape(p.title)} screenshot" width="1600" height="1000" decoding="async" /><span>Full size <svg class="icon" aria-hidden="true"><use href="#i-out" /></svg></span></a>`
-    : `<div class="dialog-media">${cover(p)}</div>`;
+    : `<figure class="dialog-media dialog-cover">${cover(p)}<figcaption>A drawn motif of what ${escape(p.title)} does. There is no public screenshot yet.</figcaption></figure>`;
   content.innerHTML = `<h2 class="dialog-title" id="dialog-title" tabindex="-1">${escape(p.title)}</h2>
     <p class="dialog-meta">${meta(p)}</p>
     <p class="dialog-summary">${escape(p.summary)}</p>

@@ -1,6 +1,6 @@
 // Projects and assets migrated from spaceynyc/portfolio at 261f0cb83ce3d80083436d30afbca40664836d31.
 // Descriptions rewritten for the Ideas in Orbit portfolio; original project facts and links retained.
-// kind: what it is · status: honest public state · featured: gets a full launch stage · group: agents or worlds in the belt · story/alt: featured copy.
+// kind: what it is · status: honest public state · featured: gets a full launch stage · group: agents or worlds in the belt · story/alt: featured copy · frame: how the stage crops the screenshot.
 // image: 16:9 card crop · detail: 16:10 dialog image · original: full-resolution screenshot.
 export const projects = [
   {
@@ -23,11 +23,12 @@ export const projects = [
     "kind": "3D web world",
     "status": [
       "Live",
-      "Code on GitHub"
+      "Code public"
     ],
     "featured": true,
     "group": "worlds",
-    "story": "Socionics sorts people into sixteen personality types and predicts how any two of them get along. I turned the theory into a place: each type is a star, every relationship between two types is calculated and drawn, and the spiral arms group the types into their four families, called quadras. Fly through it with a mouse, or jump to any type from a command palette.",
+    "frame": "--frame-scale:1.7;--frame-origin:50% 58%",
+    "story": "Socionics sorts people into sixteen personality types and predicts how any two of them get along. I turned the theory into a place: each type is a star, colored by its family, or quadra. Hover a star and its relationships to the other fifteen are drawn; click to lock one in place, or press ⌘K to jump to any type.",
     "alt": "Socionics Galaxy: the sixteen personality types as glowing spheres in dark 3D space, colored by quadra"
   },
   {
@@ -50,7 +51,7 @@ export const projects = [
     "kind": "Multi-agent research tool",
     "status": [
       "Live",
-      "Code on GitHub"
+      "Code public"
     ],
     "featured": true,
     "group": "agents",
@@ -141,6 +142,7 @@ export const projects = [
     ],
     "featured": true,
     "group": "agents",
+    "frame": "--frame-scale:1.75;--frame-origin:0 0",
     "story": "A pitch I built for Zipchair, which sells licensed sports furniture: more than 12,000 chairs, recliners, stools and sofas carrying team logos. Instead of paging through filters, a fan names their team and the agent narrows the catalog in a back-and-forth conversation.",
     "alt": "Zipchair AI Assistant: the agent asks which team you are a fan of, offering quick replies like Dallas Cowboys, Gaming Chairs and Under $500"
   },

@@ -35,7 +35,7 @@ export function stagesMarkup() {
     <span class="stage-anchor" id="${p.id}"></span>
     <article class="stage stage-${i + 1}" aria-labelledby="stage-title-${p.id}" style="--project-color:${p.color}">
       <div class="stage-inner">
-        <figure class="stage-media">
+        <figure class="stage-media" style="${p.frame ?? ''}">
           <img src="${p.detail}" alt="${escape(p.alt)}" width="1600" height="1000" loading="${i ? 'lazy' : 'eager'}" decoding="async" />
         </figure>
         <div class="stage-copy">
