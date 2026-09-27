@@ -23,14 +23,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" href="/assets/Neuropol.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/Sora-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/assets/hero-cubes.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="stylesheet" href="/src/site.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
       <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" /></symbol>
-      <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H5m6-6-6 6 6 6" /></symbol>
       <symbol id="i-out" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" /></symbol>
       <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></symbol>
       <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 1c.7 5.7 4.3 9.3 11 11-6.7 1.7-10.3 5.3-11 11-.7-5.7-4.3-9.3-11-11 6.7-1.7 10.3-5.3 11-11Z" /></symbol>
@@ -47,7 +45,7 @@
           <span></span><span></span>
         </button>
         <nav id="main-nav" class="main-nav" aria-label="Main">
-          <a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a>
+          <a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a>
         </nav>
         <a class="pill header-cta" href="#contact">Let’s talk <svg class="icon icon-star" aria-hidden="true"><use href="#i-star" /></svg></a>
       </header>
@@ -56,6 +54,7 @@
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-copy">
             <h1 id="hero-title">
+              <span class="visually-hidden">Steven Richardson: </span>
               <svg viewBox="0 0 650 126" role="img" aria-label="Ideas in orbit">
                 <defs>
                   <linearGradient id="chrome" x1="0" y1="0" x2="0.1" y2="1">
@@ -74,115 +73,113 @@
               </svg>
             </h1>
             <p class="intro">
-              I’m Steven Richardson, aka <strong>Space</strong>: a creative technologist in New York. I turn bold ideas into
-              intelligent tools, immersive worlds, and digital experiences that feel a little ahead of their time.
+              I’m Steven Richardson, known as <strong>Space</strong>. I design and build two kinds of things, start to finish and on my
+              own: agents that see and act, and worlds you can step inside.
             </p>
+            <p class="availability">Open to freelance projects and the right full-time role.</p>
             <a class="pill hero-cta" href="#work">See the work <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
           </div>
-          <div class="hero-visual" aria-hidden="true"><div class="hero-art"></div></div>
+          <div class="hero-visual">
+            <img
+              class="hero-galaxy"
+              src="/thumbs/socionics-galaxy-full.webp"
+              alt="Socionics Galaxy, one of my projects: sixteen personality types as glowing spheres in dark 3D space"
+              width="1600"
+              height="1000"
+              fetchpriority="high"
+            />
+            <svg class="hero-orbit" viewBox="0 0 1600 1000" aria-hidden="true">
+              <defs>
+                <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#8b84ff" stop-opacity="0" />
+                  <stop offset=".18" stop-color="#b3adff" />
+                  <stop offset=".5" stop-color="#f4f3ff" />
+                  <stop offset=".78" stop-color="#b3adff" />
+                  <stop offset="1" stop-color="#8b84ff" stop-opacity="0" />
+                </linearGradient>
+                <radialGradient id="body-galaxy" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#ffd6e5" /><stop offset=".45" stop-color="#ff6b9d" /><stop offset="1" stop-color="#5c1a33" /></radialGradient>
+                <radialGradient id="body-lab" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#ffe6cc" /><stop offset=".45" stop-color="#ffa64d" /><stop offset="1" stop-color="#5e3510" /></radialGradient>
+                <radialGradient id="body-zipchair" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#d4e4ff" /><stop offset=".45" stop-color="#3b82f6" /><stop offset="1" stop-color="#0f2653" /></radialGradient>
+              </defs>
+              <g transform="rotate(-9 800 540)">
+                <path class="orbit-back" d="M60 540A740 150 0 0 1 1540 540" />
+                <use class="orbit-star" href="#i-star" x="176" y="428" width="50" height="50" />
+                <path class="orbit-front" d="M60 540A740 150 0 0 0 1540 540" />
+                <circle cx="1136" cy="674" r="17" fill="url(#body-galaxy)" />
+                <circle cx="329" cy="656" r="12" fill="url(#body-lab)" />
+                <circle cx="1488" cy="595" r="8" fill="url(#body-zipchair)" />
+                <use class="orbit-star" href="#i-star" x="1300" y="612" width="30" height="30" />
+              </g>
+            </svg>
+          </div>
         </section>
 
-        <section id="work" class="section work" aria-labelledby="work-title">
-          <div class="section-head">
+        <section id="work" class="work" aria-labelledby="work-title">
+          <div class="work-head">
             <h2 id="work-title">Selected work</h2>
-            <button class="text-button" type="button" data-modal="work" aria-haspopup="dialog">
-              All 11 projects <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
-            </button>
+            <p>Three projects at full size, then <!--@belt-count-lower--> more below.</p>
           </div>
-          <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Selected projects">
-            <p id="carousel-help" hidden>Use the left and right arrow keys to move between projects.</p>
-            <div id="project-track" class="project-track"></div>
-            <div class="carousel-toolbar">
-              <div class="carousel-dots" role="group" aria-label="Project pages"></div>
-              <p class="carousel-status" id="carousel-status" aria-live="polite" aria-atomic="true"></p>
-              <div class="carousel-controls">
-                <button class="round-button" type="button" data-carousel="previous" aria-label="Previous projects" aria-controls="project-track" disabled>
-                  <svg class="icon" aria-hidden="true"><use href="#i-back" /></svg>
-                </button>
-                <button class="round-button" type="button" data-carousel="next" aria-label="Next projects" aria-controls="project-track">
-                  <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
-                </button>
-              </div>
-            </div>
+          <div class="launch">
+            <!--@stages-->
+            <!--@rail-->
           </div>
         </section>
 
-        <section id="services" class="section services" aria-labelledby="services-title">
-          <div class="section-head"><h2 id="services-title">What I do</h2></div>
-          <ul class="services-grid" role="list">
-            <li>
-              <button class="service" type="button" data-service="agents" aria-haspopup="dialog">
-                <span class="service-art service-agents" aria-hidden="true"></span>
-                <span class="service-copy">
-                  <span class="service-title">AI agents</span>
-                  <span class="service-text">Agents that research, guide, and act.</span>
-                  <span class="service-more" aria-hidden="true">Details <svg class="icon"><use href="#i-arrow" /></svg></span>
-                </span>
-              </button>
-            </li>
-            <li>
-              <button class="service" type="button" data-service="interfaces" aria-haspopup="dialog">
-                <span class="service-art service-interfaces" aria-hidden="true"></span>
-                <span class="service-copy">
-                  <span class="service-title">Interfaces</span>
-                  <span class="service-text">Tools that make complex systems clear.</span>
-                  <span class="service-more" aria-hidden="true">Details <svg class="icon"><use href="#i-arrow" /></svg></span>
-                </span>
-              </button>
-            </li>
-            <li>
-              <button class="service" type="button" data-service="automation" aria-haspopup="dialog">
-                <span class="service-art service-automation" aria-hidden="true"></span>
-                <span class="service-copy">
-                  <span class="service-title">Automation</span>
-                  <span class="service-text">Workflows that take repetitive work off your hands.</span>
-                  <span class="service-more" aria-hidden="true">Details <svg class="icon"><use href="#i-arrow" /></svg></span>
-                </span>
-              </button>
-            </li>
-            <li>
-              <button class="service" type="button" data-service="experiences" aria-haspopup="dialog">
-                <span class="service-art service-experiences" aria-hidden="true"></span>
-                <span class="service-copy">
-                  <span class="service-title">Experiences</span>
-                  <span class="service-text">Sound, motion, and generative worlds to explore.</span>
-                  <span class="service-more" aria-hidden="true">Details <svg class="icon"><use href="#i-arrow" /></svg></span>
-                </span>
-              </button>
-            </li>
-          </ul>
+        <section id="more" class="belt" aria-labelledby="belt-title">
+          <h2 id="belt-title"><!--@belt-count--> more in orbit</h2>
+          <div class="belt-groups">
+            <!--@belt-->
+          </div>
         </section>
 
-        <section id="about" class="section about" aria-labelledby="about-title">
+        <section id="about" class="about" aria-labelledby="about-title">
           <div class="about-copy">
-            <h2 id="about-title">Big ideas.<br />Real systems.<br /><span>Human feeling.</span></h2>
+            <h2 id="about-title">One person, idea to shipped</h2>
             <p class="lead">
-              I’m a creative technologist in New York, working where intelligent systems and expressive design meet. I build
-              tools that take work off your hands and digital worlds that invite you to stay a little longer.
+              I’m a creative technologist in New York; online I go by Space. Every project on this page is a solo build: I design it,
+              write the code, and ship it.
             </p>
             <p>
-              My practice moves between AI agents, automation, and immersive interfaces. I like ambitious questions, quick
-              prototypes, and the moment an experiment becomes something useful.
+              My work runs along two lines that usually belong to different people. One is agents that do real work in real
+              interfaces: reading a screen, driving a phone, arguing with each other, or talking a shopper through a catalog. The
+              other is worlds: 3D and audio-reactive spaces where an abstract idea becomes somewhere you can move around.
             </p>
-            <p>From a screen-reading agent to a galaxy of personalities, every project starts with the same question: what could this become?</p>
+            <p><!--@counts--></p>
           </div>
           <div class="about-side">
-            <h3>How I work</h3>
-            <ul class="principles" role="list">
-              <li><h4>Prototype the possibility.</h4><p>Put an idea in motion early and learn from what it does.</p></li>
-              <li><h4>Give intelligence direction.</h4><p>Use AI to extend what people can do, guided by human taste and intent.</p></li>
-              <li><h4>Make every detail matter.</h4><p>Clarity, motion, and character are part of how a product works.</p></li>
-              <li><h4>Keep moving forward.</h4><p>Build, learn, refine, and ship the next version.</p></li>
+            <h3>What I take on</h3>
+            <ul class="takes" role="list">
+              <li>
+                <p><strong>Agents that act.</strong> Tools that read, decide, and operate real interfaces.</p>
+                <p class="takes-seen">See <a href="#sue">SUE</a>, <a href="#phoneagent">PhoneAgent</a>, <a href="#socionics-research-lab">Research Lab</a></p>
+              </li>
+              <li>
+                <p><strong>Interfaces for complex systems.</strong> Dashboards and tools that make a messy domain legible.</p>
+                <p class="takes-seen">See <a href="#zipchair-intel">Zipchair Intel</a>, <a href="#drift">Drift</a></p>
+              </li>
+              <li>
+                <p><strong>Automation.</strong> Pipelines that take repeated work off a person’s or a team’s hands.</p>
+                <p class="takes-seen">See <a href="#aeroeden">AEROEDEN</a>, <a href="#openclaw-ecosystem">OpenClaw</a></p>
+              </li>
+              <li>
+                <p><strong>Interactive worlds.</strong> 3D, sound, and generative graphics that turn an idea into a place.</p>
+                <p class="takes-seen">See <a href="#socionics-galaxy">Socionics Galaxy</a>, <a href="#inner-system">inner-system</a></p>
+              </li>
             </ul>
-            <h3 class="tools-heading">Tools I use</h3>
-            <ul class="technology-list" role="list"></ul>
+            <p class="stack-line">
+              <span>Usual stack</span> React, TypeScript, Python, Node, FastAPI, Three.js and React Three Fiber, GLSL, OpenAI models,
+              SQLite.
+            </p>
           </div>
         </section>
 
-        <section id="contact" class="section contact" aria-labelledby="contact-title">
+        <section id="contact" class="contact" aria-labelledby="contact-title">
           <div class="contact-copy">
-            <h2 id="contact-title">Something on<br /><span>your horizon?</span></h2>
-            <p>Bring the big question, the early sketch, or the idea you can’t leave alone. Let’s make something worth putting into the world.</p>
+            <h2 id="contact-title">Something on your horizon?</h2>
+            <p>
+              I’m taking on freelance and contract projects, and I’m open to the right full-time role. Tell me what you’re building
+              and where it’s stuck.
+            </p>
           </div>
           <div class="contact-actions">
             <a class="pill contact-cta" href="mailto:srich7x@gmail.com?subject=Hello%20from%20spaceynyc.dev">
@@ -194,23 +191,22 @@
               <span class="copy-status" role="status"></span>
             </div>
             <div class="contact-socials">
-              <a href="https://github.com/spaceynyc" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>GitHub</a>
-              <a href="https://x.com/spaceynyc" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-x" /></svg>X / Twitter</a>
+              <a href="https://github.com/spaceynyc" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+              <a href="https://x.com/spaceynyc" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-x" /></svg>X / Twitter<span class="visually-hidden"> (opens in a new tab)</span></a>
             </div>
           </div>
         </section>
       </main>
 
       <footer class="site-footer">
-        <p class="footer-motto">A brighter tomorrow.<br />Together.</p>
         <div class="footer-row">
           <a class="footer-brand" href="#top" aria-label="Spaceynyc, back to top"><img src="/assets/logo.webp" alt="" width="560" height="273" loading="lazy" /></a>
           <nav aria-label="Footer">
-            <a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a>
+            <a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a>
           </nav>
           <div class="socials">
-            <a href="https://github.com/spaceynyc" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github" /></svg></a>
-            <a href="https://x.com/spaceynyc" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="#i-x" /></svg></a>
+            <a href="https://github.com/spaceynyc" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-github" /></svg></a>
+            <a href="https://x.com/spaceynyc" target="_blank" rel="noopener noreferrer" aria-label="X (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-x" /></svg></a>
             <a href="mailto:srich7x@gmail.com" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg></a>
           </div>
         </div>
@@ -226,7 +222,6 @@
 
     <dialog id="detail-dialog" aria-labelledby="dialog-title">
       <div class="dialog-bar">
-        <button class="dialog-back" type="button" hidden><svg class="icon" aria-hidden="true"><use href="#i-back" /></svg>All projects</button>
         <button class="round-button dialog-close" type="button" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close" /></svg></button>
       </div>
       <div class="dialog-body" id="dialog-content"></div>

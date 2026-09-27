@@ -1,0 +1,28 @@
+---
+version: 1
+slug: "index-html"
+primary_target: "index.html"
+related_targets: []
+---
+
+# Home page (index.html)
+
+Mode: Experience. Audience and product truth live in PRODUCT.md. Clients first, roles second; one invitation: email Steven.
+
+Featured: Socionics Galaxy, Socionics Research Lab, Zipchair AI Assistant (a pitch to Zipchair, never "client work"). The other eight sit in a compact belt, grouped into agents and worlds.
+
+Build path: code-led (no image generation in this environment).
+
+## Direction contract
+
+THESIS: The work is the planet and the page is its orbit. Refuses the category page of a decorative hero, a paged card carousel, four service tiles and a principles list.
+
+OWN-WORLD: Near-black space (#050607). Chrome Neuropol lettering is kept only for the hero line and the three stage titles. Lavender from the orbit ring is the single accent. Each project carries its own color as a small body on the orbit. Real screenshots are windows onto each world. Sora for everything else. Chrome-rimmed pills are the controls, without glow halos.
+
+STORY: The visitor meets Steven and his line, sees his actual galaxy on screen, launches through three full-screen projects with plain what-it-does copy and honest status, scans eight more, learns what he takes on, and emails him.
+
+FIRST VIEWPORT: On the left, the chrome IDEAS IN ORBIT line, then a two-sentence intro naming Steven and both territories, then the "See the work" pill. On the right, filling about 60% of the width and bleeding off the edge, the Socionics Galaxy screenshot melts into the page, with a chrome orbit ring passing in front of it and behind it and three project-colored bodies on the ring. On mobile the galaxy sits under the copy, and its top is visible above the fold.
+
+FORM: Launch sequence. It was number 6 of 7 on my ranked list, surface seed a174f215. Its signature interaction: three pinned full-screen stages, where the outgoing stage recedes (scales down, dims, and drifts upward) as the next one slides over it. A sticky orbit rail with three bodies marks the current stage and jumps between stages. Reduced motion falls back to a plain stack.
+
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

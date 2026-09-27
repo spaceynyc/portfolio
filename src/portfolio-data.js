@@ -1,5 +1,6 @@
 // Projects and assets migrated from spaceynyc/portfolio at 261f0cb83ce3d80083436d30afbca40664836d31.
 // Descriptions rewritten for the Ideas in Orbit portfolio; original project facts and links retained.
+// kind: what it is · status: honest public state · featured: gets a full launch stage · group: agents or worlds in the belt · story/alt: featured copy.
 // image: 16:9 card crop · detail: 16:10 dialog image · original: full-resolution screenshot.
 export const projects = [
   {
@@ -18,7 +19,16 @@ export const projects = [
     "image": "/thumbs/socionics-galaxy.webp",
     "detail": "/thumbs/socionics-galaxy-full.webp",
     "original": "/screenshots/socionics-galaxy.jpg",
-    "color": "#ff6b9d"
+    "color": "#ff6b9d",
+    "kind": "3D web world",
+    "status": [
+      "Live",
+      "Code on GitHub"
+    ],
+    "featured": true,
+    "group": "worlds",
+    "story": "Socionics sorts people into sixteen personality types and predicts how any two of them get along. I turned the theory into a place: each type is a star, every relationship between two types is calculated and drawn, and the spiral arms group the types into their four families, called quadras. Fly through it with a mouse, or jump to any type from a command palette.",
+    "alt": "Socionics Galaxy: the sixteen personality types as glowing spheres in dark 3D space, colored by quadra"
   },
   {
     "id": "socionics-research-lab",
@@ -36,7 +46,16 @@ export const projects = [
     "image": "/thumbs/socionics-lab.webp",
     "detail": "/thumbs/socionics-lab-full.webp",
     "original": "/screenshots/socionics-lab.jpg",
-    "color": "#ffa64d"
+    "color": "#ffa64d",
+    "kind": "Multi-agent research tool",
+    "status": [
+      "Live",
+      "Code on GitHub"
+    ],
+    "featured": true,
+    "group": "agents",
+    "story": "Name a subject and four specialist agents each read them through a different school of personality theory. A fifth agent, the validator, then argues with their conclusions. The disagreement stays on screen, so you can see where a reading holds up and where it is a guess.",
+    "alt": "Socionics Research Lab: a “decode the psyche” landing page beside a sample analysis typing Walter White as LIE, quadra Gamma"
   },
   {
     "id": "drift",
@@ -51,7 +70,12 @@ export const projects = [
     "image": "/thumbs/drift.webp",
     "detail": "/thumbs/drift-full.webp",
     "original": "/screenshots/drift.jpg",
-    "color": "#5bb7ff"
+    "color": "#5bb7ff",
+    "kind": "Saved-links tool",
+    "status": [
+      "Not public"
+    ],
+    "group": "worlds"
   },
   {
     "id": "inner-system",
@@ -67,7 +91,12 @@ export const projects = [
     "image": "/thumbs/inner-system.webp",
     "detail": "/thumbs/inner-system-full.webp",
     "original": "/screenshots/inner-system.jpg",
-    "color": "#8b5dff"
+    "color": "#8b5dff",
+    "kind": "Audio-reactive 3D world",
+    "status": [
+      "Live"
+    ],
+    "group": "worlds"
   },
   {
     "id": "aeroeden",
@@ -83,7 +112,12 @@ export const projects = [
     "image": "/thumbs/aeroeden.webp",
     "detail": "/thumbs/aeroeden-full.webp",
     "original": "/screenshots/aeroeden.jpg",
-    "color": "#72f7b8"
+    "color": "#72f7b8",
+    "kind": "Automated brand",
+    "status": [
+      "Running on X"
+    ],
+    "group": "worlds"
   },
   {
     "id": "zipchair-ai-assistant",
@@ -99,7 +133,16 @@ export const projects = [
     "image": "/thumbs/zipchair.webp",
     "detail": "/thumbs/zipchair-full.webp",
     "original": "/screenshots/zipchair.jpg",
-    "color": "#3b82f6"
+    "color": "#3b82f6",
+    "kind": "Shopping agent",
+    "status": [
+      "Pitch for Zipchair",
+      "Live demo"
+    ],
+    "featured": true,
+    "group": "agents",
+    "story": "A pitch I built for Zipchair, which sells licensed sports furniture: more than 12,000 chairs, recliners, stools and sofas carrying team logos. Instead of paging through filters, a fan names their team and the agent narrows the catalog in a back-and-forth conversation.",
+    "alt": "Zipchair AI Assistant: the agent asks which team you are a fan of, offering quick replies like Dallas Cowboys, Gaming Chairs and Under $500"
   },
   {
     "id": "zipchair-intel",
@@ -115,7 +158,13 @@ export const projects = [
     "image": "/thumbs/zipchair-intel.webp",
     "detail": "/thumbs/zipchair-intel-full.webp",
     "original": "/screenshots/zipchair-intel.jpg",
-    "color": "#f59e0b"
+    "color": "#f59e0b",
+    "kind": "Market-intelligence dashboard",
+    "status": [
+      "Pitch for Zipchair",
+      "Live demo"
+    ],
+    "group": "agents"
   },
   {
     "id": "openclaw-ecosystem",
@@ -127,7 +176,12 @@ export const projects = [
       "Node",
       "Agents"
     ],
-    "color": "#72f7b8"
+    "color": "#72f7b8",
+    "kind": "Agent operating layer",
+    "status": [
+      "Not public"
+    ],
+    "group": "agents"
   },
   {
     "id": "sue",
@@ -140,7 +194,12 @@ export const projects = [
       "OCR",
       "Vision"
     ],
-    "color": "#5bb7ff"
+    "color": "#5bb7ff",
+    "kind": "Screen-reading engine",
+    "status": [
+      "Not public"
+    ],
+    "group": "agents"
   },
   {
     "id": "phoneagent",
@@ -152,7 +211,12 @@ export const projects = [
       "RPC",
       "Automation"
     ],
-    "color": "#8b5dff"
+    "color": "#8b5dff",
+    "kind": "iPhone control bridge",
+    "status": [
+      "Not public"
+    ],
+    "group": "agents"
   },
   {
     "id": "shader-gallery",
@@ -164,7 +228,12 @@ export const projects = [
       "WebGL",
       "Creative Coding"
     ],
-    "color": "#f0c674"
+    "color": "#f0c674",
+    "kind": "Generative light sketches",
+    "status": [
+      "Not public"
+    ],
+    "group": "worlds"
   }
 ];
 
