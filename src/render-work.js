@@ -9,14 +9,14 @@ export const newTab = '<span class="visually-hidden"> (opens in a new tab)</span
 // The project's lit sphere (components.css), placed before its name or metadata.
 export const body = '<span class="project-body" aria-hidden="true"></span>';
 
-const featured = ['socionics-galaxy', 'socionics-research-lab', 'zipchair-ai-assistant'].map(id => projects.find(p => p.id === id));
+const featured = ['socionics-galaxy', 'socionics-research-lab', 'pitchandplank', 'zipchair-ai-assistant'].map(id => projects.find(p => p.id === id));
 const belt = projects.filter(p => !p.featured);
 
 // Each status carries its own dot and never breaks inside, so a wrapped line never ends on a dangling "·".
 // Screen readers get a hidden comma instead of the dot; without it the parts run together.
 export const meta = (p) => [`<span>${escape(p.kind)}</span>`, ...p.status.map(s => `<span class="meta-part"><span class="visually-hidden">, </span><span class="meta-sep" aria-hidden="true">·</span>${escape(s)}</span>`)].join(' ');
 
-// Outside the dialog, three stages carry the same action labels; `named` adds the project's name for screen
+// Outside the dialog, the stages carry the same action labels; `named` adds the project's name for screen
 // readers, so tabbing from stage to stage says which project each link belongs to.
 const forProject = (p, named) => (named ? `<span class="visually-hidden">, ${escape(p.title)}</span>` : '');
 

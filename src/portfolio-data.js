@@ -57,7 +57,33 @@ export const projects = [
     "featured": true,
     "group": "agents",
     "story": "Name a subject and four specialist agents each read them through a different school of personality theory. A fifth agent, the validator, then argues with their conclusions. The disagreement stays on screen, so you can see where a reading holds up and where it is a guess.",
-    "alt": "Socionics Research Lab: a “decode the psyche” landing page beside a sample analysis typing Walter White as LIE, quadra Gamma"
+    "alt": "Socionics Research Lab: the dark “decode the psyche” landing page beside a sample result typing Walter White as LIE, gamma quadra, with his Model A functions laid out below"
+  },
+  {
+    "id": "pitchandplank",
+    "title": "Pitch & Plank",
+    "summary": "Fifteen roof, deck and yard calculators that show the math behind every answer.",
+    "blurb": "Free calculators for the jobs people price out before they build: roof pitch, rafters, shingles, decking, stairs, fences and concrete. Every answer shows its formula, the deck tables come from the American Wood Council’s guide, and each cost estimate names where its prices came from. A plain static site with no server and no dependencies.",
+    "tech": [
+      "JavaScript",
+      "HTML & CSS",
+      "Cloudflare Pages"
+    ],
+    "link": "https://pitchandplank.com/",
+    "image": "/thumbs/pitchandplank.webp",
+    "detail": "/thumbs/pitchandplank-full.webp",
+    "original": "/screenshots/pitchandplank.jpg",
+    "color": "#62bd8f",
+    "kind": "Calculator site",
+    "status": [
+      "Live"
+    ],
+    "featured": true,
+    "group": "worlds",
+    "stage": "/screenshots/pitchandplank.jpg",
+    "frame": "--frame-origin:0 0",
+    "story": "A live site for anyone sizing up a roof, deck or yard job before they start. Enter a rise and run, an angle or a pitch and you get all three back, with the rafter length and a drawing of the slope. Every answer shows its formula, the deck tables come from the American Wood Council’s DCA 6 guide, and each cost estimate names where its prices came from.",
+    "alt": "Pitch & Plank’s roof pitch calculator: a rise of 6 and a run of 12 inches give a pitch of 6 in 12, a 26.57° angle, a 50% slope and a 13′ 5″ rafter, beside a dimensioned drawing of the slope"
   },
   {
     "id": "drift",
