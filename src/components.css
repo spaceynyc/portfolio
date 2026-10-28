@@ -1,0 +1,135 @@
+/* Control primitives shared by the portfolio and policy pages. Every control on the site is one of these;
+   page stylesheets only place them. Styled from the tokens in base.css. */
+
+/* ---------- Pill: chrome-rimmed capsule for every primary action ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0 1.25rem 0 1.4rem;
+  border: 1px solid #d9d8ea;
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  white-space: nowrap;
+  background: linear-gradient(110deg, rgb(17 19 27 / 0.7), rgb(5 6 7 / 0.2) 60%);
+  box-shadow: inset 1px 1px 2px rgb(236 235 255 / 0.35);
+  transition:
+    background 0.25s,
+    box-shadow 0.25s,
+    transform 0.35s var(--ease-out);
+}
+.pill:hover {
+  background: #171529;
+  border-color: #fff;
+  box-shadow: inset 1px 1px 3px rgb(255 255 255 / 0.55);
+  transform: translateY(-2px);
+}
+.pill:active {
+  transform: translateY(0);
+}
+.pill-large {
+  min-height: 3.5rem;
+  padding: 0 1.5rem 0 1.9rem;
+  font-size: var(--text-md);
+  gap: 1.25rem;
+}
+
+/* ---------- Capsule: the ghost control for secondary actions ---------- */
+.capsule {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--control);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.capsule:hover {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+/* ---------- Round button: icon-only control (close, menu) ---------- */
+.round-button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--control);
+  border-radius: 50%;
+  color: var(--ink);
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.round-button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* ---------- Text link: navigation and quiet actions, with an optional leading icon ---------- */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  transition: color 0.2s;
+}
+.text-link:hover {
+  color: var(--ink);
+}
+/* Icon-only: the label lives in aria-label; the target stays 2.75rem square. */
+.text-link.is-icon {
+  justify-content: center;
+  width: 2.75rem;
+}
+
+/* ---------- Row link: a list row whose only link is its name ----------
+   The link's ::after covers the row, so the whole row is clickable while the link's accessible name stays
+   the project name. Its focus ring is drawn on that overlay, around the whole row. */
+.row-link {
+  position: relative;
+}
+.row-link a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+}
+.row-link a:focus-visible {
+  outline: none;
+}
+.row-link a:focus-visible::after {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Project body: the small lit sphere that marks a project ---------- */
+.project-body {
+  flex-shrink: 0;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff 0, var(--project-color) 45%, color-mix(in srgb, var(--project-color) 35%, #000) 100%);
+  /* The body is data (the project's own color), so it keeps that color in high-contrast mode. */
+  forced-color-adjust: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill,
+  .pill:hover {
+    transform: none;
+  }
+}

@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "qa:a11y": "node qa/a11y/contrast.mjs && node qa/a11y/audit.mjs && node qa/a11y/keyboard.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "playwright": "^1.56.1",
     "vite": "^7.1.0"
   }
 }

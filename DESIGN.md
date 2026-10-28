@@ -240,31 +240,34 @@ Two silhouettes dominate: the capsule (every control) and the planetary limb (ea
 ## Components
 
 ### Buttons
-Chrome-rimmed and tactile; one filled look for every primary action.
+Chrome-rimmed and tactile; one filled look for every primary action. Every control is one of the primitives in `src/components.css` (`.pill`, `.pill-large`, `.capsule`, `.round-button`, `.text-link`, `.row-link`, `.project-body`); page stylesheets place them but don't restyle them.
 - **Shape:** full capsule (999px), at least 2.75rem tall.
 - **Primary pill:** Ink text in Sora 500 at 0.875rem with 0.03em tracking, a 1px pale chrome rim, a smoky 110deg gradient fill, and an inset top-left highlight. An icon (arrow, outbound arrow, or star) trails the label at 1.25rem.
 - **Hover / Active:** fill darkens to the violet-black hover fill, rim turns white, the inset highlight brightens, and the pill lifts 2px over 0.35s on the ease-out curve; it returns to rest on press. Reduced motion removes the lift.
-- **Large pill:** the contact action, 3.5rem tall at body size.
-- **Ghost capsule:** transparent with a Control Rim border and Ink 2 text; hover fills with the lavender haze and brightens text to Ink.
-- **Round button:** 2.75rem circle with a Control Rim border, used to close the dialog; hover fills with haze and turns the rim lavender.
-- **Text link:** Ink 2 label with an optional leading icon, brightening to Ink on hover.
+- **Large pill** (`.pill-large`): the contact action, 3.5rem tall at body size.
+- **Ghost capsule** (`.capsule`): transparent with a Control Rim border and Ink 2 text; hover fills with the lavender haze and brightens text to Ink.
+- **Round button** (`.round-button`): 2.75rem circle with a Control Rim border, used to close the dialog and to open the phone menu; hover fills with haze and turns the rim lavender.
+- **Text link** (`.text-link`): Ink 2 label with an optional leading icon, brightening to Ink on hover; header, footer, socials, and policy navigation. `.is-icon` makes it a 2.75rem square for icon-only links named by `aria-label`.
 
 ### Cards / Containers
 The system has no card grid. Containers are windows and rows.
 - **Stage window:** screenshot on the raised void inside a 1px strong hairline, 14px corners, the window drop shadow. The image crop is data-driven (`--frame-origin`, `--frame-scale`).
-- **Belt row:** hairline-ruled list row. Thumbnail 16:9 at 8px corners, then name (with its project body), summary in Ink 2, metadata caption in Ink 3, and a trailing arrow. Hover turns the name lavender, nudges the arrow 3px right, and scales the thumbnail image to 1.04.
+- **Belt row:** hairline-ruled list row. Thumbnail 16:9 at 8px corners, then name (with its project body), summary in Ink 2, metadata caption in Ink 3, and a trailing arrow. Hover turns the name lavender, nudges the arrow 3px right, and scales the thumbnail image to 1.04. It is a block link (`.row-link`): the only link is the name, an `h4`, and its `::after` covers the row, so the whole row clicks while a screen reader hears just the project name. Keyboard focus draws the lavender ring around the whole row and triggers the hover response.
 - **Drawn cover:** for projects without a public screenshot, a line drawing stroked in the project color at 1.2 over the raised void with a 16% project-color wash.
 
 ### Navigation
 - **Header links:** Sora 0.875rem in Ink 2, Ink on hover, no underline or indicator.
-- **Phone menu:** a two-bar toggle that crosses into an X; the sheet drops under the header on the raised void with hairline-ruled 3.25rem rows at 1.125rem in Ink.
-- **Orbit rail:** the featured three as bodies on a thin orbit line that fades out after the last one. Labels are Ink 3, becoming Ink when hovered or current; the current body scales to 1.7.
+- **Phone menu:** a round button with two bars that cross into an X, sitting between the logo and the pill (the same order as the DOM, so Tab follows what you see). It is an APG disclosure: named "Menu", state in `aria-expanded`, closed by Escape or by focus leaving the nav. The sheet drops under the header on the raised void with hairline-ruled 3.25rem rows at 1.125rem in Ink. Below a 19rem header the pill drops its star and the logo shrinks first, so nothing leaves the screen at 320px.
+- **Orbit rail:** the featured three as bodies on a thin orbit line that fades out after the last one. Labels are Ink 3, becoming Ink when hovered or current (`aria-current="location"`); the current body scales to 1.7. When keyboard focus enters a pinned stage that is not fully in view, the page jumps to that stage, so focus never sits under the next one.
 
 ### Project Body
 The signature mark: a small sphere drawn with a radial gradient from a white highlight through the project color to its shadowed edge. It precedes every project's metadata line (stage, belt, dialog) and stands for the project on the rail.
 
 ### Detail Dialog
 Raised void, 1px strong hairline, 18px corners, dialog drop shadow, over a backdrop of `rgb(2 3 7 / 0.82)` with a 10px blur. A sticky top bar fades from the raised void to transparent and holds the round close button. Title in solid-ink Neuropol, then the project body with its metadata, the summary as a lede, actions, media in a 10px frame, and body text.
+
+### High contrast
+In forced-colors mode, chrome lettering (the hero line and stage titles) falls back to plain system text, the star icon to the control's own color, and the menu bars to ButtonText. Project bodies keep their color (`forced-color-adjust: none`) because they are data. The current rail item gains an underline.
 
 ## Do's and Don'ts
 

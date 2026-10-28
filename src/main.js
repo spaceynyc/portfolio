@@ -1,7 +1,7 @@
 import { mountHeroMotion } from './hero-motion.js';
 import { projects } from './portfolio-data.js';
 import { cover } from './covers.js';
-import { escape, meta, primaryAction, sourceAction } from './render-work.js';
+import { body, escape, meta, newTab, primaryAction, sourceAction } from './render-work.js';
 
 const byId = (id) => projects.find(p => p.id === id);
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
@@ -19,10 +19,10 @@ function showProject(p) {
   if (!dialog.open) opener = document.activeElement;
   content.style.setProperty('--project-color', p.color);
   const image = p.image
-    ? `<a class="dialog-media dialog-media-link" href="${p.original}" target="_blank" rel="noopener"><img src="${p.detail}" alt="${escape(p.title)} screenshot" width="1600" height="1000" decoding="async" /><span>Full size <svg class="icon" aria-hidden="true"><use href="#i-out" /></svg></span></a>`
+    ? `<a class="dialog-media dialog-media-link" href="${p.original}" target="_blank" rel="noopener noreferrer"><img src="${p.detail}" alt="${escape(p.title)} screenshot" width="1600" height="1000" decoding="async" /><span>Full size <svg class="icon" aria-hidden="true"><use href="#i-out" /></svg>${newTab}</span></a>`
     : `<figure class="dialog-media dialog-cover">${cover(p)}<figcaption>A drawn motif of what ${escape(p.title)} does. There is no public screenshot yet.</figcaption></figure>`;
   content.innerHTML = `<h2 class="dialog-title" id="dialog-title" tabindex="-1">${escape(p.title)}</h2>
-    <p class="dialog-meta">${meta(p)}</p>
+    <p class="dialog-meta">${body}${meta(p)}</p>
     <p class="dialog-summary">${escape(p.summary)}</p>
     <div class="dialog-actions">${primaryAction(p)}${sourceAction(p)}</div>
     ${image}
@@ -56,7 +56,19 @@ dialog.addEventListener('cancel', event => {
   closeDialog();
 });
 dialog.querySelector('.dialog-close').addEventListener('click', closeDialog);
-dialog.addEventListener('click', event => {
+// Native modal dialogs let Tab leave for the browser's own toolbar; APG asks for it to wrap within the dialog.
+dialog.addEventListener('keydown', event => {
+  if (event.key !== 'Tab') return;
+  const stops = [...dialog.querySelectorAll('a[href], button')];
+  const edge = event.shiftKey ? stops[0] : stops.at(-1);
+  if (document.activeElement === edge || (event.shiftKey && document.activeElement === dialog.querySelector('.dialog-title'))) {
+    event.preventDefault();
+    (event.shiftKey ? stops.at(-1) : stops[0]).focus();
+  }
+});
+// Backdrop clicks are caught at the document: a click listener on the dialog itself makes screen readers
+// announce everything inside it as "clickable".
+document.addEventListener('click', event => {
   if (event.target !== dialog) return;
   const r = dialog.getBoundingClientRect();
   if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) closeDialog();
@@ -103,7 +115,7 @@ if (railLinks.length) {
       if (document.getElementById(railLinks[i].hash.slice(1)).getBoundingClientRect().top <= probe) current = i;
     });
     railLinks.forEach((link, i) => {
-      if (i === current) link.setAttribute('aria-current', 'step');
+      if (i === current) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
   };
@@ -111,6 +123,21 @@ if (railLinks.length) {
   addEventListener('resize', mark);
   mark();
 }
+
+// ---------- Keep the focused stage on top ----------
+// Pinned stages stack, so a link in an earlier stage can sit under the next one (WCAG 2.4.11). When focus
+// enters a stage that isn't the one fully in view, jump to that stage's own scroll position.
+const pinned = matchMedia('(min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)');
+document.querySelector('.launch')?.addEventListener('focusin', event => {
+  const stage = event.target.closest('.stage');
+  // Keyboard focus only: a click can only land on the stage already in view.
+  if (!pinned.matches || !stage || !event.target.matches(':focus-visible')) return;
+  // The browser scrolls the focused link into view first; correct that scroll on the next frame.
+  requestAnimationFrame(() => {
+    const offset = stage.previousElementSibling.getBoundingClientRect().top;
+    if (Math.abs(offset) > 1) scrollTo({ top: scrollY + offset, behavior: 'instant' });
+  });
+});
 
 // ---------- Copy the email address for visitors without a mail app ----------
 const copyButton = document.querySelector('.copy-email');
@@ -130,22 +157,27 @@ copyButton.addEventListener('click', async () => {
   copyButton.timer = setTimeout(() => { copyStatus.textContent = ''; }, 4000);
 });
 
-// ---------- Mobile menu ----------
-const menu = document.querySelector('.menu-toggle');
+// ---------- Mobile menu: an APG disclosure ----------
+// The button's name stays "Menu"; aria-expanded carries the state. Escape and moving focus out both close it.
 const nav = document.querySelector('.main-nav');
+const menu = nav.querySelector('.menu-toggle');
+const navList = nav.querySelector('.main-nav-list');
 function setMenu(open) {
   menu.setAttribute('aria-expanded', String(open));
-  menu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  nav.classList.toggle('is-open', open);
+  navList.classList.toggle('is-open', open);
 }
 menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
-nav.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
+nav.addEventListener('focusout', event => {
+  if (!nav.contains(event.relatedTarget)) setMenu(false);
+});
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
     setMenu(false);
-    menu.focus();
+    if (nav.contains(document.activeElement)) menu.focus();
   }
 });
+// One document listener closes the menu on a link choice or an outside click (a listener on the list would
+// make NVDA call the list "clickable").
 document.addEventListener('click', event => {
-  if (!event.target.closest('.site-header')) setMenu(false);
+  if (!event.target.closest('.site-header') || event.target.closest('.main-nav-list a')) setMenu(false);
 });
