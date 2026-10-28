@@ -93,15 +93,18 @@ document.addEventListener('click', event => {
 });
 
 // ---------- Launch rail: marks the featured stage in view ----------
+// Measured from each stage's anchor, which stays in flow while the stage itself is pinned.
+const rail = document.querySelector('.launch-rail');
 const railLinks = [...document.querySelectorAll('[data-rail]')];
-const stages = [...document.querySelectorAll('.stage')];
+const anchors = railLinks.map(link => document.getElementById(link.hash.slice(1)));
 if (railLinks.length) {
   const mark = () => {
     const probe = innerHeight * 0.5;
     let current = 0;
-    stages.forEach((stage, i) => {
-      if (document.getElementById(railLinks[i].hash.slice(1)).getBoundingClientRect().top <= probe) current = i;
+    anchors.forEach((anchor, i) => {
+      if (anchor.getBoundingClientRect().top <= probe) current = i;
     });
+    rail.classList.toggle('is-idle', anchors[0].getBoundingClientRect().top > probe);
     railLinks.forEach((link, i) => {
       if (i === current) link.setAttribute('aria-current', 'step');
       else link.removeAttribute('aria-current');

@@ -10,7 +10,8 @@ const newTab = '<span class="visually-hidden"> (opens in a new tab)</span>';
 const featured = ['socionics-galaxy', 'socionics-research-lab', 'zipchair-ai-assistant'].map(id => projects.find(p => p.id === id));
 const belt = projects.filter(p => !p.featured);
 
-export const meta = (p) => [p.kind, ...p.status].map(escape).join('<span aria-hidden="true"> · </span>');
+// Each status carries its own dot and never breaks inside, so a wrapped line never ends on a dangling "·".
+export const meta = (p) => [`<span>${escape(p.kind)}</span>`, ...p.status.map(s => `<span class="meta-part"><span class="meta-sep" aria-hidden="true">·</span>${escape(s)}</span>`)].join(' ');
 
 export function primaryAction(p) {
   if (!p.link) return `<a class="pill" href="mailto:srich7x@gmail.com?subject=${encodeURIComponent(`About ${p.title}`)}">Ask me about it ${icon('arrow')}</a>`;
