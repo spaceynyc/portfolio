@@ -143,9 +143,9 @@ components:
 
 The work is the planet and the page is its orbit. Everything sits on near-black space, and the brightest things on screen are the projects themselves: real screenshots used as windows onto each world, bleeding off the right edge, with the page's own chrome kept thin around them. A single lavender orbit ring is the house color. Each project brings its own color as a small lit body, a sphere with a white highlight, that marks it wherever it appears: beside its metadata, on the sticky rail, in the belt, and on the lit rim of its stage.
 
-The system is dark, quiet, and specific. Chrome lettering in Neuropol is reserved for a few ceremonial moments (the hero line and the three featured stage titles). Everything else is Sora in a three-step ink ramp on the void. Controls are chrome-rimmed capsules. Depth comes from overlap and darkness rather than floating cards: stages slide over one another and recede, windows cast a short, heavy shadow, and sections are separated by hairlines rather than boxes.
+The system is dark, quiet, and specific. Chrome lettering in Neuropol is reserved for a few ceremonial moments (the hero line and the four featured stage titles). Everything else is Sora in a three-step ink ramp on the void. Controls are chrome-rimmed capsules. Depth comes from overlap and darkness rather than floating cards: stages slide over one another and recede, windows cast a short, heavy shadow, and sections are separated by hairlines rather than boxes.
 
-Density is generous for the featured three (one full viewport each on desktop) and compact for the rest: the remaining eight sit in a two-column list with small thumbnails, grouped into agents and worlds.
+Density is generous for the featured four (one full viewport each on desktop) and compact for the rest: the remaining eight sit in a two-column list with small thumbnails, grouped into agents and worlds.
 
 **Key Characteristics:**
 - Near-black void (#050607) with slightly lifted panels, no gradients behind content.
@@ -192,7 +192,7 @@ Each project carries its own color in the data (`--project-color`, set inline): 
 
 ### Hierarchy
 - **Display** (Neuropol 400, an SVG line sized to min(100%, 36rem) wide, so glyphs top out near 3.6rem; each word fitted to width with textLength, uppercase): the IDEAS IN ORBIT hero line only, filled with the chrome gradient and a 0.6 light stroke.
-- **Headline, chrome** (Neuropol 400, clamp(2rem, 1.25rem + 2vw, 3rem), 1.04, 0.01em, uppercase): the three featured stage titles, with the chrome gradient clipped to text.
+- **Headline, chrome** (Neuropol 400, clamp(2rem, 1.25rem + 2vw, 3rem), 1.04, 0.01em, uppercase): the four featured stage titles, with the chrome gradient clipped to text.
 - **Headline** (Neuropol 400, clamp(1.5rem, 1.05rem + 1.6vw, 2.35rem), 1.1, 0.01em, uppercase, solid Ink, balanced): section headings in main.
 - **Dialog title** (Neuropol 400, clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem), 1.2, solid Ink, set in the project's own casing): project titles in the detail dialog; the policy page h1 uses the same treatment at clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem).
 - **Title** (Sora 500, 1.125rem): belt group headings and the about side heading. Belt project names use Sora 500 at 1.0625rem.
@@ -202,7 +202,7 @@ Each project carries its own color in the data (`--project-color`, set inline): 
 - **Caption** (Sora 400, 0.75rem): belt metadata, legal line, the dialog's media badge.
 
 ### Named Rules
-**The Chrome Ceremony Rule.** Chrome-filled Neuropol appears only on the hero line and the three featured stage titles. Every other Neuropol heading is solid Ink.
+**The Chrome Ceremony Rule.** Chrome-filled Neuropol appears only on the hero line and the four featured stage titles. Every other Neuropol heading is solid Ink.
 
 **The Step-Below Rule.** Section headings and dialog titles sit one size step below the chrome stage titles (2.35rem and 2.25rem maximum against 3rem).
 
@@ -258,7 +258,7 @@ The system has no card grid. Containers are windows and rows.
 ### Navigation
 - **Header links:** Sora 0.875rem in Ink 2, Ink on hover, no underline or indicator.
 - **Phone menu:** a two-bar toggle that crosses into an X; the sheet drops under the header on the raised void with hairline-ruled 3.25rem rows at 1.125rem in Ink.
-- **Orbit rail:** the featured three as bodies on a thin orbit line that fades out after the last one. Labels are Ink 3, becoming Ink when hovered or current; the current body scales to 1.7.
+- **Orbit rail:** the featured four as bodies on a thin orbit line that fades out after the last one. Labels are Ink 3, becoming Ink when hovered or current; the current body scales to 1.7.
 
 ### Project Body
 The signature mark: a small sphere drawn with a radial gradient from a white highlight through the project color to its shadowed edge. It precedes every project's metadata line (stage, belt, dialog) and stands for the project on the rail.

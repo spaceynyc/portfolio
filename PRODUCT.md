@@ -39,7 +39,7 @@ Visitors are mostly on desktop from a shared link, or on phones from X. The site
 ## Evidence on Hand
 
 - 11 projects, all solo builds (design and engineering by Steven).
-- Featured three: Socionics Galaxy, Socionics Research Lab, Zipchair AI Assistant.
+- Featured four: Socionics Galaxy, Socionics Research Lab, Pitch & Plank, Zipchair AI Assistant.
 - Screenshots for 7 projects (`public/screenshots/`, crops in `public/thumbs/`); drawn covers for OpenClaw, SUE, PhoneAgent, Shader Gallery (`src/covers.js`).
 - Live links for Socionics Galaxy, Research Lab, inner-system, Zipchair AI, Zipchair Intel; AEROEDEN on X.
 - Public code on GitHub for Socionics Galaxy and Socionics Research Lab (the repos linked in the data). Only say "code on GitHub" where a repo link exists.

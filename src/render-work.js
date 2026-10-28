@@ -7,7 +7,7 @@ export const escape = (value) => String(value).replace(/[&<>"']/g, c => ({ '&': 
 export const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="#i-${name}" /></svg>`;
 const newTab = '<span class="visually-hidden"> (opens in a new tab)</span>';
 
-const featured = ['socionics-galaxy', 'socionics-research-lab', 'zipchair-ai-assistant'].map(id => projects.find(p => p.id === id));
+const featured = ['socionics-galaxy', 'socionics-research-lab', 'pitchandplank', 'zipchair-ai-assistant'].map(id => projects.find(p => p.id === id));
 const belt = projects.filter(p => !p.featured);
 
 // Each status carries its own dot and never breaks inside, so a wrapped line never ends on a dangling "·".

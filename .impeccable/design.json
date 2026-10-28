@@ -22,7 +22,7 @@
     },
     "typographyMeta": {
       "display": { "displayName": "Display (chrome)", "purpose": "The IDEAS IN ORBIT hero line only, an SVG filled with the chrome gradient." },
-      "headline-chrome": { "displayName": "Stage Title (chrome)", "purpose": "The three featured stage titles, uppercase, chrome gradient clipped to text." },
+      "headline-chrome": { "displayName": "Stage Title (chrome)", "purpose": "The four featured stage titles, uppercase, chrome gradient clipped to text." },
       "headline": { "displayName": "Section Heading", "purpose": "Section headings in main, uppercase solid Ink Neuropol, one step below stage titles." },
       "title-dialog": { "displayName": "Dialog Title", "purpose": "Project title in the detail dialog, solid Ink Neuropol in the project's own casing." },
       "title": { "displayName": "Title", "purpose": "Belt group headings and the about side heading, Sora 500." },
@@ -141,7 +141,7 @@
   ],
   "narrative": {
     "northStar": "Ideas in Orbit",
-    "overview": "The work is the planet and the page is its orbit. Everything sits on near-black space, and the brightest things on screen are the projects themselves: real screenshots used as windows onto each world, bleeding off the right edge, with the page's own chrome kept thin around them. A single lavender orbit ring is the house color. Each project brings its own color as a small lit body, a sphere with a white highlight, that marks it wherever it appears: beside its metadata, on the sticky rail, in the belt, and on the lit rim of its stage.\n\nThe system is dark, quiet, and specific. Chrome lettering in Neuropol is reserved for a few ceremonial moments (the hero line and the three featured stage titles). Everything else is Sora in a three-step ink ramp on the void. Controls are chrome-rimmed capsules. Depth comes from overlap and darkness rather than floating cards: stages slide over one another and recede, windows cast a short, heavy shadow, and sections are separated by hairlines rather than boxes.\n\nDensity is generous for the featured three (one full viewport each on desktop) and compact for the rest: the remaining eight sit in a two-column list with small thumbnails, grouped into agents and worlds.",
+    "overview": "The work is the planet and the page is its orbit. Everything sits on near-black space, and the brightest things on screen are the projects themselves: real screenshots used as windows onto each world, bleeding off the right edge, with the page's own chrome kept thin around them. A single lavender orbit ring is the house color. Each project brings its own color as a small lit body, a sphere with a white highlight, that marks it wherever it appears: beside its metadata, on the sticky rail, in the belt, and on the lit rim of its stage.\n\nThe system is dark, quiet, and specific. Chrome lettering in Neuropol is reserved for a few ceremonial moments (the hero line and the four featured stage titles). Everything else is Sora in a three-step ink ramp on the void. Controls are chrome-rimmed capsules. Depth comes from overlap and darkness rather than floating cards: stages slide over one another and recede, windows cast a short, heavy shadow, and sections are separated by hairlines rather than boxes.\n\nDensity is generous for the featured four (one full viewport each on desktop) and compact for the rest: the remaining eight sit in a two-column list with small thumbnails, grouped into agents and worlds.",
     "keyCharacteristics": [
       "Near-black void (#050607) with slightly lifted panels, no gradients behind content.",
       "One accent, the orbit lavender; project colors appear only as small lit bodies and rim light.",
@@ -153,7 +153,7 @@
     "rules": [
       { "name": "The One Accent Rule", "body": "Lavender is the only interface accent. Project colors never color text, buttons, or backgrounds; they live in bodies, rims, and covers.", "section": "colors" },
       { "name": "The Ink Ramp Rule", "body": "Text uses Ink, Ink 2, or Ink 3 on the void and nothing dimmer. Hierarchy is carried by step, not by opacity.", "section": "colors" },
-      { "name": "The Chrome Ceremony Rule", "body": "Chrome-filled Neuropol appears only on the hero line and the three featured stage titles. Every other Neuropol heading is solid Ink.", "section": "typography" },
+      { "name": "The Chrome Ceremony Rule", "body": "Chrome-filled Neuropol appears only on the hero line and the four featured stage titles. Every other Neuropol heading is solid Ink.", "section": "typography" },
       { "name": "The Step-Below Rule", "body": "Section headings and dialog titles sit one size step below the chrome stage titles (2.35rem and 2.25rem maximum against 3rem).", "section": "typography" },
       { "name": "The Sora Everywhere Else Rule", "body": "All body, interface, metadata, and control text is Sora. Neuropol never sets a sentence.", "section": "typography" },
       { "name": "The Black Shadow Rule", "body": "Drop shadows are pure black, short, and pulled in by a negative spread. Colored light belongs to the orbit world itself (a project's rim and body, the stars, the faint lavender haze on the chrome hero line), never under a control or a surface.", "section": "elevation" }
