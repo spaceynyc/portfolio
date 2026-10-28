@@ -12,8 +12,9 @@ export const body = '<span class="project-body" aria-hidden="true"></span>';
 const featured = ['socionics-galaxy', 'socionics-research-lab', 'zipchair-ai-assistant'].map(id => projects.find(p => p.id === id));
 const belt = projects.filter(p => !p.featured);
 
-// Screen readers get a comma between parts; sighted readers get the dot. Without the comma the parts run together.
-export const meta = (p) => [p.kind, ...p.status].map(escape).join('<span class="visually-hidden">, </span><span aria-hidden="true"> · </span>');
+// Each status carries its own dot and never breaks inside, so a wrapped line never ends on a dangling "·".
+// Screen readers get a hidden comma instead of the dot; without it the parts run together.
+export const meta = (p) => [`<span>${escape(p.kind)}</span>`, ...p.status.map(s => `<span class="meta-part"><span class="visually-hidden">, </span><span class="meta-sep" aria-hidden="true">·</span>${escape(s)}</span>`)].join(' ');
 
 // Outside the dialog, three stages carry the same action labels; `named` adds the project's name for screen
 // readers, so tabbing from stage to stage says which project each link belongs to.

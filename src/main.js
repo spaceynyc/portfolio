@@ -105,15 +105,18 @@ document.addEventListener('click', event => {
 });
 
 // ---------- Launch rail: marks the featured stage in view ----------
+// Measured from each stage's anchor, which stays in flow while the stage itself is pinned.
+const rail = document.querySelector('.launch-rail');
 const railLinks = [...document.querySelectorAll('[data-rail]')];
-const stages = [...document.querySelectorAll('.stage')];
+const anchors = railLinks.map(link => document.getElementById(link.hash.slice(1)));
 if (railLinks.length) {
   const mark = () => {
     const probe = innerHeight * 0.5;
     let current = 0;
-    stages.forEach((stage, i) => {
-      if (document.getElementById(railLinks[i].hash.slice(1)).getBoundingClientRect().top <= probe) current = i;
+    anchors.forEach((anchor, i) => {
+      if (anchor.getBoundingClientRect().top <= probe) current = i;
     });
+    rail.classList.toggle('is-idle', anchors[0].getBoundingClientRect().top > probe);
     railLinks.forEach((link, i) => {
       if (i === current) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
@@ -127,7 +130,8 @@ if (railLinks.length) {
 // ---------- Keep the focused stage on top ----------
 // Pinned stages stack, so a link in an earlier stage can sit under the next one (WCAG 2.4.11). When focus
 // enters a stage that isn't the one fully in view, jump to that stage's own scroll position.
-const pinned = matchMedia('(min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)');
+// Same condition as the pinned-stage media query in site.css.
+const pinned = matchMedia('(min-width: 1280px) and (min-height: 700px) and (prefers-reduced-motion: no-preference), (min-width: 1024px) and (min-height: 840px) and (prefers-reduced-motion: no-preference)');
 document.querySelector('.launch')?.addEventListener('focusin', event => {
   const stage = event.target.closest('.stage');
   // Keyboard focus only: a click can only land on the stage already in view.

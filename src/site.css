@@ -215,10 +215,16 @@ main h2 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0 0.4rem;
+  gap: 0 0.3em;
   margin-top: 0.9rem;
   font-size: var(--text-sm);
   color: var(--ink-3);
+}
+.meta-part {
+  white-space: nowrap;
+}
+.meta-sep {
+  margin-inline-end: 0.3em;
 }
 .stage-meta .project-body,
 .dialog-meta .project-body {
@@ -265,8 +271,14 @@ main h2 {
   }
 }
 
-/* Pinned stages: each new project slides up over the last, which recedes into the dark. */
-@media (min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
+/* Pinned stages: each new project slides up over the last, which recedes into the dark.
+   Narrower screens wrap the copy taller, so they need more height before a stage can pin without clipping. */
+@media (min-width: 1280px) and (min-height: 700px) and (prefers-reduced-motion: no-preference),
+  (min-width: 1024px) and (min-height: 840px) and (prefers-reduced-motion: no-preference) {
+  /* Cancel the page's scroll padding so a #project link lands on the pinned stage exactly. */
+  .stage-anchor {
+    scroll-margin-top: -1rem;
+  }
   .stage {
     position: sticky;
     top: 0;
@@ -293,6 +305,13 @@ main h2 {
     padding: 0 var(--gutter);
     background: linear-gradient(transparent, var(--bg) 55%);
     pointer-events: none;
+    transition: opacity 0.5s var(--ease-out);
+  }
+  /* Out of sight until the first stage rises, so it never floats over the hero. */
+  .launch-rail.is-idle {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0s 0.3s;
   }
   .rail-track {
     display: flex;
@@ -703,7 +722,7 @@ dialog::backdrop {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0 0.4rem;
+  gap: 0 0.3em;
   margin-top: 0.6rem;
   font-size: var(--text-sm);
   color: var(--ink-3);
