@@ -12,3 +12,4 @@ __pycache__/
 .impeccable/config.local.json
 .impeccable/live/
 .impeccable/review/
+qa/a11y/out/
